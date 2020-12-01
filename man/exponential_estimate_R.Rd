@@ -4,14 +4,19 @@
 \alias{exponential_estimate_R}
 \title{Bayesian exponential model using stan}
 \usage{
-exponential_estimate_R(fit_exponential, n_mean = 2.29, b_mean = 0.36)
+exponential_estimate_R(
+  fit_exponential,
+  n_mean = 2.29,
+  b_mean = 0.36,
+  label = "label"
+)
 }
 \arguments{
-\item{fit_exponential}{a model fit using stan_exponential_model}
+\item{fit_exponential}{a model fit using reacttemporal2::stan_exp_model() or reactemporal2::stan_exp_model_phe()}
 
-\item{n_mean}{shape parameter for inverse gamma serial interval}
+\item{n_mean}{shape parameter for inverse gamma serial interval (default from Bi et al)}
 
-\item{b_mean}{rate parameter for inverse gamma serial interval}
+\item{b_mean}{rate parameter for inverse gamma serial interval (default from Bi et al)}
 }
 \value{
 An object of class \code{dataframe} with calculations of growth rate, R, doubling/halving time with 95\% CIs and the probability R>1

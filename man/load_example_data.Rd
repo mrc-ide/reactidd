@@ -7,7 +7,7 @@
 load_example_data()
 }
 \value{
-An object of class \code{dataframe} with calculations of growth rate, R, doubling/halving time with 95\% CIs and the probability R>1
+An object of class \code{list} with length 2. The first item is a dataframe of number of positive swabs from the REACT data set by region and time. The second item is the same but for total number of swab tests.
 }
 \description{
 Load and format example data
