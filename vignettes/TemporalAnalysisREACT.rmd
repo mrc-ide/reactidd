@@ -1,0 +1,174 @@
+---
+title: "Fitting models to REACT data"
+author: "Oliver Eales"
+date: "November 23, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load reacttemporal2}
+library(reacttemporal2)
+```
+
+# Loading the Data
+First we will load the example REACT data available using reacttemporal2::load_example_data() 
+
+```{r loading the react data}
+pos <- load_example_data()[[1]]
+tot <- load_example_data()[[2]]
+```
+
+In order to subset the data we define the dates of each round of the study
+```{r setting the minimum and maximum dates}
+min_date_r1 <- as.Date("2020-05-01")
+min_date_r2 <- as.Date("2020-06-19")
+min_date_r3 <- as.Date("2020-07-24")
+min_date_r4 <- as.Date("2020-08-22")
+
+max_date_r1 <- as.Date("2020-06-01")
+max_date_r2 <- as.Date("2020-07-07")
+max_date_r3 <- as.Date("2020-08-11")
+max_date_r4 <- as.Date("2020-09-08")
+```
+
+
+# Fitting the exponential model
+We fit the exponential model to subsets of the data corresponding to individual rounds and pairs of subsequent rounds 
+
+```{r Fitting the models, results='hide'}
+exp_mod_react_r1 <- stan_exp_model(pos[pos$X>=min_date_r1 & pos$X<= max_date_r1,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r1,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r1,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+exp_mod_react_r2 <- stan_exp_model(pos[pos$X>=min_date_r2 & pos$X<= max_date_r2,]$X,
+                                   pos[pos$X>=min_date_r2 & pos$X<= max_date_r2,]$England,
+                                   tot[tot$X>=min_date_r2 & tot$X<= max_date_r2,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+exp_mod_react_r3 <- stan_exp_model(pos[pos$X>=min_date_r3 & pos$X<= max_date_r3,]$X,
+                                   pos[pos$X>=min_date_r3 & pos$X<= max_date_r3,]$England,
+                                   tot[tot$X>=min_date_r3 & tot$X<= max_date_r3,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+exp_mod_react_r4 <- stan_exp_model(pos[pos$X>=min_date_r4 & pos$X<= max_date_r4,]$X,
+                                   pos[pos$X>=min_date_r4 & pos$X<= max_date_r4,]$England,
+                                   tot[tot$X>=min_date_r4 & tot$X<= max_date_r4,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+exp_mod_react_r12 <- stan_exp_model(pos[pos$X>=min_date_r1 & pos$X<= max_date_r2,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r2,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r2,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+exp_mod_react_r23 <- stan_exp_model(pos[pos$X>=min_date_r2 & pos$X<= max_date_r3,]$X,
+                                   pos[pos$X>=min_date_r2 & pos$X<= max_date_r3,]$England,
+                                   tot[tot$X>=min_date_r2 & tot$X<= max_date_r3,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+exp_mod_react_r34 <- stan_exp_model(pos[pos$X>=min_date_r3 & pos$X<= max_date_r4,]$X,
+                                   pos[pos$X>=min_date_r3 & pos$X<= max_date_r4,]$England,
+                                   tot[tot$X>=min_date_r3 & tot$X<= max_date_r4,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+```
+
+Using these model fits we can calculate the growth rate, R and the doubling/halving times for each model fit 
+```{r Calculating R of models}
+R_estimates_react_r1 <- exponential_estimate_R(exp_mod_react_r1, n_mean = 2.29, b_mean =0.36, label ="React-Round1")
+R_estimates_react_r2 <- exponential_estimate_R(exp_mod_react_r2, n_mean = 2.29, b_mean =0.36, label ="React-Round2")
+R_estimates_react_r3 <- exponential_estimate_R(exp_mod_react_r3, n_mean = 2.29, b_mean =0.36, label ="React-Round3")
+R_estimates_react_r4 <- exponential_estimate_R(exp_mod_react_r4, n_mean = 2.29, b_mean =0.36, label ="React-Round4")
+R_estimates_react_r12 <- exponential_estimate_R(exp_mod_react_r12, n_mean = 2.29, b_mean =0.36, label ="React-Round1&2")
+R_estimates_react_r23 <- exponential_estimate_R(exp_mod_react_r23, n_mean = 2.29, b_mean =0.36, label ="React-Round2&3")
+R_estimates_react_r34 <- exponential_estimate_R(exp_mod_react_r34, n_mean = 2.29, b_mean =0.36, label ="React-Round3&4")
+
+R_table <- rbind(R_estimates_react_r1, R_estimates_react_r2, R_estimates_react_r3, R_estimates_react_r4,
+                 R_estimates_react_r12, R_estimates_react_r23, R_estimates_react_r34)
+print(R_table)
+```
+
+## Including Plots
+
+The model fits can then be plotted. First the individual round fits:
+
+```{r Plotting Individual rounds}
+individual_round_plots <- plot_exp_model(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
+                                   Y= pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$England,
+                                   N = tot[tot$X>=min_date_r1 & tot$X<= max_date_r4,]$England,
+                                   fit_exp = list(exp_mod_react_r1, exp_mod_react_r2, exp_mod_react_r3, exp_mod_react_r4),
+                                   X_model = list(pos[pos$X>=min_date_r1 & pos$X<= max_date_r1,]$X,
+                                                  pos[pos$X>=min_date_r2 & pos$X<= max_date_r2,]$X,
+                                                  pos[pos$X>=min_date_r3 & pos$X<= max_date_r3,]$X,
+                                                  pos[pos$X>=min_date_r4 & pos$X<= max_date_r4,]$X),
+                                   color_list = list("red","red","red","red"),
+                                   ylim = 1.0)
+
+print(individual_round_plots[[1]])
+```
+
+Then plot the models fit to subsequent rounds
+```{r Plotting Subsequent rounds}
+subsequent_round_plots <- plot_exp_model(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
+                                   Y= pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$England,
+                                   N = tot[tot$X>=min_date_r1 & tot$X<= max_date_r4,]$England,
+                                   fit_exp = list(exp_mod_react_r12, exp_mod_react_r23, exp_mod_react_r34),
+                                   X_model = list(pos[pos$X>=min_date_r1 & pos$X<= max_date_r2,]$X,
+                                                  pos[pos$X>=min_date_r2 & pos$X<= max_date_r3,]$X,
+                                                  pos[pos$X>=min_date_r3 & pos$X<= max_date_r4,]$X),
+                                   color_list = list("red","blue","dark green"),
+                                   ylim = 1.0)
+
+print(subsequent_round_plots[[1]])
+```
+
+# Fitting the Bayesian P-Spline Model to the data
+
+```{r Fitting the p-spline model, results='hide'}
+p_spline_mod_react <- stan_p_spline(pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r4,]$England,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 5000,
+                                   warmup = 1000,
+                                   cores = 1)
+
+
+```
+
+```{r Plotting the p-spline model}
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r4,]$England,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 1.0)
+
+print(p_spline_plot[[1]])
+
+
+```
+
+```{r Date of minimum from P-Spline model}
+p_spline_min_date <- plot_p_spline_minimum_density(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3)
+
+print(p_spline_min_date[[1]])
+
+
+```
+
