@@ -92,6 +92,8 @@ R_table <- rbind(R_estimates_phe_r1, R_estimates_phe_r2, R_estimates_phe_r3, R_e
 print(R_table)
 ```
 
+We can then plot the exponential model with 95% CI's for individual rounds and subsequent rounds.
+
 ```{r Plotting Individual rounds, echo=FALSE}
 individual_round_plots <- plot_exp_model_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$date,
                                    Y= phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$n_cases,
@@ -123,6 +125,10 @@ print(subsequent_round_plots[[1]])
 
 
 
+
+# Fitting the Bayesian P-spline model
+We fit the bayesian p-spline model to all the data corresponding to the period of time of the first 4 rounds of the REACT study 
+
 ```{r Fit the P-Spline model, echo=TRUE, results='hide'}
 p_spline_mod_phe <- stan_p_spline_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$date,
                                    Y= phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$n_cases,
@@ -134,6 +140,8 @@ p_spline_mod_phe <- stan_p_spline_phe(X = phe[phe$date>=min_date_r1 & phe$date<=
 
 
 ```
+
+We can then plot the model fit with 95%CI and 50%CI
 ```{r Plotting the p-spline model}
 
 p_spline_plot <- plot_p_spline_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$date,
@@ -148,6 +156,8 @@ print(p_spline_plot[[1]])
 
 
 ```
+
+From the p-spline model we can estimate the date of minimum prevalence and plot the posterior distribution
 
 ```{r Date of minimum from P-Spline model}
 p_spline_min_date <- plot_p_spline_minimum_density(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$date,
