@@ -1,0 +1,946 @@
+"","round_comb","laname","ltla_prevalence"
+"1","round 1&2","Hartlepool",0.00195302857647325
+"2","round 1&2","Middlesbrough",0.00198616307813684
+"3","round 1&2","Redcar and Cleveland",0.00170496779969236
+"4","round 1&2","Stockton-on-Tees",0.00200267689948196
+"5","round 1&2","Darlington",0.00203595113980302
+"6","round 1&2","Halton",0.000331024439715798
+"7","round 1&2","Warrington",0.000645526838165455
+"8","round 1&2","Blackburn with Darwen",0.00208550082375939
+"9","round 1&2","Blackpool",0.00039723590359578
+"10","round 1&2","Kingston upon Hull, City of",0.000496532549613183
+"11","round 1&2","East Riding of Yorkshire",0.000546230192148052
+"12","round 1&2","North East Lincolnshire",0.00072827267319312
+"13","round 1&2","North Lincolnshire",0.000513128570168575
+"14","round 1&2","York",0.000562772783216763
+"15","round 1&2","Derby",0.00148962230860263
+"16","round 1&2","Leicester",0.00147307149761289
+"17","round 1&2","Rutland",0.0020854761639963
+"18","round 1&2","Nottingham",0.000579327704167015
+"19","round 1&2","Herefordshire, County of",0.0010261831610479
+"20","round 1&2","Telford and Wrekin",0.00100963235005816
+"21","round 1&2","Stoke-on-Trent",0.000744786494538232
+"22","round 1&2","Bath and North East Somerset",0.00122485865229298
+"23","round 1&2","Bristol, City of",0.001406884693496
+"24","round 1&2","North Somerset",0.001075802714333
+"25","round 1&2","South Gloucestershire",0.0010096159102161
+"26","round 1&2","Plymouth",0.000744798824419774
+"27","round 1&2","Torbay",0.000496532549613183
+"28","round 1&2","Swindon",0.000976514288236627
+"29","round 1&2","Peterborough",0.00173789269336974
+"30","round 1&2","Luton",0.00144003152504113
+"31","round 1&2","Southend-on-Sea",0.000943408556296636
+"32","round 1&2","Thurrock",0.00193661750414099
+"33","round 1&2","Medway",0.001274453545815
+"34","round 1&2","Bracknell Forest",0.00061241699626495
+"35","round 1&2","West Berkshire",0.000546230192148052
+"36","round 1&2","Reading",0.000695158721332101
+"37","round 1&2","Slough",0.000529642391513688
+"38","round 1&2","Windsor and Maidenhead",0.000595870295235726
+"39","round 1&2","Wokingham",0.000595829195630586
+"40","round 1&2","Milton Keynes",0.000844136570042317
+"41","round 1&2","Brighton and Hove",0.00162204112640208
+"42","round 1&2","Portsmouth",0.000811071937707466
+"43","round 1&2","Southampton",0.000728268563232606
+"44","round 1&2","Isle of Wight",0.000893760233287935
+"45","round 1&2","County Durham",0.00114201417821298
+"46","round 1&2","Cheshire East",0.000893764343248449
+"47","round 1&2","Cheshire West and Chester",0.000397240013556294
+"48","round 1&2","Shropshire",0.000728268563232606
+"49","round 1&2","Cornwall",0.000993065099226366
+"50","round 1&2","Wiltshire",0.000761349635409513
+"51","round 1&2","Bedford",0.00107584792389866
+"52","round 1&2","Central Bedfordshire",0.00172140353178771
+"53","round 1&2","Northumberland",0.00041377849466449
+"54","round 1&2","Bournemouth, Christchurch and Poole",0.00115859786888683
+"55","round 1&2","Dorset",0.00132410186882371
+"56","round 1&2","Aylesbury Vale",0.000926878295109468
+"57","round 1&2","Chiltern",0.000612380006620324
+"58","round 1&2","South Bucks",0.000777957985846447
+"59","round 1&2","Wycombe",0.000562756343374707
+"60","round 1&2","Cambridge",0.000496540769534211
+"61","round 1&2","East Cambridgeshire",0.000579307154364445
+"62","round 1&2","Fenland",0.00153930351129545
+"63","round 1&2","Huntingdonshire",0.000993151408397159
+"64","round 1&2","South Cambridgeshire",0.000695195710976726
+"65","round 1&2","Allerdale",0.000678612020302876
+"66","round 1&2","Barrow-in-Furness",0.00130757160763654
+"67","round 1&2","Carlisle",0.000496548989455239
+"68","round 1&2","Copeland",0.00082759808893412
+"69","round 1&2","Eden",0.00145654945634675
+"70","round 1&2","South Lakeland",0.00163855494774719
+"71","round 1&2","Amber Valley",0.000976514288236627
+"72","round 1&2","Bolsover",0.00104274630191918
+"73","round 1&2","Chesterfield",0.00168826492016361
+"74","round 1&2","Derbyshire Dales",0.00168821971059795
+"75","round 1&2","Erewash",0.00087725463186385
+"76","round 1&2","High Peak",0.001936473655523
+"77","round 1&2","North East Derbyshire",0.0017709902053887
+"78","round 1&2","South Derbyshire",0.00211861066565989
+"79","round 1&2","East Devon",0.000281392556549152
+"80","round 1&2","Exeter",0.000380676872685013
+"81","round 1&2","Mid Devon",0.000430337525575257
+"82","round 1&2","North Devon",0.00021518109266917
+"83","round 1&2","South Hams",0.000744811154301316
+"84","round 1&2","Teignbridge",0.000446896556486023
+"85","round 1&2","Torridge",0.000446876006683453
+"86","round 1&2","West Devon",0.000711725972163895
+"87","round 1&2","Eastbourne",0.000182071250768665
+"88","round 1&2","Hastings",0.000496532549613183
+"89","round 1&2","Lewes",0.000893805442853588
+"90","round 1&2","Rother",0.000413782604625004
+"91","round 1&2","Wealden",0.000397219463753724
+"92","round 1&2","Basildon",0.000893756123327421
+"93","round 1&2","Braintree",0.000513103910405491
+"94","round 1&2","Brentwood",0.00139029278290112
+"95","round 1&2","Castle Point",0.000959979917088945
+"96","round 1&2","Chelmsford",0.000562748123453679
+"97","round 1&2","Colchester",0.000943449655901776
+"98","round 1&2","Epping Forest",0.00104271753219558
+"99","round 1&2","Harlow",0.000744823484182858
+"100","round 1&2","Maldon",0.000562752233414193
+"101","round 1&2","Rochford",0.000744798824419774
+"102","round 1&2","Tendring",0.00102619960088995
+"103","round 1&2","Uttlesford",0.000678603800381848
+"104","round 1&2","Cheltenham",0.00124141357324324
+"105","round 1&2","Cotswold",0.0016386165971549
+"106","round 1&2","Forest of Dean",0.000893760233287935
+"107","round 1&2","Gloucester",0.0012247764530827
+"108","round 1&2","Stroud",0.00105931355275097
+"109","round 1&2","Tewkesbury",0.00135719116092164
+"110","round 1&2","Basingstoke and Deane",0.000446876006683453
+"111","round 1&2","East Hampshire",0.000645493958481343
+"112","round 1&2","Eastleigh",0.000811002068378728
+"113","round 1&2","Fareham",0.000860712040795139
+"114","round 1&2","Gosport",0.000910327484119729
+"115","round 1&2","Hart",0.000628955477373147
+"116","round 1&2","Havant",0.000893776673129991
+"117","round 1&2","New Forest",0.000695187491055698
+"118","round 1&2","Rushmoor",0.000744823484182858
+"119","round 1&2","Test Valley",0.000744811154301316
+"120","round 1&2","Winchester",0.000628959587333661
+"121","round 1&2","Broxbourne",0.00104282028120843
+"122","round 1&2","Dacorum",0.000761337305527971
+"123","round 1&2","Hertsmere",0.000480002288426014
+"124","round 1&2","North Hertfordshire",0.00203587305055325
+"125","round 1&2","Three Rivers",0.000297931037657349
+"126","round 1&2","Watford",0.000148957298907646
+"127","round 1&2","Ashford",0.00132411008874473
+"128","round 1&2","Canterbury",0.00112548802698633
+"129","round 1&2","Dartford",0.00132410597878422
+"130","round 1&2","Dover",0.00081101439826027
+"131","round 1&2","Gravesham",0.00142339029492008
+"132","round 1&2","Maidstone",0.000959979917088945
+"133","round 1&2","Sevenoaks",0.000860736700558223
+"134","round 1&2","Folkestone and Hythe",0.00115863074857095
+"135","round 1&2","Swale",0.00122482577260887
+"136","round 1&2","Thanet",0.00124135192383553
+"137","round 1&2","Tonbridge and Malling",0.000811059607825924
+"138","round 1&2","Tunbridge Wells",0.000579315374285473
+"139","round 1&2","Burnley",0.00112549624690736
+"140","round 1&2","Chorley",0.00130759626739962
+"141","round 1&2","Fylde",0.000595841525512128
+"142","round 1&2","Hyndburn",0.00177105596475692
+"143","round 1&2","Lancaster",0.00140681893412777
+"144","round 1&2","Pendle",0.00134067733957653
+"145","round 1&2","Preston",0.00117520210936325
+"146","round 1&2","Ribble Valley",0.00148957298907646
+"147","round 1&2","Rossendale",0.00160557662458314
+"148","round 1&2","South Ribble",0.00125792328462784
+"149","round 1&2","West Lancashire",0.000711693092479783
+"150","round 1&2","Wyre",0.000695162831292615
+"151","round 1&2","Blaby",0.00135723637048729
+"152","round 1&2","Charnwood",0.0012910207966468
+"153","round 1&2","Harborough",0.00170473353194307
+"154","round 1&2","Hinckley and Bosworth",0.000662040659510568
+"155","round 1&2","Melton",0.000959992246970486
+"156","round 1&2","North West Leicestershire",0.00135724048044781
+"157","round 1&2","Oadby and Wigston",0.0017213131126564
+"158","round 1&2","Boston",0.00102624481045561
+"159","round 1&2","East Lindsey",0.000777912776280793
+"160","round 1&2","Lincoln",0.000496548989455239
+"161","round 1&2","North Kesteven",0.000811010288299756
+"162","round 1&2","South Holland",0.00163853028798411
+"163","round 1&2","South Kesteven",0.00134066089973447
+"164","round 1&2","West Lindsey",0.000479981738623444
+"165","round 1&2","Breckland",0.000877238192021794
+"166","round 1&2","Broadland",0.000811002068378728
+"167","round 1&2","Great Yarmouth",0.000993081539068421
+"168","round 1&2","King's Lynn and West Norfolk",0.00107581504421454
+"169","round 1&2","North Norfolk",0.000695158721332101
+"170","round 1&2","Norwich",0.000744811154301316
+"171","round 1&2","South Norfolk",0.000877217642219224
+"172","round 1&2","Corby",0.00180409593732869
+"173","round 1&2","Daventry",0.000893780783090505
+"174","round 1&2","East Northamptonshire",0.00158898060402774
+"175","round 1&2","Kettering",0.00163857960751028
+"176","round 1&2","Northampton",0.000728248013430036
+"177","round 1&2","South Northamptonshire",0.000662061209313138
+"178","round 1&2","Wellingborough",0.00110896598572019
+"179","round 1&2","Craven",0.00119174059047145
+"180","round 1&2","Hambleton",0.00140689702337754
+"181","round 1&2","Harrogate",0.00120825441181656
+"182","round 1&2","Richmondshire",0.00153924186188774
+"183","round 1&2","Ryedale",0.000579294824482903
+"184","round 1&2","Scarborough",0.000877258741824364
+"185","round 1&2","Selby",0.00115857320912375
+"186","round 1&2","Ashfield",0.000579307154364445
+"187","round 1&2","Bassetlaw",0.00145650013682059
+"188","round 1&2","Broxtowe",0.000744852253906456
+"189","round 1&2","Gedling",0.0004799981784655
+"190","round 1&2","Mansfield",0.000579311264324959
+"191","round 1&2","Newark and Sherwood",0.00081101439826027
+"192","round 1&2","Rushcliffe",0.000513103910405491
+"193","round 1&2","Cherwell",0.00137373786195087
+"194","round 1&2","Oxford",0.00129103312652834
+"195","round 1&2","South Oxfordshire",0.000860666831229486
+"196","round 1&2","Vale of White Horse",0.0013075305080314
+"197","round 1&2","West Oxfordshire",0.00167168944941078
+"198","round 1&2","Mendip",0.00112548802698633
+"199","round 1&2","Sedgemoor",0.00104273397203764
+"200","round 1&2","South Somerset",0.000993085649028936
+"201","round 1&2","Cannock Chase",0.00112552912659147
+"202","round 1&2","East Staffordshire",0.0020523375523722
+"203","round 1&2","Lichfield",0.00130755927775499
+"204","round 1&2","Newcastle-under-Lyme",0.000744798824419774
+"205","round 1&2","South Staffordshire",0.00162209455588876
+"206","round 1&2","Stafford",0.00104271753219558
+"207","round 1&2","Staffordshire Moorlands",0.000860654501347944
+"208","round 1&2","Tamworth",0.00100966933970279
+"209","round 1&2","Babergh",0.00105926834318532
+"210","round 1&2","Ipswich",0.00115857320912375
+"211","round 1&2","Mid Suffolk",0.000860687381032055
+"212","round 1&2","Elmbridge",0.000397223573714238
+"213","round 1&2","Epsom and Ewell",0.000993093868949963
+"214","round 1&2","Guildford",0.000513116240287033
+"215","round 1&2","Mole Valley",0.000314490068568115
+"216","round 1&2","Reigate and Banstead",0.000811043167983868
+"217","round 1&2","Runnymede",0.000264821195756844
+"218","round 1&2","Spelthorne",0.000314477738686573
+"219","round 1&2","Surrey Heath",0.000728260343311578
+"220","round 1&2","Tandridge",0.000893772563169477
+"221","round 1&2","Waverley",0.000695175161174157
+"222","round 1&2","Woking",0.000281367896786068
+"223","round 1&2","North Warwickshire",0.000761353745370027
+"224","round 1&2","Nuneaton and Bedworth",0.000479989958544472
+"225","round 1&2","Rugby",0.000645510398323399
+"226","round 1&2","Stratford-on-Avon",0.00112551679670993
+"227","round 1&2","Warwick",0.000926878295109468
+"228","round 1&2","Adur",0.00216830008827373
+"229","round 1&2","Arun",0.00191995983417789
+"230","round 1&2","Chichester",0.000877201202377168
+"231","round 1&2","Crawley",0.000761349635409513
+"232","round 1&2","Horsham",0.00132413474850782
+"233","round 1&2","Mid Sussex",0.00124147111269043
+"234","round 1&2","Worthing",0.00223443346290395
+"235","round 1&2","Bromsgrove",0.000496577759178836
+"236","round 1&2","Malvern Hills",0.000860687381032055
+"237","round 1&2","Redditch",0.000711684872558755
+"238","round 1&2","Worcester",0.000744811154301316
+"239","round 1&2","Wychavon",0.000993077429107908
+"240","round 1&2","Wyre Forest",0.000695179271134671
+"241","round 1&2","St Albans",0.000711684872558755
+"242","round 1&2","Welwyn Hatfield",0.00155581733264056
+"243","round 1&2","East Hertfordshire",0.00115860608880786
+"244","round 1&2","Stevenage",0.00228423385445167
+"245","round 1&2","East Suffolk",0.00119175703031351
+"246","round 1&2","West Suffolk",0.000860687381032055
+"247","round 1&2","Somerset West and Taunton",0.00072827267319312
+"248","round 1&2","Bolton",0.00162202468656003
+"249","round 1&2","Bury",0.000761349635409513
+"250","round 1&2","Manchester",0.00072825212339055
+"251","round 1&2","Oldham",0.00119181045980019
+"252","round 1&2","Rochdale",0.00107584381393814
+"253","round 1&2","Salford",0.00067859558046082
+"254","round 1&2","Stockport",0.00125791917466732
+"255","round 1&2","Tameside",0.00142339440488059
+"256","round 1&2","Trafford",0.000711725972163895
+"257","round 1&2","Wigan",0.000993085649028936
+"258","round 1&2","Knowsley",0.000513091580523949
+"259","round 1&2","Liverpool",0.000496532549613183
+"260","round 1&2","St. Helens",0.000446917106288593
+"261","round 1&2","Sefton",0.000761349635409513
+"262","round 1&2","Wirral",0.000529658831355744
+"263","round 1&2","Barnsley",0.00296274723570221
+"264","round 1&2","Doncaster",0.00168828546996618
+"265","round 1&2","Rotherham",0.00203580729118503
+"266","round 1&2","Sheffield",0.00244959811573106
+"267","round 1&2","Newcastle upon Tyne",0.000165524549739441
+"268","round 1&2","North Tyneside",0.000364146611497845
+"269","round 1&2","South Tyneside",0.000496532549613183
+"270","round 1&2","Sunderland",0.000678603800381848
+"271","round 1&2","Birmingham",0.00094341266625715
+"272","round 1&2","Coventry",0.000678607910342362
+"273","round 1&2","Dudley",0.00140686414369343
+"274","round 1&2","Sandwell",0.00162207400608619
+"275","round 1&2","Solihull",0.000546184982582398
+"276","round 1&2","Walsall",0.00175447227408307
+"277","round 1&2","Wolverhampton",0.0016717223290949
+"278","round 1&2","Bradford",0.00183723043899228
+"279","round 1&2","Calderdale",0.00196954650777888
+"280","round 1&2","Kirklees",0.0024495200264813
+"281","round 1&2","Leeds",0.00185378535994253
+"282","round 1&2","Wakefield",0.00236697557951882
+"283","round 1&2","Gateshead",0.000215164652827114
+"284","round 1&2","Barking and Dagenham",0.00170476230166666
+"285","round 1&2","Barnet",0.00100966933970279
+"286","round 1&2","Bexley",0.00104275863180072
+"287","round 1&2","Brent",0.000463451477436276
+"288","round 1&2","Bromley",0.000628951367412633
+"289","round 1&2","Camden",0.000893801332893074
+"290","round 1&2","Croydon",0.000860666831229486
+"291","round 1&2","Ealing",0.000595857965354184
+"292","round 1&2","Enfield",0.00129098380700217
+"293","round 1&2","Greenwich",0.000678628460144932
+"294","round 1&2","Hackney",0.00125794383443041
+"295","round 1&2","Hammersmith and Fulham",0.000612400556422894
+"296","round 1&2","Haringey",0.00137380362131909
+"297","round 1&2","Harrow",0.000446880116643967
+"298","round 1&2","Havering",0.00172139942182719
+"299","round 1&2","Hillingdon",0.000711725972163895
+"300","round 1&2","Hounslow",0.000579294824482903
+"301","round 1&2","Islington",0.00134063623997139
+"302","round 1&2","Kensington and Chelsea",0.000612408776343922
+"303","round 1&2","Kingston upon Thames",0.00109239051496737
+"304","round 1&2","Lambeth",0.000844124240160775
+"305","round 1&2","Lewisham",0.000612380006620324
+"306","round 1&2","Merton",0.00127442888605192
+"307","round 1&2","Newham",0.000993065099226366
+"308","round 1&2","Redbridge",0.00134068144953704
+"309","round 1&2","Richmond upon Thames",0.000976547167920739
+"310","round 1&2","Southwark",0.000860679161111028
+"311","round 1&2","Sutton",0.001075802714333
+"312","round 1&2","Tower Hamlets",0.000926857745306898
+"313","round 1&2","Waltham Forest",0.000943437326020234
+"314","round 1&2","Wandsworth",0.00134066500969499
+"315","round 1&2","Westminster",0.000761374295172597
+"316","round 2&3","Hartlepool",0.000435824798431031
+"317","round 2&3","Middlesbrough",0.000217912399215515
+"318","round 2&3","Redcar and Cleveland",0.00023243989249655
+"319","round 2&3","Stockton-on-Tees",0.000203384905934481
+"320","round 2&3","Darlington",0
+"321","round 2&3","Halton",0.0010169245296724
+"322","round 2&3","Warrington",0.00103145202295344
+"323","round 2&3","Blackburn with Darwen",0.000552044744679306
+"324","round 2&3","Blackpool",0.000435824798431031
+"325","round 2&3","Kingston upon Hull, City of",0.000871649596862061
+"326","round 2&3","East Riding of Yorkshire",0.000639209704365512
+"327","round 2&3","North East Lincolnshire",0.000871649596862061
+"328","round 2&3","North Lincolnshire",0.000828067117018958
+"329","round 2&3","York",0.000276022372339653
+"330","round 2&3","Derby",0.000726374664051718
+"331","round 2&3","Leicester",0.00156896927435171
+"332","round 2&3","Rutland",0.000624682211084477
+"333","round 2&3","Nottingham",0.000435824798431031
+"334","round 2&3","Herefordshire, County of",0.000755429650613787
+"335","round 2&3","Telford and Wrekin",0.000435824798431031
+"336","round 2&3","Stoke-on-Trent",0.000595627224522409
+"337","round 2&3","Bath and North East Somerset",0.000435824798431031
+"338","round 2&3","Bristol, City of",0.000421297305149996
+"339","round 2&3","North Somerset",0.000421297305149996
+"340","round 2&3","South Gloucestershire",0.000406769811868962
+"341","round 2&3","Plymouth",0.00107503450279654
+"342","round 2&3","Torbay",0.000435824798431031
+"343","round 2&3","Swindon",0.000435824798431031
+"344","round 2&3","Peterborough",0.000217912399215515
+"345","round 2&3","Luton",0.000406769811868962
+"346","round 2&3","Southend-on-Sea",0.00108956199607758
+"347","round 2&3","Thurrock",0.00066826469092758
+"348","round 2&3","Medway",0.000217912399215515
+"349","round 2&3","Bracknell Forest",8.71649596862061e-05
+"350","round 2&3","West Berkshire",0.000552044744679306
+"351","round 2&3","Reading",0.000348659838744825
+"352","round 2&3","Slough",0.00079901213045689
+"353","round 2&3","Windsor and Maidenhead",0.000624682211084477
+"354","round 2&3","Wokingham",0.000290549865620687
+"355","round 2&3","Milton Keynes",0.000261494879058618
+"356","round 2&3","Brighton and Hove",0.000595627224522409
+"357","round 2&3","Portsmouth",0.000653737197646546
+"358","round 2&3","Southampton",0.000435824798431031
+"359","round 2&3","Isle of Wight",0.000217912399215515
+"360","round 2&3","County Durham",0.000290549865620687
+"361","round 2&3","Cheshire East",0.000697319677489649
+"362","round 2&3","Cheshire West and Chester",0.0010169245296724
+"363","round 2&3","Shropshire",0.000697319677489649
+"364","round 2&3","Cornwall",0.000842594610299993
+"365","round 2&3","Wiltshire",0.000406769811868962
+"366","round 2&3","Bedford",8.71649596862061e-05
+"367","round 2&3","Central Bedfordshire",0.00023243989249655
+"368","round 2&3","Northumberland",0
+"369","round 2&3","Bournemouth, Christchurch and Poole",0.000653737197646546
+"370","round 2&3","Dorset",0.000392242318587928
+"371","round 2&3","Aylesbury Vale",0.000174329919372412
+"372","round 2&3","Chiltern",0.000348659838744825
+"373","round 2&3","South Bucks",0.000857122103581027
+"374","round 2&3","Wycombe",0.000624682211084477
+"375","round 2&3","Cambridge",0.000276022372339653
+"376","round 2&3","East Cambridgeshire",0.00023243989249655
+"377","round 2&3","Fenland",0.000217912399215515
+"378","round 2&3","Huntingdonshire",0.00010169245296724
+"379","round 2&3","South Cambridgeshire",0.000188857412653447
+"380","round 2&3","Allerdale",8.71649596862061e-05
+"381","round 2&3","Barrow-in-Furness",0.000435824798431031
+"382","round 2&3","Carlisle",0.000217912399215515
+"383","round 2&3","Copeland",2.90549865620687e-05
+"384","round 2&3","Eden",0.00023243989249655
+"385","round 2&3","South Lakeland",0.000348659838744825
+"386","round 2&3","Amber Valley",0.00120578194232585
+"387","round 2&3","Bolsover",0.000653737197646546
+"388","round 2&3","Chesterfield",0.00117672695576378
+"389","round 2&3","Derbyshire Dales",0.00116219946248275
+"390","round 2&3","Erewash",0.000479407278274134
+"391","round 2&3","High Peak",0.00110408948935861
+"392","round 2&3","North East Derbyshire",0.00113314447592068
+"393","round 2&3","South Derbyshire",0.000290549865620687
+"394","round 2&3","East Devon",0.000348659838744825
+"395","round 2&3","Exeter",0.000435824798431031
+"396","round 2&3","Mid Devon",0.000246967385777584
+"397","round 2&3","North Devon",0.000435824798431031
+"398","round 2&3","South Hams",0.000769957143894821
+"399","round 2&3","Teignbridge",0.000435824798431031
+"400","round 2&3","Torridge",0.000740902157332752
+"401","round 2&3","West Devon",0.00103145202295344
+"402","round 2&3","Eastbourne",0.00056657223796034
+"403","round 2&3","Hastings",0.000697319677489649
+"404","round 2&3","Lewes",0.000450352291712065
+"405","round 2&3","Rother",0.00066826469092758
+"406","round 2&3","Wealden",0.000406769811868962
+"407","round 2&3","Basildon",0.000639209704365512
+"408","round 2&3","Braintree",0.000711847170770684
+"409","round 2&3","Brentwood",0.000653737197646546
+"410","round 2&3","Castle Point",0.00108956199607758
+"411","round 2&3","Chelmsford",0.000450352291712065
+"412","round 2&3","Colchester",0.000508462264836203
+"413","round 2&3","Epping Forest",0.00056657223796034
+"414","round 2&3","Harlow",5.81099731241374e-05
+"415","round 2&3","Maldon",0.000886177090143096
+"416","round 2&3","Rochford",0.00117672695576378
+"417","round 2&3","Tendring",0.000552044744679306
+"418","round 2&3","Uttlesford",0.000319604852182756
+"419","round 2&3","Cheltenham",0.000726374664051718
+"420","round 2&3","Cotswold",0.000537517251398271
+"421","round 2&3","Forest of Dean",0.000552044744679306
+"422","round 2&3","Gloucester",0.000639209704365512
+"423","round 2&3","Stroud",0.00033413234546379
+"424","round 2&3","Tewkesbury",0.000813539623737924
+"425","round 2&3","Basingstoke and Deane",0.000435824798431031
+"426","round 2&3","East Hampshire",0.000726374664051718
+"427","round 2&3","Eastleigh",0.000421297305149996
+"428","round 2&3","Fareham",0.000246967385777584
+"429","round 2&3","Gosport",0.000508462264836203
+"430","round 2&3","Hart",0.000174329919372412
+"431","round 2&3","Havant",0.000653737197646546
+"432","round 2&3","New Forest",0.000537517251398271
+"433","round 2&3","Rushmoor",0.00033413234546379
+"434","round 2&3","Test Valley",0.00056657223796034
+"435","round 2&3","Winchester",0.000450352291712065
+"436","round 2&3","Broxbourne",0.000479407278274134
+"437","round 2&3","Dacorum",2.90549865620687e-05
+"438","round 2&3","Hertsmere",0.000726374664051718
+"439","round 2&3","North Hertfordshire",0.000421297305149996
+"440","round 2&3","Three Rivers",0.000479407278274134
+"441","round 2&3","Watford",0.000508462264836203
+"442","round 2&3","Ashford",0.000508462264836203
+"443","round 2&3","Canterbury",0.000610154717803443
+"444","round 2&3","Dartford",0.00104597951623447
+"445","round 2&3","Dover",0.000871649596862061
+"446","round 2&3","Gravesham",0.000203384905934481
+"447","round 2&3","Maidstone",0.00023243989249655
+"448","round 2&3","Sevenoaks",0.000348659838744825
+"449","round 2&3","Folkestone and Hythe",0.000740902157332752
+"450","round 2&3","Swale",0.000522989758117237
+"451","round 2&3","Thanet",0.000871649596862061
+"452","round 2&3","Tonbridge and Malling",0.000130747439529309
+"453","round 2&3","Tunbridge Wells",0.000217912399215515
+"454","round 2&3","Burnley",0.000246967385777584
+"455","round 2&3","Chorley",0.00079901213045689
+"456","round 2&3","Fylde",0.000479407278274134
+"457","round 2&3","Hyndburn",0.000493934771555168
+"458","round 2&3","Lancaster",0.000348659838744825
+"459","round 2&3","Pendle",0.00023243989249655
+"460","round 2&3","Preston",0.00066826469092758
+"461","round 2&3","Ribble Valley",0.000450352291712065
+"462","round 2&3","Rossendale",0.000552044744679306
+"463","round 2&3","South Ribble",0.000769957143894821
+"464","round 2&3","West Lancashire",0.00056657223796034
+"465","round 2&3","Wyre",0.000581099731241374
+"466","round 2&3","Blaby",0.00130747439529309
+"467","round 2&3","Charnwood",0.00107503450279654
+"468","round 2&3","Harborough",0.00107503450279654
+"469","round 2&3","Hinckley and Bosworth",0.000813539623737924
+"470","round 2&3","Melton",0.000944287063267233
+"471","round 2&3","North West Leicestershire",0.000217912399215515
+"472","round 2&3","Oadby and Wigston",0.00146727682138447
+"473","round 2&3","Boston",0
+"474","round 2&3","East Lindsey",0.000203384905934481
+"475","round 2&3","Lincoln",0.000217912399215515
+"476","round 2&3","North Kesteven",0.00010169245296724
+"477","round 2&3","South Holland",0.000217912399215515
+"478","round 2&3","South Kesteven",0.000174329919372412
+"479","round 2&3","West Lindsey",0.000450352291712065
+"480","round 2&3","Breckland",0.000537517251398271
+"481","round 2&3","Broadland",0.000842594610299993
+"482","round 2&3","Great Yarmouth",0.000871649596862061
+"483","round 2&3","King's Lynn and West Norfolk",0.000130747439529309
+"484","round 2&3","North Norfolk",0.00090070458342413
+"485","round 2&3","Norwich",0.000653737197646546
+"486","round 2&3","South Norfolk",0.000726374664051718
+"487","round 2&3","Corby",0
+"488","round 2&3","Daventry",0.000552044744679306
+"489","round 2&3","East Northamptonshire",0.000116219946248275
+"490","round 2&3","Kettering",0.000188857412653447
+"491","round 2&3","Northampton",0.000435824798431031
+"492","round 2&3","South Northamptonshire",0.000348659838744825
+"493","round 2&3","Wellingborough",0.000421297305149996
+"494","round 2&3","Craven",0.00056657223796034
+"495","round 2&3","Hambleton",0.000348659838744825
+"496","round 2&3","Harrogate",0.000726374664051718
+"497","round 2&3","Richmondshire",0.00023243989249655
+"498","round 2&3","Ryedale",0.000217912399215515
+"499","round 2&3","Scarborough",0.000188857412653447
+"500","round 2&3","Selby",0.000508462264836203
+"501","round 2&3","Ashfield",0.000595627224522409
+"502","round 2&3","Bassetlaw",0.000610154717803443
+"503","round 2&3","Broxtowe",0.000537517251398271
+"504","round 2&3","Gedling",0.000290549865620687
+"505","round 2&3","Mansfield",0.000522989758117237
+"506","round 2&3","Newark and Sherwood",0.00010169245296724
+"507","round 2&3","Rushcliffe",0.000203384905934481
+"508","round 2&3","Cherwell",0.000159802426091378
+"509","round 2&3","Oxford",0.000217912399215515
+"510","round 2&3","South Oxfordshire",0.000217912399215515
+"511","round 2&3","Vale of White Horse",0.000276022372339653
+"512","round 2&3","West Oxfordshire",0.000276022372339653
+"513","round 2&3","Mendip",0.000493934771555168
+"514","round 2&3","Sedgemoor",0.000464879784993099
+"515","round 2&3","South Somerset",0.000363187332025859
+"516","round 2&3","Cannock Chase",0.000217912399215515
+"517","round 2&3","East Staffordshire",0.00033413234546379
+"518","round 2&3","Lichfield",0.000217912399215515
+"519","round 2&3","Newcastle-under-Lyme",0.00066826469092758
+"520","round 2&3","South Staffordshire",0.000246967385777584
+"521","round 2&3","Stafford",0.00033413234546379
+"522","round 2&3","Staffordshire Moorlands",0.000377714825306893
+"523","round 2&3","Tamworth",0.000435824798431031
+"524","round 2&3","Babergh",0.000421297305149996
+"525","round 2&3","Ipswich",0.000435824798431031
+"526","round 2&3","Mid Suffolk",0.000377714825306893
+"527","round 2&3","Elmbridge",0.000203384905934481
+"528","round 2&3","Epsom and Ewell",0.000435824798431031
+"529","round 2&3","Guildford",0.000493934771555168
+"530","round 2&3","Mole Valley",0.000203384905934481
+"531","round 2&3","Reigate and Banstead",0.000276022372339653
+"532","round 2&3","Runnymede",5.81099731241374e-05
+"533","round 2&3","Spelthorne",0.000116219946248275
+"534","round 2&3","Surrey Heath",0.000159802426091378
+"535","round 2&3","Tandridge",0.000290549865620687
+"536","round 2&3","Waverley",0.000697319677489649
+"537","round 2&3","Woking",0.00010169245296724
+"538","round 2&3","North Warwickshire",0.000421297305149996
+"539","round 2&3","Nuneaton and Bedworth",0.000653737197646546
+"540","round 2&3","Rugby",0.000581099731241374
+"541","round 2&3","Stratford-on-Avon",0.000755429650613787
+"542","round 2&3","Warwick",0.000697319677489649
+"543","round 2&3","Adur",0.000653737197646546
+"544","round 2&3","Arun",0.000624682211084477
+"545","round 2&3","Chichester",0.000595627224522409
+"546","round 2&3","Crawley",0.000435824798431031
+"547","round 2&3","Horsham",0.000682792184208615
+"548","round 2&3","Mid Sussex",0.000435824798431031
+"549","round 2&3","Worthing",0.000653737197646546
+"550","round 2&3","Bromsgrove",0.000435824798431031
+"551","round 2&3","Malvern Hills",0.000755429650613787
+"552","round 2&3","Redditch",0.000552044744679306
+"553","round 2&3","Worcester",0.000653737197646546
+"554","round 2&3","Wychavon",0.000769957143894821
+"555","round 2&3","Wyre Forest",0.000508462264836203
+"556","round 2&3","St Albans",0.000522989758117237
+"557","round 2&3","Welwyn Hatfield",0.000653737197646546
+"558","round 2&3","East Hertfordshire",0.000348659838744825
+"559","round 2&3","Stevenage",0.000552044744679306
+"560","round 2&3","East Suffolk",0.000522989758117237
+"561","round 2&3","West Suffolk",0.000305077358901721
+"562","round 2&3","Somerset West and Taunton",0.000392242318587928
+"563","round 2&3","Bolton",0.000944287063267233
+"564","round 2&3","Bury",0.00103145202295344
+"565","round 2&3","Manchester",0.00120578194232585
+"566","round 2&3","Oldham",0.00127841940873102
+"567","round 2&3","Rochdale",0.00110408948935861
+"568","round 2&3","Salford",0.00122030943560689
+"569","round 2&3","Stockport",0.00142369434154137
+"570","round 2&3","Tameside",0.00149633180794654
+"571","round 2&3","Trafford",0.00106050700951551
+"572","round 2&3","Wigan",0.00116219946248275
+"573","round 2&3","Knowsley",0.000581099731241374
+"574","round 2&3","Liverpool",0.000435824798431031
+"575","round 2&3","St. Helens",0.000958814556548268
+"576","round 2&3","Sefton",0.000450352291712065
+"577","round 2&3","Wirral",0.000421297305149996
+"578","round 2&3","Barnsley",0.00033413234546379
+"579","round 2&3","Doncaster",0.00066826469092758
+"580","round 2&3","Rotherham",0.000595627224522409
+"581","round 2&3","Sheffield",0.000552044744679306
+"582","round 2&3","Newcastle upon Tyne",0
+"583","round 2&3","North Tyneside",0
+"584","round 2&3","South Tyneside",0
+"585","round 2&3","Sunderland",0.000188857412653447
+"586","round 2&3","Birmingham",0.000261494879058618
+"587","round 2&3","Coventry",0.000740902157332752
+"588","round 2&3","Dudley",0.000377714825306893
+"589","round 2&3","Sandwell",0.000319604852182756
+"590","round 2&3","Solihull",0.000450352291712065
+"591","round 2&3","Walsall",0.000319604852182756
+"592","round 2&3","Wolverhampton",0.000217912399215515
+"593","round 2&3","Bradford",0.000784484637175855
+"594","round 2&3","Calderdale",0.000857122103581027
+"595","round 2&3","Kirklees",0.000769957143894821
+"596","round 2&3","Leeds",0.000871649596862061
+"597","round 2&3","Wakefield",0.000740902157332752
+"598","round 2&3","Gateshead",0
+"599","round 2&3","Barking and Dagenham",0.00142369434154137
+"600","round 2&3","Barnet",0.000682792184208615
+"601","round 2&3","Bexley",0.00133652938185516
+"602","round 2&3","Brent",0.00107503450279654
+"603","round 2&3","Bromley",0.000639209704365512
+"604","round 2&3","Camden",0.000464879784993099
+"605","round 2&3","Croydon",0.000697319677489649
+"606","round 2&3","Ealing",0.0014382218348224
+"607","round 2&3","Enfield",0.000581099731241374
+"608","round 2&3","Greenwich",0.0014382218348224
+"609","round 2&3","Hackney",0.000435824798431031
+"610","round 2&3","Hammersmith and Fulham",0.0014818043146655
+"611","round 2&3","Haringey",0.000522989758117237
+"612","round 2&3","Harrow",0.00103145202295344
+"613","round 2&3","Havering",0.00133652938185516
+"614","round 2&3","Hillingdon",0.000828067117018958
+"615","round 2&3","Hounslow",0.00113314447592068
+"616","round 2&3","Islington",0.000377714825306893
+"617","round 2&3","Kensington and Chelsea",0.00110408948935861
+"618","round 2&3","Kingston upon Thames",0.000537517251398271
+"619","round 2&3","Lambeth",0.000886177090143096
+"620","round 2&3","Lewisham",0.00103145202295344
+"621","round 2&3","Merton",0.000915232076705165
+"622","round 2&3","Newham",0.00127841940873102
+"623","round 2&3","Redbridge",0.00113314447592068
+"624","round 2&3","Richmond upon Thames",0.00113314447592068
+"625","round 2&3","Southwark",0.00079901213045689
+"626","round 2&3","Sutton",0.000464879784993099
+"627","round 2&3","Tower Hamlets",0.00090070458342413
+"628","round 2&3","Waltham Forest",0.000740902157332752
+"629","round 2&3","Wandsworth",0.00119125444904482
+"630","round 2&3","Westminster",0.000857122103581027
+"631","round 3&4","Hartlepool",0.000667259786476868
+"632","round 3&4","Middlesbrough",0.000667259786476868
+"633","round 3&4","Redcar and Cleveland",0.00068208778173191
+"634","round 3&4","Stockton-on-Tees",0.000815539739027283
+"635","round 3&4","Darlington",0.000474495848161329
+"636","round 3&4","Halton",0.000711743772241993
+"637","round 3&4","Warrington",0.000934163701067616
+"638","round 3&4","Blackburn with Darwen",0.000904507710557533
+"639","round 3&4","Blackpool",0.000904507710557533
+"640","round 3&4","Kingston upon Hull, City of",0.00111209964412811
+"641","round 3&4","East Riding of Yorkshire",0.00087485172004745
+"642","round 3&4","North East Lincolnshire",0.000948991696322657
+"643","round 3&4","North Lincolnshire",0.000815539739027283
+"644","round 3&4","York",0.00097864768683274
+"645","round 3&4","Derby",0.000533807829181495
+"646","round 3&4","Leicester",0.00111209964412811
+"647","round 3&4","Rutland",0.000474495848161329
+"648","round 3&4","Nottingham",0.000385527876631079
+"649","round 3&4","Herefordshire, County of",0.000474495848161329
+"650","round 3&4","Telford and Wrekin",0.000815539739027283
+"651","round 3&4","Stoke-on-Trent",0.000889679715302491
+"652","round 3&4","Bath and North East Somerset",0.000459667852906287
+"653","round 3&4","Bristol, City of",0.000222419928825623
+"654","round 3&4","North Somerset",0.000533807829181495
+"655","round 3&4","South Gloucestershire",0.000400355871886121
+"656","round 3&4","Plymouth",0.000741399762752076
+"657","round 3&4","Torbay",0.000889679715302491
+"658","round 3&4","Swindon",0.000578291814946619
+"659","round 3&4","Peterborough",0.000667259786476868
+"660","round 3&4","Luton",0.000652431791221827
+"661","round 3&4","Southend-on-Sea",0.000444839857651246
+"662","round 3&4","Thurrock",0.00097864768683274
+"663","round 3&4","Medway",0.00103795966785291
+"664","round 3&4","Bracknell Forest",0.000133451957295374
+"665","round 3&4","West Berkshire",2.9655990510083e-05
+"666","round 3&4","Reading",0.000148279952550415
+"667","round 3&4","Slough",0.000385527876631079
+"668","round 3&4","Windsor and Maidenhead",0.000504151838671412
+"669","round 3&4","Wokingham",0.00019276393831554
+"670","round 3&4","Milton Keynes",0.000593119810201661
+"671","round 3&4","Brighton and Hove",0.000444839857651246
+"672","round 3&4","Portsmouth",0.000889679715302491
+"673","round 3&4","Southampton",0.000222419928825623
+"674","round 3&4","Isle of Wight",0.000385527876631079
+"675","round 3&4","County Durham",0.000889679715302491
+"676","round 3&4","Cheshire East",0.00127520759193357
+"677","round 3&4","Cheshire West and Chester",0.000919335705812574
+"678","round 3&4","Shropshire",0.000889679715302491
+"679","round 3&4","Cornwall",0.000474495848161329
+"680","round 3&4","Wiltshire",0.000504151838671412
+"681","round 3&4","Bedford",0.000222419928825623
+"682","round 3&4","Central Bedfordshire",0.000400355871886121
+"683","round 3&4","Northumberland",0.000904507710557533
+"684","round 3&4","Bournemouth, Christchurch and Poole",0.000444839857651246
+"685","round 3&4","Dorset",0.00029655990510083
+"686","round 3&4","Aylesbury Vale",0.000533807829181495
+"687","round 3&4","Chiltern",0.000326215895610913
+"688","round 3&4","South Bucks",0.000355871886120996
+"689","round 3&4","Wycombe",0.000711743772241993
+"690","round 3&4","Cambridge",5.93119810201661e-05
+"691","round 3&4","East Cambridgeshire",2.9655990510083e-05
+"692","round 3&4","Fenland",0.000459667852906287
+"693","round 3&4","Huntingdonshire",0.000444839857651246
+"694","round 3&4","South Cambridgeshire",8.89679715302491e-05
+"695","round 3&4","Allerdale",0.000415183867141162
+"696","round 3&4","Barrow-in-Furness",0.0013196915776987
+"697","round 3&4","Carlisle",0.000504151838671412
+"698","round 3&4","Copeland",0.000474495848161329
+"699","round 3&4","Eden",0.000845195729537367
+"700","round 3&4","South Lakeland",0.0013196915776987
+"701","round 3&4","Amber Valley",0.000771055753262159
+"702","round 3&4","Bolsover",0.000252075919335706
+"703","round 3&4","Chesterfield",0.000578291814946619
+"704","round 3&4","Derbyshire Dales",0.000474495848161329
+"705","round 3&4","Erewash",0.000637603795966785
+"706","round 3&4","High Peak",0.00097864768683274
+"707","round 3&4","North East Derbyshire",0.00048932384341637
+"708","round 3&4","South Derbyshire",0.000444839857651246
+"709","round 3&4","East Devon",0.000622775800711744
+"710","round 3&4","Exeter",0.000533807829181495
+"711","round 3&4","Mid Devon",0.000370699881376038
+"712","round 3&4","North Devon",0
+"713","round 3&4","South Hams",0.000889679715302491
+"714","round 3&4","Teignbridge",0.000830367734282325
+"715","round 3&4","Torridge",0.00019276393831554
+"716","round 3&4","West Devon",0.000637603795966785
+"717","round 3&4","Eastbourne",0.000652431791221827
+"718","round 3&4","Hastings",0.000444839857651246
+"719","round 3&4","Lewes",0.000400355871886121
+"720","round 3&4","Rother",0.000415183867141162
+"721","round 3&4","Wealden",0.000430011862396204
+"722","round 3&4","Basildon",0.000860023724792408
+"723","round 3&4","Braintree",0.00137900355871886
+"724","round 3&4","Brentwood",0.00117141162514828
+"725","round 3&4","Castle Point",0.000622775800711744
+"726","round 3&4","Chelmsford",0.000889679715302491
+"727","round 3&4","Colchester",0.00102313167259786
+"728","round 3&4","Epping Forest",0.000800711743772242
+"729","round 3&4","Harlow",0.000430011862396204
+"730","round 3&4","Maldon",0.000919335705812574
+"731","round 3&4","Rochford",0.000474495848161329
+"732","round 3&4","Tendring",0.000845195729537367
+"733","round 3&4","Uttlesford",0.00068208778173191
+"734","round 3&4","Cheltenham",5.93119810201661e-05
+"735","round 3&4","Cotswold",0.000222419928825623
+"736","round 3&4","Forest of Dean",0.00048932384341637
+"737","round 3&4","Gloucester",0.000444839857651246
+"738","round 3&4","Stroud",0.000444839857651246
+"739","round 3&4","Tewkesbury",0.000207591933570581
+"740","round 3&4","Basingstoke and Deane",0.000177935943060498
+"741","round 3&4","East Hampshire",0.000696915776986951
+"742","round 3&4","Eastleigh",0.000222419928825623
+"743","round 3&4","Fareham",0.000430011862396204
+"744","round 3&4","Gosport",0.000444839857651246
+"745","round 3&4","Hart",0.000163107947805457
+"746","round 3&4","Havant",0.000889679715302491
+"747","round 3&4","New Forest",0.000341043890865955
+"748","round 3&4","Rushmoor",5.93119810201661e-05
+"749","round 3&4","Test Valley",0.000148279952550415
+"750","round 3&4","Winchester",0.000207591933570581
+"751","round 3&4","Broxbourne",0.000252075919335706
+"752","round 3&4","Dacorum",0.00048932384341637
+"753","round 3&4","Hertsmere",1.48279952550415e-05
+"754","round 3&4","North Hertfordshire",0.000474495848161329
+"755","round 3&4","Three Rivers",7.41399762752076e-05
+"756","round 3&4","Watford",0
+"757","round 3&4","Ashford",0.000533807829181495
+"758","round 3&4","Canterbury",0.000341043890865955
+"759","round 3&4","Dartford",0.00108244365361803
+"760","round 3&4","Dover",0.000444839857651246
+"761","round 3&4","Gravesham",0.00100830367734282
+"762","round 3&4","Maidstone",0.000934163701067616
+"763","round 3&4","Sevenoaks",0.000830367734282325
+"764","round 3&4","Folkestone and Hythe",0.000355871886120996
+"765","round 3&4","Swale",0.000578291814946619
+"766","round 3&4","Thanet",0.000444839857651246
+"767","round 3&4","Tonbridge and Malling",0.000993475682087782
+"768","round 3&4","Tunbridge Wells",0.000652431791221827
+"769","round 3&4","Burnley",0.00143831553973903
+"770","round 3&4","Chorley",0.000726571767497034
+"771","round 3&4","Fylde",0.000830367734282325
+"772","round 3&4","Hyndburn",0.00155693950177936
+"773","round 3&4","Lancaster",0.00137900355871886
+"774","round 3&4","Pendle",0.0012158956109134
+"775","round 3&4","Preston",0.000548635824436536
+"776","round 3&4","Ribble Valley",0.00120106761565836
+"777","round 3&4","Rossendale",0.0015717674970344
+"778","round 3&4","South Ribble",0.00087485172004745
+"779","round 3&4","West Lancashire",0.000860023724792408
+"780","round 3&4","Wyre",0.00100830367734282
+"781","round 3&4","Blaby",0.000948991696322657
+"782","round 3&4","Charnwood",0.00100830367734282
+"783","round 3&4","Harborough",0.00087485172004745
+"784","round 3&4","Hinckley and Bosworth",0.000652431791221827
+"785","round 3&4","Melton",0.000444839857651246
+"786","round 3&4","North West Leicestershire",0.000474495848161329
+"787","round 3&4","Oadby and Wigston",0.00111209964412811
+"788","round 3&4","Boston",0
+"789","round 3&4","East Lindsey",0.000326215895610913
+"790","round 3&4","Lincoln",0.000444839857651246
+"791","round 3&4","North Kesteven",0.000237247924080664
+"792","round 3&4","South Holland",0.000400355871886121
+"793","round 3&4","South Kesteven",0.000281731909845789
+"794","round 3&4","West Lindsey",0.000444839857651246
+"795","round 3&4","Breckland",0
+"796","round 3&4","Broadland",0
+"797","round 3&4","Great Yarmouth",0
+"798","round 3&4","King's Lynn and West Norfolk",0.000148279952550415
+"799","round 3&4","North Norfolk",0
+"800","round 3&4","Norwich",0
+"801","round 3&4","South Norfolk",0
+"802","round 3&4","Corby",0.000444839857651246
+"803","round 3&4","Daventry",0.000459667852906287
+"804","round 3&4","East Northamptonshire",0.000444839857651246
+"805","round 3&4","Kettering",0.000444839857651246
+"806","round 3&4","Northampton",0.000696915776986951
+"807","round 3&4","South Northamptonshire",0.000518979833926453
+"808","round 3&4","Wellingborough",0.000652431791221827
+"809","round 3&4","Craven",0.00133451957295374
+"810","round 3&4","Hambleton",0.000919335705812574
+"811","round 3&4","Harrogate",0.00143831553973903
+"812","round 3&4","Richmondshire",0.000934163701067616
+"813","round 3&4","Ryedale",0.00048932384341637
+"814","round 3&4","Scarborough",0.000415183867141162
+"815","round 3&4","Selby",0.00105278766310795
+"816","round 3&4","Ashfield",0.000385527876631079
+"817","round 3&4","Bassetlaw",0.000711743772241993
+"818","round 3&4","Broxtowe",0.000578291814946619
+"819","round 3&4","Gedling",0.000177935943060498
+"820","round 3&4","Mansfield",0.000133451957295374
+"821","round 3&4","Newark and Sherwood",0.000237247924080664
+"822","round 3&4","Rushcliffe",0.000133451957295374
+"823","round 3&4","Cherwell",5.93119810201661e-05
+"824","round 3&4","Oxford",0
+"825","round 3&4","South Oxfordshire",0.000252075919335706
+"826","round 3&4","Vale of White Horse",2.9655990510083e-05
+"827","round 3&4","West Oxfordshire",0
+"828","round 3&4","Mendip",0.000459667852906287
+"829","round 3&4","Sedgemoor",0.000474495848161329
+"830","round 3&4","South Somerset",0.000430011862396204
+"831","round 3&4","Cannock Chase",0.000800711743772242
+"832","round 3&4","East Staffordshire",0.000370699881376038
+"833","round 3&4","Lichfield",0.000533807829181495
+"834","round 3&4","Newcastle-under-Lyme",0.00109727164887307
+"835","round 3&4","South Staffordshire",0.000533807829181495
+"836","round 3&4","Stafford",0.000800711743772242
+"837","round 3&4","Staffordshire Moorlands",0.000800711743772242
+"838","round 3&4","Tamworth",0.000444839857651246
+"839","round 3&4","Babergh",0.000637603795966785
+"840","round 3&4","Ipswich",0.000667259786476868
+"841","round 3&4","Mid Suffolk",0.000518979833926453
+"842","round 3&4","Elmbridge",0.000341043890865955
+"843","round 3&4","Epsom and Ewell",0.000207591933570581
+"844","round 3&4","Guildford",0.000133451957295374
+"845","round 3&4","Mole Valley",0.000237247924080664
+"846","round 3&4","Reigate and Banstead",0.000177935943060498
+"847","round 3&4","Runnymede",0.000444839857651246
+"848","round 3&4","Spelthorne",0.000444839857651246
+"849","round 3&4","Surrey Heath",1.48279952550415e-05
+"850","round 3&4","Tandridge",0.000133451957295374
+"851","round 3&4","Waverley",0.000148279952550415
+"852","round 3&4","Woking",0.000252075919335706
+"853","round 3&4","North Warwickshire",0.000385527876631079
+"854","round 3&4","Nuneaton and Bedworth",0.000430011862396204
+"855","round 3&4","Rugby",0.000237247924080664
+"856","round 3&4","Stratford-on-Avon",0.000163107947805457
+"857","round 3&4","Warwick",0.000252075919335706
+"858","round 3&4","Adur",0.000385527876631079
+"859","round 3&4","Arun",0.000459667852906287
+"860","round 3&4","Chichester",0.000904507710557533
+"861","round 3&4","Crawley",0.000222419928825623
+"862","round 3&4","Horsham",0.000237247924080664
+"863","round 3&4","Mid Sussex",0.000148279952550415
+"864","round 3&4","Worthing",0.000444839857651246
+"865","round 3&4","Bromsgrove",0.000222419928825623
+"866","round 3&4","Malvern Hills",0.000444839857651246
+"867","round 3&4","Redditch",0.000341043890865955
+"868","round 3&4","Worcester",0.000444839857651246
+"869","round 3&4","Wychavon",0.000341043890865955
+"870","round 3&4","Wyre Forest",0.000370699881376038
+"871","round 3&4","St Albans",0.000370699881376038
+"872","round 3&4","Welwyn Hatfield",0.000415183867141162
+"873","round 3&4","East Hertfordshire",0.000370699881376038
+"874","round 3&4","Stevenage",0.000578291814946619
+"875","round 3&4","East Suffolk",0.000252075919335706
+"876","round 3&4","West Suffolk",0.000222419928825623
+"877","round 3&4","Somerset West and Taunton",0.000385527876631079
+"878","round 3&4","Bolton",0.00109727164887307
+"879","round 3&4","Bury",0.00134934756820878
+"880","round 3&4","Manchester",0.00191281138790036
+"881","round 3&4","Oldham",0.0013938315539739
+"882","round 3&4","Rochdale",0.00124555160142349
+"883","round 3&4","Salford",0.00185349940688019
+"884","round 3&4","Stockport",0.00164590747330961
+"885","round 3&4","Tameside",0.00126037959667853
+"886","round 3&4","Trafford",0.00197212336892052
+"887","round 3&4","Wigan",0.000963819691577699
+"888","round 3&4","Knowsley",0.000622775800711744
+"889","round 3&4","Liverpool",0.000652431791221827
+"890","round 3&4","St. Helens",0.00068208778173191
+"891","round 3&4","Sefton",0.000815539739027284
+"892","round 3&4","Wirral",0.000741399762752076
+"893","round 3&4","Barnsley",0.000771055753262159
+"894","round 3&4","Doncaster",0.00137900355871886
+"895","round 3&4","Rotherham",0.000993475682087782
+"896","round 3&4","Sheffield",0.000800711743772242
+"897","round 3&4","Newcastle upon Tyne",0.00097864768683274
+"898","round 3&4","North Tyneside",0.000919335705812574
+"899","round 3&4","South Tyneside",0.000889679715302491
+"900","round 3&4","Sunderland",0.000771055753262159
+"901","round 3&4","Birmingham",0.000548635824436536
+"902","round 3&4","Coventry",0.000222419928825623
+"903","round 3&4","Dudley",0.000415183867141162
+"904","round 3&4","Sandwell",0.000504151838671412
+"905","round 3&4","Solihull",0.000355871886120996
+"906","round 3&4","Walsall",0.000607947805456702
+"907","round 3&4","Wolverhampton",0.000444839857651246
+"908","round 3&4","Bradford",0.00169039145907473
+"909","round 3&4","Calderdale",0.00185349940688019
+"910","round 3&4","Kirklees",0.00148279952550415
+"911","round 3&4","Leeds",0.00170521945432977
+"912","round 3&4","Wakefield",0.00155693950177936
+"913","round 3&4","Gateshead",0.00097864768683274
+"914","round 3&4","Barking and Dagenham",0.00126037959667853
+"915","round 3&4","Barnet",0.000281731909845789
+"916","round 3&4","Bexley",0.000800711743772242
+"917","round 3&4","Brent",0.000845195729537367
+"918","round 3&4","Bromley",0.000563463819691578
+"919","round 3&4","Camden",0.000578291814946619
+"920","round 3&4","Croydon",0.00029655990510083
+"921","round 3&4","Ealing",0.000860023724792408
+"922","round 3&4","Enfield",0.000133451957295374
+"923","round 3&4","Greenwich",0.00123072360616845
+"924","round 3&4","Hackney",0.000252075919335706
+"925","round 3&4","Hammersmith and Fulham",0.0013196915776987
+"926","round 3&4","Haringey",0
+"927","round 3&4","Harrow",0.000385527876631079
+"928","round 3&4","Havering",0.00142348754448399
+"929","round 3&4","Hillingdon",0.000326215895610913
+"930","round 3&4","Hounslow",0.000815539739027283
+"931","round 3&4","Islington",0.000355871886120996
+"932","round 3&4","Kensington and Chelsea",0.00105278766310795
+"933","round 3&4","Kingston upon Thames",0.000266903914590747
+"934","round 3&4","Lambeth",0.0011417556346382
+"935","round 3&4","Lewisham",0.00148279952550415
+"936","round 3&4","Merton",0.000518979833926453
+"937","round 3&4","Newham",0.00166073546856465
+"938","round 3&4","Redbridge",0.00105278766310795
+"939","round 3&4","Richmond upon Thames",0.00068208778173191
+"940","round 3&4","Southwark",0.00145314353499407
+"941","round 3&4","Sutton",0.000281731909845789
+"942","round 3&4","Tower Hamlets",0.00143831553973903
+"943","round 3&4","Waltham Forest",0.000830367734282325
+"944","round 3&4","Wandsworth",0.00100830367734282
+"945","round 3&4","Westminster",0.00103795966785291
