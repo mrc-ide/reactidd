@@ -98,7 +98,7 @@ R_table <- rbind(R_estimates_react_r1, R_estimates_react_r2, R_estimates_react_r
 print(R_table)
 ```
 
-## Including Plots
+# Plotting the exponential model fits
 
 The model fits can then be plotted. First the individual round fits:
 
@@ -133,6 +133,7 @@ print(subsequent_round_plots[[1]])
 ```
 
 # Fitting the Bayesian P-Spline Model to the data
+We can then fit the Bayesian P-spline model to all of the REACT data for the first 4 rounds of the study
 
 ```{r Fitting the p-spline model, results='hide'}
 p_spline_mod_react <- stan_p_spline(pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
@@ -147,6 +148,7 @@ p_spline_mod_react <- stan_p_spline(pos[pos$X>=min_date_r1 & pos$X<= max_date_r4
 
 ```
 
+The p-spline model can then be plotted with estimated 95%CI and 50%CI
 ```{r Plotting the p-spline model}
 p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
                                    pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$England,
@@ -160,6 +162,8 @@ print(p_spline_plot[[1]])
 
 
 ```
+
+From the p-spline model we can estimate the date of minimum prevalence and plot the posterior probability density
 
 ```{r Date of minimum from P-Spline model}
 p_spline_min_date <- plot_p_spline_minimum_density(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
