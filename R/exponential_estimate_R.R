@@ -29,7 +29,8 @@ exponential_estimate_R <- function(fit_exponential, n_mean = 2.29, b_mean = 0.36
                     R_ub = R[[3]],
                     t_half_double = t_half[[2]],
                     t_half_double_lb = t_half[[1]],
-                    t_half_double_ub = t_half[[3]]))
+                    t_half_double_ub = t_half[[3]],
+                    prob_r_pos = prob_r_pos))
 
 
 }
