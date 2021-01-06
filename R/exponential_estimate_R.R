@@ -3,7 +3,7 @@
 #' Bayesian exponential model using stan
 #'
 #' @export
-#' @param fit_exponential a model fit using reacttemporal2::stan_exp_model() or reactemporal2::stan_exp_model_phe()
+#' @param fit_exponential a model fit using reactidd::stan_exp_model() or reactidd::stan_exp_model_phe()
 #' @param n_mean shape parameter for inverse gamma serial interval (default from Bi et al)
 #' @param b_mean rate parameter for inverse gamma serial interval (default from Bi et al)
 #' @return An object of class `dataframe` with calculations of growth rate, R, doubling/halving time with 95% CIs and the probability R>1

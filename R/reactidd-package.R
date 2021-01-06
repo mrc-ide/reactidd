@@ -1,11 +1,11 @@
-#' The 'reacttemporal2' package.
+#' The 'reactidd' package.
 #'
 #' @description A DESCRIPTION OF THE PACKAGE
 #'
 #' @docType package
-#' @name reacttemporal2-package
-#' @aliases reacttemporal2
-#' @useDynLib reacttemporal2, .registration = TRUE
+#' @name reactidd-package
+#' @aliases reactidd
+#' @useDynLib reactidd, .registration = TRUE
 #' @import methods
 #' @import Rcpp
 #' @importFrom rstan sampling

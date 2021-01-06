@@ -27,7 +27,7 @@ plot_p_spline_prev(
 
 \item{ylim}{sets the ylimit of the plot}
 
-\item{p_splinefit}{fit of the model to the same set of data using reacttemporal2::stan_p_spline()}
+\item{p_splinefit}{fit of the model to the same set of data using reactidd::stan_p_spline()}
 }
 \value{
 A list of the created plot, the raw data and CI's used in the plot, the raw data for the model fit in the plot.

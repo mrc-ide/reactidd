@@ -9,12 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load reacttemporal2}
-library(reacttemporal2)
+```{r load reactidd}
+library(reactidd)
 ```
 
 # Loading the Data
-First we will load the example REACT data available using reacttemporal2::load_example_data() 
+First we will load the example REACT data available using reactidd::load_example_data() 
 
 ```{r loading the react data}
 pos <- load_example_data()[[1]]

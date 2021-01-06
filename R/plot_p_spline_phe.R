@@ -6,7 +6,7 @@
 #' @export
 #' @param X date vector.
 #' @param Y Numeric vector of number of positive samples
-#' @param p_splinefit fit of the model to the same set o data using reacttemporal2::stan_p_spline_phe()
+#' @param p_splinefit fit of the model to the same set o data using reactidd::stan_p_spline_phe()
 #' @param target_dist_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
 #' @param ylim sets the ylimit of the plot created

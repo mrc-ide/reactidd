@@ -6,7 +6,7 @@
 #' @param X date vector of data you want on the graph
 #' @param Y Numeric vector of number of positive samples
 #' @param N Numeric vector of total number of samples
-#' @param fit_exp either fitted exponential model using reacttemporal2::stan_exp_model() or list of such models
+#' @param fit_exp either fitted exponential model using reactidd::stan_exp_model() or list of such models
 #' @param X_model the X data for the fittd model or a list() of the X data for the fitted models (length must match number of models given for 'fit_exp')
 #' @param color_list list() of color characters defaults to list("red") of same length as number of models.
 #' @param ylim sets the ylimit of the plot

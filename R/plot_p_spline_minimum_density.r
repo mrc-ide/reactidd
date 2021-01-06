@@ -5,7 +5,7 @@
 #'
 #' @export
 #' @param X date vector.
-#' @param p_splinefit fit of the model to the same set of X values using reacttemporal2::stan_p_spline() or reacttemporal2::stan_p_spline_phe()
+#' @param p_splinefit fit of the model to the same set of X values using reactidd::stan_p_spline() or reactidd::stan_p_spline_phe()
 #' @param target_dist_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
 #' @return A list of the created plot, and the list of values used in the histogram.

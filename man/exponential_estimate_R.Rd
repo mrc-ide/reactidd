@@ -12,7 +12,7 @@ exponential_estimate_R(
 )
 }
 \arguments{
-\item{fit_exponential}{a model fit using reacttemporal2::stan_exp_model() or reactemporal2::stan_exp_model_phe()}
+\item{fit_exponential}{a model fit using reactidd::stan_exp_model() or reactidd::stan_exp_model_phe()}
 
 \item{n_mean}{shape parameter for inverse gamma serial interval (default from Bi et al)}
 

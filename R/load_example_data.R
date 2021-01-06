@@ -7,8 +7,8 @@
 #'
 
 load_example_data <- function(){
-  pos <- read.csv(system.file("extdata", "positive.csv", package = "reacttemporal2"))
-  tot <- read.csv(system.file("extdata", "total.csv", package = "reacttemporal2"))
+  pos <- read.csv(system.file("extdata", "positive.csv", package = "reactidd"))
+  tot <- read.csv(system.file("extdata", "total.csv", package = "reactidd"))
 
   for(i in seq_len(length(unique(tot$X)))){
     if(unique(tot$X)[i] %in% pos$X == FALSE){

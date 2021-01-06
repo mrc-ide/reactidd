@@ -21,7 +21,7 @@ plot_exp_model(
 
 \item{N}{Numeric vector of total number of samples}
 
-\item{fit_exp}{either fitted exponential model using reacttemporal2::stan_exp_model() or list of such models}
+\item{fit_exp}{either fitted exponential model using reactidd::stan_exp_model() or list of such models}
 
 \item{X_model}{the X data for the fittd model or a list() of the X data for the fitted models (length must match number of models given for 'fit_exp')}
 

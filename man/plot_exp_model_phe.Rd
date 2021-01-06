@@ -18,7 +18,7 @@ plot_exp_model_phe(
 
 \item{Y}{Numeric vector of number of positive samples}
 
-\item{fit_exp}{either fitted exponential model using reacttemporal2::stan_exp_model_phe() or list of such models}
+\item{fit_exp}{either fitted exponential model using reactidd::stan_exp_model_phe() or list of such models}
 
 \item{X_model}{the X data for the fittd model or a list() of the X data for the fitted models (length must match number of models)}
 

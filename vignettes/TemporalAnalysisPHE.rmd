@@ -9,12 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load reacttemporal2}
-library(reacttemporal2)
+```{r load reactidd}
+library(reactidd)
 ```
 
 # Loading the Data
-First we will load the example REACT data available using reacttemporal2::load_example_data() 
+First we will load the example REACT data available using reactidd::load_example_data() 
 
 ```{r loading the react data}
 phe <- load_example_phe_data()
@@ -41,38 +41,38 @@ We fit the exponential model to subsets of the data corresponding to individual 
 ```{r Fitting the models, echo=TRUE, results='hide'}
 exp_mod_phe_r1 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r1,]$date,
                                    Y= phe[phe$date>=min_date_r1 & phe$date<= max_date_r1,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 exp_mod_phe_r2 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r2 & phe$date<= max_date_r2,]$date,
                                    Y= phe[phe$date>=min_date_r2 & phe$date<= max_date_r2,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 exp_mod_phe_r3 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r3 & phe$date<= max_date_r3,]$date,
                                    Y= phe[phe$date>=min_date_r3 & phe$date<= max_date_r3,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 exp_mod_phe_r4 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r4 & phe$date<= max_date_r4,]$date,
                                    Y= phe[phe$date>=min_date_r4 & phe$date<= max_date_r4,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 
 exp_mod_phe_r12 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r2,]$date,
                                    Y= phe[phe$date>=min_date_r1 & phe$date<= max_date_r2,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 exp_mod_phe_r23 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r2 & phe$date<= max_date_r3,]$date,
                                    Y= phe[phe$date>=min_date_r2 & phe$date<= max_date_r3,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 exp_mod_phe_r34 <- stan_exp_model_phe(X = phe[phe$date>=min_date_r3 & phe$date<= max_date_r4,]$date,
                                    Y= phe[phe$date>=min_date_r3 & phe$date<= max_date_r4,]$n_cases,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 500,
                                    cores = 1)
 ```
