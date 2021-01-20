@@ -1,0 +1,316 @@
+"","ltla","region","diff_prev"
+"1","Kirklees","Yorkshire and The Humber",0.00689636320973185
+"2","County Durham","North East",0.00632116974841121
+"3","Bexley","London",0.00626516446890309
+"4","Barnsley","Yorkshire and The Humber",0.00619854801120902
+"5","Havering","London",0.00619536344343344
+"6","Redcar and Cleveland","North East",0.00612894309122873
+"7","Hinckley and Bosworth","East Midlands",0.00577605904428107
+"8","Wakefield","Yorkshire and The Humber",0.00567373926119213
+"9","Hartlepool","North East",0.00566985524527844
+"10","Chesterfield","East Midlands",0.00565813704641475
+"11","Sunderland","North East",0.00556285057633164
+"12","Redbridge","London",0.00551259040141541
+"13","Dartford","South East",0.00547232326806202
+"14","Stockton-on-Tees","North East",0.00541358768628983
+"15","North East Lincolnshire","Yorkshire and The Humber",0.00536166967256812
+"16","Derby","East Midlands",0.00534745640900899
+"17","Sheffield","Yorkshire and The Humber",0.00525049707628791
+"18","Middlesbrough","North East",0.00520462857514923
+"19","Gravesham","South East",0.00505230954021905
+"20","Barking and Dagenham","London",0.00492424940447452
+"21","Gateshead","North East",0.00486593096137229
+"22","Newcastle upon Tyne","North East",0.0048379695459395
+"23","Derbyshire Dales","East Midlands",0.00483777524320241
+"24","North Tyneside","North East",0.00475363731059341
+"25","Swale","South East",0.00473380547403723
+"26","Bradford","Yorkshire and The Humber",0.00472320195688058
+"27","Brentwood","East of England",0.00471329921204428
+"28","South Tyneside","North East",0.00465195214595389
+"29","Darlington","North East",0.00446094347944132
+"30","North East Derbyshire","East Midlands",0.00426560866451184
+"31","Watford","East of England",0.00423059717680127
+"32","Boston","East Midlands",0.00408910091134146
+"33","Medway","South East",0.0040070423107172
+"34","Tonbridge and Malling","South East",0.00394669845181325
+"35","Calderdale","Yorkshire and The Humber",0.00391707729976032
+"36","Harrow","London",0.00388981554921189
+"37","Northumberland","North East",0.00385110573018979
+"38","Doncaster","Yorkshire and The Humber",0.00366530814140667
+"39","Amber Valley","East Midlands",0.00356763735496177
+"40","Thurrock","East of England",0.00351536633877445
+"41","Bassetlaw","East Midlands",0.00339488116994761
+"42","Charnwood","East Midlands",0.00337689668262515
+"43","North West Leicestershire","East Midlands",0.00330967026675926
+"44","Maidstone","South East",0.00327575032748457
+"45","Daventry","East Midlands",0.00325714260686035
+"46","Epping Forest","East of England",0.00323813525277431
+"47","Rotherham","Yorkshire and The Humber",0.00323060617500209
+"48","East Lindsey","East Midlands",0.00322812762638089
+"49","Basildon","East of England",0.00322663980769086
+"50","Ealing","London",0.0031383179338245
+"51","Newham","London",0.00305950832138597
+"52","Erewash","East Midlands",0.0029711270862181
+"53","South Derbyshire","East Midlands",0.0029541058688847
+"54","Blaby","East Midlands",0.00286471425248227
+"55","Ashford","South East",0.00279940796165407
+"56","Rushcliffe","East Midlands",0.00272068227133849
+"57","Three Rivers","East of England",0.00265255463553111
+"58","Brent","London",0.002607865655647
+"59","Hertsmere","East of England",0.002605078459484
+"60","Selby","Yorkshire and The Humber",0.00259587872835996
+"61","Pendle","North West",0.0025850535696516
+"62","Blackburn with Darwen","North West",0.00253893378015753
+"63","West Lindsey","East Midlands",0.00250414824517721
+"64","East Staffordshire","West Midlands",0.00248700553085486
+"65","Cheltenham","South West",0.00247196822553677
+"66","Warwick","West Midlands",0.00244566342619
+"67","Castle Point","East of England",0.00243158674524286
+"68","Oadby and Wigston","East Midlands",0.00241661777712108
+"69","Tewkesbury","South West",0.00238109742900215
+"70","Ashfield","East Midlands",0.00237899087707645
+"71","Canterbury","South East",0.0023712744820811
+"72","Bolsover","East Midlands",0.00235966466741651
+"73","Nuneaton and Bedworth","West Midlands",0.00234598603637937
+"74","Sevenoaks","South East",0.00229352172555586
+"75","Nottingham","East Midlands",0.00227435342044413
+"76","Scarborough","Yorkshire and The Humber",0.0022616577414627
+"77","Richmondshire","Yorkshire and The Humber",0.00222349988390478
+"78","Melton","East Midlands",0.00220012113215567
+"79","Leeds","Yorkshire and The Humber",0.00216092210317855
+"80","Leicester","East Midlands",0.00210304341469827
+"81","Rossendale","North West",0.00206761834791401
+"82","Barnet","London",0.00202385579584478
+"83","Broxtowe","East Midlands",0.00200300929795164
+"84","East Hertfordshire","East of England",0.0019011270189903
+"85","Rugby","West Midlands",0.00187479959753657
+"86","South Holland","East Midlands",0.0018003090667548
+"87","King's Lynn and West Norfolk","East of England",0.00177217203714556
+"88","Coventry","West Midlands",0.00175271840950777
+"89","Harlow","East of England",0.00173066381115948
+"90","North Lincolnshire","Yorkshire and The Humber",0.00165391294500236
+"91","Harborough","East Midlands",0.00164875600290656
+"92","Greenwich","London",0.00160113999714632
+"93","Hillingdon","London",0.00147278122289604
+"94","North Warwickshire","West Midlands",0.00146175553172225
+"95","Gloucester","South West",0.00144986680041908
+"96","Northampton","East Midlands",0.00138116456405323
+"97","Mansfield","East Midlands",0.00131873763846062
+"98","South Kesteven","East Midlands",0.00130607930955577
+"99","Hyndburn","North West",0.00125904959170109
+"100","East Riding of Yorkshire","Yorkshire and The Humber",0.0011925219547991
+"101","Gedling","East Midlands",0.00117466123835214
+"102","Corby","East Midlands",0.00111162708986753
+"103","Craven","Yorkshire and The Humber",0.0010457538019649
+"104","Kingston upon Hull, City of","Yorkshire and The Humber",0.000963853582077214
+"105","Fenland","East of England",0.000963417355215808
+"106","Hambleton","Yorkshire and The Humber",0.000928558186194918
+"107","Huntingdonshire","East of England",0.000914129431654572
+"108","Peterborough","East of England",0.0008834482425584
+"109","Ribble Valley","North West",0.000858849213465773
+"110","Welwyn Hatfield","East of England",0.000789311713435486
+"111","South Northamptonshire","East Midlands",0.000784181610226743
+"112","Dover","South East",0.000780700428876627
+"113","Surrey Heath","South East",0.000779828179074113
+"114","Burnley","North West",0.000665296690417486
+"115","North Kesteven","East Midlands",0.000658318650165995
+"116","Stratford-on-Avon","West Midlands",0.000658113034416341
+"117","Cotswold","South West",0.000641595013188171
+"118","Chelmsford","East of England",0.000630354047423363
+"119","Thanet","South East",0.000610822752486967
+"120","Waverley","South East",0.000551155025459418
+"121","Bath and North East Somerset","South West",0.000528928545051353
+"122","Tamworth","West Midlands",0.000517549831563267
+"123","St Albans","East of England",0.000469568276593732
+"124","Camden","London",0.000447722138068544
+"125","Lincoln","East Midlands",0.000431272243905616
+"126","Uttlesford","East of England",0.000421373200913906
+"127","Worcester","West Midlands",0.000345600465012691
+"128","Haringey","London",0.000313334242438762
+"129","Bristol, City of","South West",0.000312553159528872
+"130","Reading","South East",0.000309516377647687
+"131","West Berkshire","South East",0.000292395886451012
+"132","Mendip","South West",0.000289460208298391
+"133","Rushmoor","South East",0.000287208829986793
+"134","Southend-on-Sea","East of England",0.000271097695663443
+"135","Staffordshire Moorlands","West Midlands",0.000254395183825201
+"136","Broxbourne","East of England",0.000240176028362794
+"137","Malvern Hills","West Midlands",0.000232031834054183
+"138","Forest of Dean","South West",0.000220921930862945
+"139","Newark and Sherwood","East Midlands",0.00020786572758533
+"140","Bracknell Forest","South East",0.000187667399515487
+"141","Folkestone and Hythe","South East",0.000164413890185924
+"142","Wychavon","West Midlands",0.000163577550992828
+"143","Rutland","East Midlands",0.000139867098614597
+"144","South Bucks","South East",0.000105706992429925
+"145","Ryedale","Yorkshire and The Humber",9.3570762942633e-05
+"146","Islington","London",6.85190861189049e-05
+"147","Chorley","North West",3.40914535490126e-05
+"148","Rochdale","North West",1.45140963114711e-05
+"149","Luton","East of England",-3.15729858093557e-05
+"150","Wiltshire","South West",-6.58904645191114e-05
+"151","Wokingham","South East",-8.90800467329336e-05
+"152","Stevenage","East of England",-9.07048850059987e-05
+"153","Tunbridge Wells","South East",-9.68074428707097e-05
+"154","North Somerset","South West",-0.000140928398501623
+"155","Sedgemoor","South West",-0.000151771730569642
+"156","South Gloucestershire","South West",-0.000179263458246879
+"157","Guildford","South East",-0.000186290662287807
+"158","Cheshire West and Chester","North West",-0.000189151192505145
+"159","Lewisham","London",-0.000225076219494479
+"160","Kettering","East Midlands",-0.000301479016249646
+"161","Cambridge","East of England",-0.000382794811219344
+"162","Halton","North West",-0.000417389958316288
+"163","East Northamptonshire","East Midlands",-0.000441038984652089
+"164","Solihull","West Midlands",-0.00044578296515981
+"165","Dacorum","East of England",-0.000469093039721678
+"166","East Cambridgeshire","East of England",-0.000495065981062686
+"167","Rochford","East of England",-0.000527495461135784
+"168","Woking","South East",-0.000597649067403498
+"169","Hammersmith and Fulham","London",-0.00061451841368474
+"170","Waltham Forest","London",-0.000671759925101809
+"171","Knowsley","North West",-0.000733304094537137
+"172","South Ribble","North West",-0.00081989806180733
+"173","Bury","North West",-0.000821897998019974
+"174","High Peak","East Midlands",-0.000843580584054506
+"175","Hackney","London",-0.00085807267192228
+"176","Maldon","East of England",-0.000861429368887104
+"177","Liverpool","North West",-0.00086769199016692
+"178","Croydon","London",-0.000872864062939581
+"179","Tower Hamlets","London",-0.000875575583955446
+"180","Oldham","North West",-0.000905101566844322
+"181","Test Valley","South East",-0.000907034492828861
+"182","Tandridge","South East",-0.000947586434295082
+"183","West Oxfordshire","South East",-0.00100141451663755
+"184","Bromley","London",-0.00109123364378055
+"185","Runnymede","South East",-0.0011191824930865
+"186","York","Yorkshire and The Humber",-0.00112228889580371
+"187","Wellingborough","East Midlands",-0.00114783830008862
+"188","Spelthorne","South East",-0.00114874049457306
+"189","Sutton","London",-0.00116517831365857
+"190","Hart","South East",-0.00126995025435641
+"191","Braintree","East of England",-0.00128374647405483
+"192","Hastings","South East",-0.00136663291744393
+"193","Wealden","South East",-0.00139677555397954
+"194","Oxford","South East",-0.00140774388492025
+"195","Wirral","North West",-0.00140788489251057
+"196","Rother","South East",-0.00141459568764612
+"197","Kensington and Chelsea","London",-0.00144865949947604
+"198","North Norfolk","East of England",-0.00147557639126915
+"199","Westminster","London",-0.00150241957181134
+"200","Stoke-on-Trent","West Midlands",-0.00151361139674221
+"201","Windsor and Maidenhead","South East",-0.00156435935932414
+"202","Stroud","South West",-0.00158752157238057
+"203","Breckland","East of England",-0.0015964382723557
+"204","Bedford","East of England",-0.00160236491388553
+"205","Mole Valley","South East",-0.00160678241790102
+"206","Harrogate","Yorkshire and The Humber",-0.00161974331285389
+"207","Basingstoke and Deane","South East",-0.00163688117869204
+"208","Lichfield","West Midlands",-0.00164134478284638
+"209","Hounslow","London",-0.00164392982718391
+"210","Wycombe","South East",-0.00168915474080053
+"211","North Hertfordshire","East of England",-0.00169098357371805
+"212","Eastbourne","South East",-0.00170155051616303
+"213","Lewes","South East",-0.00173309699178566
+"214","Herefordshire, County of","West Midlands",-0.00178023352697713
+"215","Lancaster","North West",-0.00178632022825765
+"216","Enfield","London",-0.00182011506326268
+"217","Milton Keynes","South East",-0.00183795696604869
+"218","East Hampshire","South East",-0.00185045952822342
+"219","Preston","North West",-0.00185700754434653
+"220","South Somerset","South West",-0.00193640467643256
+"221","Chiltern","South East",-0.00198850428768855
+"222","Merton","London",-0.00202533947102349
+"223","Wandsworth","London",-0.00202710220003149
+"224","Slough","South East",-0.0020575245307006
+"225","Mid Sussex","South East",-0.00207433607321908
+"226","Vale of White Horse","South East",-0.00211697484112154
+"227","South Cambridgeshire","East of England",-0.00218104726199197
+"228","Fylde","North West",-0.00219855213552902
+"229","South Oxfordshire","South East",-0.00222246166213629
+"230","Barrow-in-Furness","North West",-0.0022240554413594
+"231","Wyre","North West",-0.0022322791669905
+"232","St. Helens","North West",-0.00228290764208414
+"233","Lambeth","London",-0.00232488356693657
+"234","Cherwell","South East",-0.00233078660961416
+"235","Horsham","South East",-0.00239986174516291
+"236","Southwark","London",-0.00243930647223599
+"237","Eden","North West",-0.00252738527416582
+"238","Warrington","North West",-0.00257931637728858
+"239","Blackpool","North West",-0.00257963111185853
+"240","Epsom and Ewell","South East",-0.00259196399942505
+"241","West Lancashire","North West",-0.00270071880754852
+"242","Tameside","North West",-0.00277606269801412
+"243","Sefton","North West",-0.00280424255041336
+"244","Tendring","East of England",-0.00282934494039831
+"245","Central Bedfordshire","East of England",-0.00284423237940923
+"246","Reigate and Banstead","South East",-0.0028777732041195
+"247","Carlisle","North West",-0.00288856344200205
+"248","Brighton and Hove","South East",-0.00293923613030675
+"249","Aylesbury Vale","South East",-0.00300849838650631
+"250","Redditch","West Midlands",-0.0030114292804606
+"251","Broadland","East of England",-0.00303676910327474
+"252","Richmond upon Thames","London",-0.00304123226711454
+"253","Newcastle-under-Lyme","West Midlands",-0.00304375804549341
+"254","Colchester","East of England",-0.00305476472759941
+"255","South Lakeland","North West",-0.00309796870119057
+"256","South Norfolk","East of England",-0.00314352072690689
+"257","New Forest","South East",-0.00317517355928289
+"258","Elmbridge","South East",-0.00333110971059734
+"259","Southampton","South East",-0.00335898191820383
+"260","Swindon","South West",-0.00338755248451207
+"261","Mid Suffolk","East of England",-0.00340590061454226
+"262","Bromsgrove","West Midlands",-0.00340744999613016
+"263","Norwich","East of England",-0.003438007925699
+"264","Stockport","North West",-0.00346958858065301
+"265","Dorset","South West",-0.00347325427730469
+"266","Plymouth","South West",-0.00348456569511625
+"267","Crawley","South East",-0.00350384320396022
+"268","Cannock Chase","West Midlands",-0.00350408369105228
+"269","Adur","South East",-0.00351597401783707
+"270","Torbay","South West",-0.0035810474587249
+"271","Wigan","North West",-0.00360165457187891
+"272","Chichester","South East",-0.00368947845604414
+"273","West Suffolk","East of England",-0.00369748259201878
+"274","Manchester","North West",-0.00371395892773998
+"275","East Suffolk","East of England",-0.00372632311835092
+"276","Kingston upon Thames","London",-0.0037359840135635
+"277","Arun","South East",-0.00383178904649366
+"278","Birmingham","West Midlands",-0.00387707666092947
+"279","Mid Devon","South West",-0.00389944802558272
+"280","East Devon","South West",-0.0039095587521668
+"281","South Hams","South West",-0.00394808319807841
+"282","Exeter","South West",-0.00395810989610399
+"283","Isle of Wight","South East",-0.00406124422134506
+"284","Winchester","South East",-0.00411585197306591
+"285","Shropshire","West Midlands",-0.00413767731405602
+"286","Cheshire East","North West",-0.00416164462782694
+"287","Teignbridge","South West",-0.00416780962981332
+"288","Stafford","West Midlands",-0.00417802884893733
+"289","Great Yarmouth","East of England",-0.00431266101301372
+"290","Somerset West and Taunton","South West",-0.00434186255676573
+"291","Ipswich","East of England",-0.00437018524330788
+"292","Worthing","South East",-0.00446768279381085
+"293","Eastleigh","South East",-0.0044710542060254
+"294","Allerdale","North West",-0.00450615107269561
+"295","Wyre Forest","West Midlands",-0.00458901677790923
+"296","Babergh","East of England",-0.00461387834952589
+"297","Gosport","South East",-0.00465186463741544
+"298","Copeland","North West",-0.00501390162446729
+"299","Sandwell","West Midlands",-0.00507040183254842
+"300","Bournemouth, Christchurch and Poole","South West",-0.00512275343066897
+"301","Fareham","South East",-0.00512437639648606
+"302","Havant","South East",-0.00513083451852595
+"303","Walsall","West Midlands",-0.00524572259753534
+"304","Portsmouth","South East",-0.00546714744574979
+"305","Telford and Wrekin","West Midlands",-0.0056564301182054
+"306","Bolton","North West",-0.00572165157428804
+"307","Cornwall","South West",-0.00576618423791476
+"308","South Staffordshire","West Midlands",-0.0058152626763958
+"309","Trafford","North West",-0.00589841897184643
+"310","West Devon","South West",-0.00601397811021552
+"311","Salford","North West",-0.00612946465417082
+"312","Dudley","West Midlands",-0.0062516401934599
+"313","Wolverhampton","West Midlands",-0.00659746408726429
+"314","Torridge","South West",-0.00665662820601485
+"315","North Devon","South West",-0.00702692705501104
