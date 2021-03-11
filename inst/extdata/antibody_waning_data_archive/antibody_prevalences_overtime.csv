@@ -1,0 +1,6 @@
+Question,Category,Total antibody positive,Total tests (with valid results),Crude prevalence,Prevalence adjusted for test,Weighted prevalence
+SympOnset_cat,<30 days ago,339,488,69.47 [65.24-73.39],82.01 [76.92-86.73],86.82 [82.46-90.83]
+SympOnset_cat,30-60 days ago,59,74,79.73 [69.21-87.31],94.37 [81.70-100.00],97.47 [87.76-100.00]
+SympOnset_cat,61-90 days ago,17,28,60.71 [42.41-76.43],71.46 [49.41-90.40],70.03 [51.92-86.21]
+SympOnset_cat,91-120 days ago,22,31,70.97 [53.41-83.90],83.82 [62.66-99.40],87.81 [68.11-100.00]
+SympOnset_cat,>150 days ago,306,443,69.07 [64.62-73.20],81.54 [76.17-86.50],83.47 [78.48-88.08]

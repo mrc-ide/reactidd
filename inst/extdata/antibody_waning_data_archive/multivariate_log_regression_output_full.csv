@@ -1,0 +1,33 @@
+Variable,Categories,Unadjusted,Adjusted_age_gender,Adjusted_age_gender_region,Jointly_adjusted_ageCat,Jointly_adjusted_ageSpline
+Sex,Male,reference,reference,reference,reference,reference
+Sex,Female,"0.99 [0.93,1.06]","0.99 [0.93,1.06]","0.99 [0.93,1.05]","1.00 [0.94,1.07]","1.00 [0.94,1.07]"
+Ethnicity,White,reference,reference,reference,reference,reference
+Ethnicity,Mixed,"1.54 [0.97,2.45]","1.53 [0.97,2.43]","1.43 [0.90,2.27]","1.38 [0.87,2.20]","1.36 [0.86,2.17]"
+Ethnicity,Asian,"1.81 [1.47,2.22]","1.80 [1.47,2.21]","1.45 [1.18,1.79]","1.41 [1.14,1.74]","1.40 [1.13,1.73]"
+Ethnicity,Black,"2.78 [1.90,4.07]","2.79 [1.90,4.08]","2.17 [1.47,3.19]","1.95 [1.32,2.87]","1.93 [1.31,2.85]"
+Ethnicity,Other,"1.39 [0.94,2.05]","1.38 [0.94,2.03]","1.14 [0.77,1.68]","1.10 [0.74,1.62]","1.09 [0.74,1.61]"
+Region,North East,"1.70 [1.46,1.99]","1.70 [1.45,1.99]","1.70 [1.45,1.99]","1.67 [1.42,1.95]","1.66 [1.41,1.94]"
+Region,North West,"1.54 [1.38,1.72]","1.54 [1.38,1.71]","1.54 [1.38,1.71]","1.52 [1.36,1.70]","1.51 [1.36,1.69]"
+Region,Yorkshire and The Humber,"1.16 [1.00,1.33]","1.15 [1.00,1.33]","1.15 [1.00,1.33]","1.15 [1.00,1.33]","1.15 [1.00,1.33]"
+Region,East Midlands,"1.07 [0.95,1.20]","1.07 [0.95,1.20]","1.07 [0.95,1.20]","1.07 [0.96,1.21]","1.07 [0.95,1.20]"
+Region,West Midlands,"1.41 [1.25,1.58]","1.41 [1.25,1.58]","1.41 [1.25,1.58]","1.41 [1.25,1.58]","1.40 [1.25,1.58]"
+Region,East of England,"1.07 [0.96,1.20]","1.07 [0.96,1.20]","1.07 [0.96,1.20]","1.07 [0.96,1.20]","1.07 [0.96,1.20]"
+Region,London,"2.25 [1.99,2.53]","2.25 [1.99,2.53]","2.25 [1.99,2.53]","2.05 [1.81,2.33]","2.05 [1.81,2.33]"
+Region,South East,reference,reference,reference,reference,reference
+Region,South West,"0.79 [0.69,0.91]","0.79 [0.69,0.91]","0.79 [0.69,0.91]","0.80 [0.69,0.91]","0.80 [0.69,0.91]"
+BMI,Underweight (<18.5),"0.79 [0.56,1.12]","0.79 [0.56,1.13]","0.78 [0.55,1.10]","0.77 [0.55,1.10]","0.78 [0.55,1.10]"
+BMI,Normal (18.5-24.9),reference,reference,reference,reference,reference
+BMI,Overweight (25-29.9),"1.19 [1.10,1.28]","1.19 [1.10,1.28]","1.19 [1.10,1.28]","1.17 [1.08,1.26]","1.17 [1.08,1.26]"
+BMI,Obese (>=30),"1.34 [1.23,1.47]","1.33 [1.22,1.46]","1.33 [1.21,1.46]","1.30 [1.18,1.42]","1.29 [1.18,1.41]"
+Current smoker,Yes,"0.80 [0.69,0.94]","0.79 [0.67,0.93]","0.78 [0.67,0.91]","0.74 [0.63,0.87]","0.73 [0.62,0.86]"
+Current smoker,No,reference,reference,reference,reference,reference
+Number of existing health conditions,>1,"1.17 [1.08,1.26]","1.18 [1.09,1.28]","1.17 [1.08,1.26]","1.17 [1.08,1.26]","1.17 [1.08,1.27]"
+Number of existing health conditions,1,"1.02 [0.95,1.10]","1.03 [0.95,1.11]","1.02 [0.95,1.10]","1.02 [0.95,1.10]","1.02 [0.95,1.10]"
+Number of existing health conditions,0,reference,reference,reference,reference,reference
+Household type (65+ respondents,Single,"1.11 [1.03,1.20]","1.12 [1.04,1.21]","1.09 [1.01,1.17]","1.06 [0.98,1.14]","1.06 [0.98,1.14]"
+Household type (65+ respondents,Two older adults,reference,reference,reference,reference,reference
+Household type (65+ respondents,Multi-generational (no children),"1.51 [1.36,1.66]","1.50 [1.36,1.66]","1.43 [1.29,1.58]","1.33 [1.20,1.47]","1.32 [1.19,1.46]"
+Household type (65+ respondents,Multi-generational (with children,"2.23 [1.85,2.68]","2.22 [1.84,2.67]","2.10 [1.74,2.53]","1.93 [1.60,2.33]","1.92 [1.59,2.32]"
+Household type (65+ respondents,Three or more older adults,"0.36 [0.12,1.14]","0.36 [0.12,1.13]","0.35 [0.11,1.10]","0.34 [0.11,1.07]","0.34 [0.11,1.07]"
+Older adult in multigenerational household (y/n),No,reference,reference,reference,reference,reference
+Older adult in multigenerational household (y/n),Yes,"1.45 [1.33,1.57]","1.44 [1.32,1.56]","1.38 [1.27,1.51]","1.31 [1.20,1.43]","1.30 [1.19,1.41]"
