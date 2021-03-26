@@ -9,3 +9,7 @@ The repository is structured as an R package and is most easily installed using 
 ## Temporal data
 
 The main temporal data for REACT are 
+
+## Spatial data
+
+## Risk factor data
