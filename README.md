@@ -8,7 +8,9 @@ The repository is structured as an R package and is most easily installed using 
 
 ## Temporal data
 
-The main temporal data for REACT are `inst/extdata`. The file `positive.csv` contains the number of positive swabs collected by day and by region for all currently reported rounds of REACT-1. Similarly, the file 'total.csv` contains the total number of swabs collected by day and by region. 
+The main temporal data for REACT are `inst/extdata`. The file `positive.csv` contains the number of positive swabs collected by day and by region for all currently reported rounds of REACT-1. Similarly, the file `total.csv` contains the total number of swabs collected by day and by region. 
+
+The vignette `TemporalAnalysisREACT.rmd` demonstrates how the REACT data can be loaded, exponential models fit/plotted, estimates of growth rate/R calculated, and p-spline models fit/plotted. The vignette `TemporalAnalysisPHE.rmd` demonstrates how similar analyses can be performed on publically avaialble PHE case data.
 
 ## Spatial data
 
