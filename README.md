@@ -8,8 +8,8 @@ The repository is structured as an R package and is most easily installed using 
 
 ## Temporal data
 
-The main temporal data for REACT are 
+The main temporal data for REACT are `inst/extdata`. The file `positive.csv` contains the number of positive swabs collected by day and by region for all currently reported rounds of REACT-1. Similarly, the file 'total.csv` contains the total number of swabs collected by day and by region. 
 
 ## Spatial data
 
-## Risk factor data
+The spatial analyses is contained in the directory `inst/spatial`. Each of the R scripts there can be run in sequence to regenerate spatial output for rounds 1 to 4, using the geospatial modelling framework.
