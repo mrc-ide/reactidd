@@ -12,6 +12,23 @@ The main temporal data for REACT are `inst/extdata`. The file `positive.csv` con
 
 The vignette `TemporalAnalysisREACT.rmd` demonstrates how the REACT data can be loaded, exponential models fit/plotted, estimates of growth rate/R calculated, and p-spline models fit/plotted. The vignette `TemporalAnalysisPHE.rmd` demonstrates how similar analyses can be performed on publically avaialble PHE case data.
 
-## Spatial data
+# Spatio-temporal geostatistical model
 
 The spatial analyses is contained in the directory `inst/spatial`. Each of the R scripts there can be run in sequence to regenerate spatial output for rounds 1 to 4, using the geospatial modelling framework.
+
+This code was tested with R version 3.6.3 on Ubuntu 18.04 LTS.
+
+To run it download the content of the folder `inst/spatial` and make it your working directory, then run these scripts:
+
+- `01_data-cleaning.R`: cleans and processes the input data in `data/original` and gets it ready for modelling. The output of this script goes into the `data/processed` folder.
+
+- `02_model-fitting.R`: uses the processed data to fit the spatio-temporal model and save it in `output/models/`. 
+
+- `03_predictions.R`: uses the fitted spatio-temporal model to generate predictions and and summarise
+them for mapping. All outputs will be saved in `output/predictions/`.
+
+- `04_mappings.R`: create the maps reported in the paper, these will be saved as pdfs in the `figs` folder.
+
+- `05_tables.R`: this creates a summary table with the estimated model parameters.
+
+The `R` folder contains the `functions.R` file that has a set of costum functions needed to run the scripts above.
