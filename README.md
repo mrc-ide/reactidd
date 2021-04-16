@@ -6,13 +6,13 @@ REACT is a program of different studies with multiple rounds, organised into two
 
 The repository is structured as an R package and is most easily installed using the `install_github` in the package `dev_tools`. The package requires an R enrironment that can build from source. Also, some of the functions rely on the package `rstan` which in trun needs the `stan` library to be installed on your system. However the data are also directly available from the `inst\extdata`as `csv` files.
 
-## Temporal data
+## Temporal analyses
 
 The main temporal data for REACT are `inst/extdata`. The file `positive.csv` contains the number of positive swabs collected by day and by region for all currently reported rounds of REACT-1. Similarly, the file `total.csv` contains the total number of swabs collected by day and by region. 
 
 The vignette `TemporalAnalysisREACT.rmd` demonstrates how the REACT data can be loaded, exponential models fit/plotted, estimates of growth rate/R calculated, and p-spline models fit/plotted. The vignette `TemporalAnalysisPHE.rmd` demonstrates how similar analyses can be performed on publically avaialble PHE case data.
 
-# Spatio-temporal geostatistical model
+## Geostatistical analyses
 
 The spatial analyses is contained in the directory `inst/spatial`. Each of the R scripts there can be run in sequence to regenerate spatial output for rounds 1 to 4, using the geospatial modelling framework.
 
