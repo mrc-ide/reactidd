@@ -1,4 +1,4 @@
-if (false) {
+if (FALSE) {
 
     ## Clear out the memory
     rm(list=ls(all=TRUE))
