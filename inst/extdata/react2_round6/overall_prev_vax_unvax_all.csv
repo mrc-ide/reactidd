@@ -1,0 +1,4 @@
+"Vaccine status","Category","Total antibody positive","Total tests (with valid results)","Crude prevalence","Prevalence adjusted for test","Weighted prevalence"
+"All","England",126981,207337,"61.24 [61.03-61.45]","72.10 [71.85-72.35]","61.13 [60.87-61.39]"
+"Vaccinated","England",124003,187952,"65.98 [65.76-66.19]","77.80 [77.54-78.06]","78.39 [78.10-78.68]"
+"Unvaccinated","England",2528,18552,"13.63 [13.14-14.13]","14.73 [14.15-15.33]","14.88 [14.54-15.23]"
