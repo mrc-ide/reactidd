@@ -1,0 +1,21 @@
+Variable,Category,AstraZeneca/Oxford,Don't know,Moderna,Pfizer/BioNTech,Sum / mean(SD)
+All participants,All participants,"139,067 (100%)",484 (100%),628 (100%),"71,923 (100%)","212,102"
+Age,Mean (SD),60.96 (10.11),65.03 (15.8),45.97 (6.83),62.88 (13.22),61.58 (11.34)
+Sex,Female,"76,361 (54.9%)",247 (51%),339 (54%),"42,791 (59.5%)","119,738"
+Sex,Male,"62,705 (45.1%)",237 (49%),289 (46%),"29,131 (40.5%)","92,362"
+Ethnicity,Asian,"3,308 (2.4%)",23 (4.8%),30 (4.8%),"2,400 (3.4%)","5,761"
+Ethnicity,Black,"1,267 (0.9%)",7 (1.5%),9 (1.4%),714 (1%),"1,997"
+Ethnicity,Mixed,971 (0.7%),3 (0.6%),10 (1.6%),493 (0.7%),"1,477"
+Ethnicity,Other,"1,041 (0.8%)",6 (1.3%),8 (1.3%),658 (0.9%),"1,713"
+Ethnicity,White,"131,494 (95.2%)",436 (91.8%),570 (90.9%),"67,147 (94%)","199,647"
+Healthcare worker,No,"65,144 (94.7%)",147 (85.5%),549 (98.4%),"20,226 (62.6%)","86,066"
+Healthcare worker,Yes,"3,610 (5.3%)",25 (14.5%),9 (1.6%),"12,103 (37.4%)","15,747"
+Previous COVID infection,COVID suspected or confirmed,"17,293 (12.4%)",55 (11.4%),101 (16.1%),"8,606 (12%)","26,055"
+Previous COVID infection,No COVID,"121,774 (87.6%)",429 (88.6%),527 (83.9%),"63,317 (88%)","186,047"
+Number of vaccine doses received,More than two,9 (0%),3 (0.6%),0 (0%),11 (0%),23
+Number of vaccine doses received,One,"69,847 (50.2%)",310 (64%),608 (96.8%),"15,718 (21.9%)","86,483"
+Number of vaccine doses received,Two,"69,211 (49.8%)",171 (35.3%),20 (3.2%),"56,194 (78.1%)","125,596"
+Antibody lateral flow test result,0,"60,100 (44.6%)",257 (56%),141 (23%),"15,118 (21.7%)","75,616"
+Antibody lateral flow test result,1,"74,745 (55.4%)",202 (44%),473 (77%),"54,651 (78.3%)","130,071"
+Days since first vaccination,Mean (SD),74.24 (26.41),53.99 (45.21),22.79 (18.37),85.66 (39.13),77.92 (31.96)
+Days since second vaccination,Mean (SD),20.65 (13.46),45.21 (42.95),58.75 (33.57),31.42 (23.78),25.51 (19.62)
