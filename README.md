@@ -34,3 +34,7 @@ them for mapping. All outputs will be saved in `output/predictions/`.
 - `05_tables.R`: this creates a summary table with the estimated model parameters.
 
 The `R` folder contains the `functions.R` file that has a set of costum functions needed to run the scripts above.
+
+### [REACT-1 round 13 final report: exponential growth, high prevalence of SARS-CoV-2 and vaccine effectiveness associated with Delta variant in England during May to July 2021](https://doi.org/10.1101/2021.09.02.21262979)
+
+TBC
