@@ -12,7 +12,9 @@ The main temporal data for REACT are `inst/extdata`. The file `positive.csv` con
 
 The vignette `TemporalAnalysisREACT.rmd` demonstrates how the REACT data can be loaded, exponential models fit/plotted, estimates of growth rate/R calculated, and p-spline models fit/plotted. The vignette `TemporalAnalysisPHE.rmd` demonstrates how similar analyses can be performed on publically avaialble PHE case data.
 
-## Geostatistical analyses
+## Notes for individual publications
+
+### [Resurgence of SARS-CoV-2: Detection by Community Viral Surveillance](http://dx.doi.org/10.1126/science.abf0874)
 
 The spatial analyses is contained in the directory `inst/spatial`. Each of the R scripts there can be run in sequence to regenerate spatial output for rounds 1 to 4, using the geospatial modelling framework.
 
