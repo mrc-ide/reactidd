@@ -1,0 +1,238 @@
+---
+title: "Fitting models to REACT data"
+author: "Oliver Eales"
+date: "October 11, 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load reactidd}
+library(reactidd)
+```
+
+# Loading the Data
+First we will load the example weighted REACT data available using reactidd::load_example_data_weighted() 
+
+```{r loading the react data}
+pos <- load_example_data_weighted()[[1]]
+tot <- load_example_data_weighted()[[2]]
+```
+
+In order to subset the data we define the dates of each round of the study
+```{r setting the minimum and maximum dates}
+min_date_r1 <- as.Date("2020-05-01")
+min_date_r12 <- as.Date("2021-05-20")
+min_date_r13 <- as.Date("2021-06-24")
+
+max_date_r1 <- as.Date("2020-06-01")
+max_date_r12 <- as.Date("2021-06-07")
+max_date_r13 <- as.Date("2021-07-12")
+```
+
+
+# Fitting the exponential model
+We fit the exponential model to subsets of the data corresponding to individual rounds and pairs of subsequent rounds 
+
+```{r Fitting the models, results='hide'}
+exp_mod_react_r12 <- stan_exp_model_weighted(pos[pos$X>=min_date_r12 & pos$X<= max_date_r12,]$X,
+                                   pos[pos$X>=min_date_r12 & pos$X<= max_date_r12,]$England,
+                                   tot[tot$X>=min_date_r12 & tot$X<= max_date_r12,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+
+exp_mod_react_r13 <- stan_exp_model_weighted(pos[pos$X>=min_date_r13 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r13 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r13 & tot$X<= max_date_r13,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+
+exp_mod_react_r1213 <- stan_exp_model_weighted(pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r12 & tot$X<= max_date_r13,]$England,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1)
+
+```
+
+Using these model fits we can calculate the growth rate, R and the doubling/halving times for each model fit 
+```{r Calculating R of models}
+R_estimates_react_r12 <- exponential_estimate_R(exp_mod_react_r12, n_mean = 2.29, b_mean =0.36, label ="React-Round12")
+R_estimates_react_r13 <- exponential_estimate_R(exp_mod_react_r13, n_mean = 2.29, b_mean =0.36, label ="React-Round13")
+R_estimates_react_r1213 <- exponential_estimate_R(exp_mod_react_r1213, n_mean = 2.29, b_mean =0.36, label ="React-Round12-Round13")
+
+
+R_table <- rbind(R_estimates_react_r12, R_estimates_react_r13, R_estimates_react_r1213)
+print(R_table)
+```
+
+# Plotting the exponential model fits
+
+The model fits can then be plotted. First the individual round fits:
+
+```{r Plotting Individual rounds}
+linear_plots <- plot_exp_model(X = pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$X,
+                                   Y= pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$England,
+                                   N = tot[tot$X>=min_date_r12 & tot$X<= max_date_r13,]$England,
+                                   fit_exp = list(exp_mod_react_r13, exp_mod_react_r1213),
+                                   X_model = list(pos[pos$X>=min_date_r13 & pos$X<= max_date_r13,]$X,
+                                                  pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$X),
+                                   color_list = list("red","blue"),
+                                   ylim = 1.0)
+linear_plots[[1]] <- linear_plots[[1]]+
+  ggplot2::coord_cartesian(ylim=c(0.01,2))+
+  ggplot2::scale_y_log10()
+
+print(linear_plots[[1]])
+```
+
+
+# Fitting the Bayesian P-Spline Model to the data
+We can then fit the Bayesian P-spline model to all of the REACT data for the first 4 rounds of the study
+
+```{r Fitting the p-spline model, results='hide'}
+p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 5000,
+                                   warmup = 1000,
+                                   cores = 1)
+
+
+```
+
+The p-spline model can then be plotted with estimated 95%CI and 50%CI
+```{r Plotting the p-spline model}
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 3.0)
+
+print(p_spline_plot[[1]])
+
+p_spline_plot[[1]] <- p_spline_plot[[1]]+
+  ggplot2::coord_cartesian(xlim=c(min_date_r12-10, max_date_r13), ylim = c(0.01,3))+
+  ggplot2::scale_y_log10()
+
+print(p_spline_plot[[1]])
+
+
+```
+
+We can also do comparisons to public data on death and hospitisations
+
+```{r loading the react data}
+death_dat <- read.csv(system.file("extdata", "public_data_age_deaths_2021-07-19.csv", package = "reactidd"))
+hosp_dat <- read.csv(system.file("extdata", "public_data_age_hosps_2021-07-19.csv", package = "reactidd"))
+
+death <- clean_death_data(death_dat)
+hosp <- clean_hosp_data(hosp_dat)
+
+```
+
+
+```{r Fit the P-Spline model to public data sets for death and hospitalizations, echo=TRUE, results='hide'}
+death_spline <- stan_p_spline_phe(X = death$date,
+                                   Y= death$all,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 1000,
+                                   cores = 1,
+                                  chains=1)
+
+hosp_spline <- stan_p_spline_phe(X = hosp$date,
+                                   Y=hosp$all,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 1000,
+                                   cores = 1,
+                                 chains =1)
+
+
+
+
+
+```
+
+
+```{r Format the spline data to get sample of response values , echo=TRUE, results='hide'}
+
+# Extract posteriors from splines
+death_post <- rstan::extract(death_spline)
+hosp_post<-rstan::extract(hosp_spline)
+
+# Get response values
+death_post_Y <- death_post$Y_hat
+hosp_post_Y <- hosp_post$Y_hat
+
+
+# Select random sample from posterior
+death_post_Y<-death_post_Y[sample(nrow(death_post_Y), 100),]
+hosp_post_Y<-hosp_post_Y[sample(nrow(hosp_post_Y), 100),]
+
+
+# Exponentiate to get actual value
+death_post_Y <- exp(death_post_Y)
+hosp_post_Y <- exp(hosp_post_Y)
+```
+
+```{r Fit the time lag models to death and hospitalizations, echo=TRUE, results='hide'}
+
+# Set initial parameters for time lag and log difference (scaling parameter)
+init_pars <- c(10, -10)
+# Set number of iterations 
+N <- 10000
+
+# Set range of REACT data to fit to
+ensemble = data.frame(day=pos$X,
+                      pos=pos$England,
+                      obs=tot$England)
+
+#Only fitting to rounds 1-12 due to the time lag
+
+ensemble <- ensemble[ensemble$day <=max_date_r12,]
+
+# Run model to get time lag and log difference for all timeseries
+death_eng <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble,  dates=death$date , ENG = death_post_Y, burnin=2000,name="All", rounds = "Rounds 1-12", data_source = "Deaths")
+death_eng[[1]]
+
+hosp_eng <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble,  dates=hosp$date , ENG = hosp_post_Y, burnin=10000,name="All", rounds = "Rounds 1-12", data_source = "hosps")
+
+# Population estimate of England
+pop <- 56286961
+hosp_eng[[1]][c("alpha","alpha_lb","alpha_ub")]
+```
+
+```{r Fit the time lag models to death and hospitalizations, echo=TRUE, results='hide'}
+
+
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 3.0)
+
+
+
+death_plot <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng[[1]], X=death$date, dat = death)
+hosp_plot <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = hosp_post_Y, table_eng = hosp_eng[[1]], X=hosp$date, dat = hosp)
+
+print(death_plot[[1]])
+print(hosp_plot[[1]])
+
+
+```
