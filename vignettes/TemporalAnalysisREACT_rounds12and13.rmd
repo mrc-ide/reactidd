@@ -257,39 +257,3 @@ print(hosp_plot[[1]])
 
 ```
 
-# Lineage temporal analysis
-Next we explore the growth rate advantage of Delta over alpha
-First we read in the REACT data
-
-```{r Read in lineage data, echo=TRUE, results='hide'}
-
-
-
-
-
-```
-
-We then fit logisitic regression model to the daily number of Delta vs Alpha samples
-```{r Fit logisitic regression model to lineage data, echo=TRUE, results='hide'}
-
-
-
-
-
-```
-
-```{r Extract growth rate/additive R advantages, echo=TRUE, results='hide'}
-
-
-
-
-
-```
-
-```{r Plot the model fits, echo=TRUE, results='hide'}
-
-
-
-
-
-```
