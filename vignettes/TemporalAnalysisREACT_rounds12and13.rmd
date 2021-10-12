@@ -200,7 +200,7 @@ death_post_Y <- exp(death_post_Y)
 hosp_post_Y <- exp(hosp_post_Y)
 ```
 
-With these response posteriors we can then fit the time lag model to the REACT data. Note for analysis using age seperated data the REACT data is available using "XXX" which has the weighted positives and total tests for both those aged 64 and under and those aged 65 and over.
+With these response posteriors we can then fit the time lag model to the REACT data. Note for analysis using age seperated data the REACT data is available using "read.csv(system.file("extdata", "ages_weighted.csv", package = "reactidd"))" which has the weighted positives and total tests for both those aged 64 and under and those aged 65 and over by date.
 
 ```{r Fit the time lag models to death and hospitalizations, echo=TRUE, results='hide'}
 
