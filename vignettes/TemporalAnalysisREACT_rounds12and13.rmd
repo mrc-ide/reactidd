@@ -1,5 +1,5 @@
 ---
-title: "Fitting models to REACT data"
+title: "Fitting models to REACT data as seen in round 13 final"
 author: "Oliver Eales"
 date: "October 11, 2021"
 output: html_document
@@ -14,7 +14,9 @@ library(reactidd)
 ```
 
 # Loading the Data
-First we will load the example weighted REACT data available using reactidd::load_example_data_weighted() 
+First we will load the weighted REACT data available using reactidd::load_example_data_weighted() 
+Datasets have the weighted number of positives by english region and for England as a whole (pos below)
+and the weighted number of total tests by english region and for England as a whole (tot)
 
 ```{r loading the react data}
 pos <- load_example_data_weighted()[[1]]
@@ -35,6 +37,7 @@ max_date_r13 <- as.Date("2021-07-12")
 
 # Fitting the exponential model
 We fit the exponential model to subsets of the data corresponding to individual rounds and pairs of subsequent rounds 
+Similar models can easily be run on the regional data by switching 'England' to the region name 'NorthWest' for example
 
 ```{r Fitting the models, results='hide'}
 exp_mod_react_r12 <- stan_exp_model_weighted(pos[pos$X>=min_date_r12 & pos$X<= max_date_r12,]$X,
@@ -73,16 +76,17 @@ print(R_table)
 
 # Plotting the exponential model fits
 
-The model fits can then be plotted. First the individual round fits:
+The model fits can then be plotted:
 
 ```{r Plotting Individual rounds}
 linear_plots <- plot_exp_model(X = pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$X,
                                    Y= pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$England,
                                    N = tot[tot$X>=min_date_r12 & tot$X<= max_date_r13,]$England,
-                                   fit_exp = list(exp_mod_react_r13, exp_mod_react_r1213),
+                                   fit_exp = list(exp_mod_react_r13, exp_mod_react_r1213, exp_mod_react_r12),
                                    X_model = list(pos[pos$X>=min_date_r13 & pos$X<= max_date_r13,]$X,
-                                                  pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$X),
-                                   color_list = list("red","blue"),
+                                                  pos[pos$X>=min_date_r12 & pos$X<= max_date_r13,]$X,
+                                                  pos[pos$X>=min_date_r12 & pos$X<= max_date_r12,]$X),
+                                   color_list = list("red","blue","dark green"),
                                    ylim = 1.0)
 linear_plots[[1]] <- linear_plots[[1]]+
   ggplot2::coord_cartesian(ylim=c(0.01,2))+
@@ -93,7 +97,8 @@ print(linear_plots[[1]])
 
 
 # Fitting the Bayesian P-Spline Model to the data
-We can then fit the Bayesian P-spline model to all of the REACT data for the first 4 rounds of the study
+We can then fit the Bayesian P-spline model to all of the REACT data for the first 13 rounds of the study
+Note that a larger number of iterations is required to get a reliable fit.
 
 ```{r Fitting the p-spline model, results='hide'}
 p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
@@ -108,7 +113,7 @@ p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= ma
 
 ```
 
-The p-spline model can then be plotted with estimated 95%CI and 50%CI
+The p-spline model can then be plotted with estimated 95% and 50% credible intervals
 ```{r Plotting the p-spline model}
 p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
                                    pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
@@ -129,7 +134,10 @@ print(p_spline_plot[[1]])
 
 ```
 
-We can also do comparisons to public data on death and hospitisations
+# Comparing REACT data to deaths and hospitalizations
+We can also do comparisons of REACT data to the public data available on deaths and hospitalizations
+
+First we load the public data that was used in the analysis for the round 13 final paper and clean it
 
 ```{r loading the react data}
 death_dat <- read.csv(system.file("extdata", "public_data_age_deaths_2021-07-19.csv", package = "reactidd"))
@@ -140,6 +148,10 @@ hosp <- clean_hosp_data(hosp_dat)
 
 ```
 
+The public datasets here have columns available for the date ("date"), the total number of daily outcomes ("all"), the total number of outcomes in those aged 64 and under ("age_64_under")  and the total number of outcomes in those aged 65 and over ("aged_65_over"). 
+We present here the results for models fit to all data but the code can easily be used for the two timeseries split by age.
+
+We first fit Bayesian P-spline models to the daily death and hospitalization data. (Note again more iterations are required for an accurate fit)
 
 ```{r Fit the P-Spline model to public data sets for death and hospitalizations, echo=TRUE, results='hide'}
 death_spline <- stan_p_spline_phe(X = death$date,
@@ -166,7 +178,7 @@ hosp_spline <- stan_p_spline_phe(X = hosp$date,
 
 ```
 
-
+Bayesian P-spline models posteriors are extracted and converted into the actual response variable. A number of samples are drawn randomly from the posterior. We have drawn 100 samples for speed but in the main analysis 1000 samples were drawn.
 ```{r Format the spline data to get sample of response values , echo=TRUE, results='hide'}
 
 # Extract posteriors from splines
@@ -188,6 +200,8 @@ death_post_Y <- exp(death_post_Y)
 hosp_post_Y <- exp(hosp_post_Y)
 ```
 
+With these response posteriors we can then fit the time lag model to the REACT data. Note for analysis using age seperated data the REACT data is available using "XXX" which has the weighted positives and total tests for both those aged 64 and under and those aged 65 and over.
+
 ```{r Fit the time lag models to death and hospitalizations, echo=TRUE, results='hide'}
 
 # Set initial parameters for time lag and log difference (scaling parameter)
@@ -196,26 +210,32 @@ init_pars <- c(10, -10)
 N <- 10000
 
 # Set range of REACT data to fit to
+# Only fitting to rounds 1-12 due to the time lag
 ensemble = data.frame(day=pos$X,
                       pos=pos$England,
                       obs=tot$England)
-
-#Only fitting to rounds 1-12 due to the time lag
 
 ensemble <- ensemble[ensemble$day <=max_date_r12,]
 
 # Run model to get time lag and log difference for all timeseries
 death_eng <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble,  dates=death$date , ENG = death_post_Y, burnin=2000,name="All", rounds = "Rounds 1-12", data_source = "Deaths")
-death_eng[[1]]
+
 
 hosp_eng <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble,  dates=hosp$date , ENG = hosp_post_Y, burnin=10000,name="All", rounds = "Rounds 1-12", data_source = "hosps")
 
+death_eng[[1]]
+hosp_eng[[1]]
+
+## Can convert log difference into the scaling parameter 
 # Population estimate of England
 pop <- 56286961
 hosp_eng[[1]][c("alpha","alpha_lb","alpha_ub")]
 ```
 
-```{r Fit the time lag models to death and hospitalizations, echo=TRUE, results='hide'}
+We can then plot the death and hospitalization P-spline fits translated by the best fitting time -lag parameter and scaled by the scaling parameter.
+We plot it against the previously fit REACT Bayesian P-spline model to compare the time-series.
+
+```{r plot the time lag models of death and hospitalizations against REACT data, echo=TRUE, results='hide'}
 
 
 p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
@@ -233,6 +253,43 @@ hosp_plot <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array
 
 print(death_plot[[1]])
 print(hosp_plot[[1]])
+
+
+```
+
+# Lineage temporal analysis
+Next we explore the growth rate advantage of Delta over alpha
+First we read in the REACT data
+
+```{r Read in lineage data, echo=TRUE, results='hide'}
+
+
+
+
+
+```
+
+We then fit logisitic regression model to the daily number of Delta vs Alpha samples
+```{r Fit logisitic regression model to lineage data, echo=TRUE, results='hide'}
+
+
+
+
+
+```
+
+```{r Extract growth rate/additive R advantages, echo=TRUE, results='hide'}
+
+
+
+
+
+```
+
+```{r Plot the model fits, echo=TRUE, results='hide'}
+
+
+
 
 
 ```
