@@ -1,4 +1,14 @@
+# Save this file as `R/add_public_data_to_plot.R
 
+#' MCMC model fitting - get mode of time lag vaector
+#'
+#' @export
+#' @param p_spline_plot initial plot of REACT data with Bayesian P-spline fit to it
+#' @param Y_array array with posterior of response variables for death/hosp bayesian P-spline fit
+#' @param table_eng table with best fit parameter values for scaling parameter and time lag parameter
+#' @param X list of dates for which death/hosp bayesian P-spline model was fit
+#' @param dat raw data with date given by a 'date' column and outcome variable (death/ hosp) given by 'all' column
+#' @return plot of react data with bayesian P-spline with another P-spline scaled and translated added on top
 
 add_public_data_to_plot <- function(p_spline_plot, Y_array, table_eng, X, dat){
 

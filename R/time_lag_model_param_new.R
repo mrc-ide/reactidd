@@ -1,6 +1,6 @@
 # Save this file as `R/time_lag_model_param_new.R
 
-#' MCMC model fitting - return new parameters
+#' MCMC model fitting - return new parameters to try
 #'
 #' @export
 #' @param pars two item list of values for beta (time lag) and alpha (scaling factor)
