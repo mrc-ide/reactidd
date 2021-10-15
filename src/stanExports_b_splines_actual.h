@@ -33,7 +33,7 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_b_splines_actual");
-    reader.add_event(78, 76, "end", "model_b_splines_actual");
+    reader.add_event(91, 89, "end", "model_b_splines_actual");
     return reader;
 }
 template <typename T0__, typename T1__>
@@ -57,48 +57,48 @@ build_b_spline(const std::vector<T0__>& t,
     int current_statement_begin__ = -1;
     try {
         {
-        current_statement_begin__ = 9;
+        current_statement_begin__ = 22;
         validate_non_negative_index("b_spline", "size(t)", size(t));
         Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> b_spline(size(t));
         stan::math::initialize(b_spline, DUMMY_VAR__);
         stan::math::fill(b_spline, DUMMY_VAR__);
-        current_statement_begin__ = 10;
+        current_statement_begin__ = 23;
         validate_non_negative_index("w1", "size(t)", size(t));
         Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> w1(size(t));
         stan::math::initialize(w1, DUMMY_VAR__);
         stan::math::fill(w1, DUMMY_VAR__);
         stan::math::assign(w1,rep_vector(0, size(t)));
-        current_statement_begin__ = 11;
+        current_statement_begin__ = 24;
         validate_non_negative_index("w2", "size(t)", size(t));
         Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> w2(size(t));
         stan::math::initialize(w2, DUMMY_VAR__);
         stan::math::fill(w2, DUMMY_VAR__);
         stan::math::assign(w2,rep_vector(0, size(t)));
-        current_statement_begin__ = 12;
+        current_statement_begin__ = 25;
         if (as_bool(logical_eq(order, 1))) {
-            current_statement_begin__ = 13;
+            current_statement_begin__ = 26;
             for (int i = 1; i <= size(t); ++i) {
-                current_statement_begin__ = 14;
+                current_statement_begin__ = 27;
                 stan::model::assign(b_spline, 
                             stan::model::cons_list(stan::model::index_uni(i), stan::model::nil_index_list()), 
                             (primitive_value(logical_lte(get_base1(ext_knots, ind, "ext_knots", 1), get_base1(t, i, "t", 1))) && primitive_value(logical_lt(get_base1(t, i, "t", 1), get_base1(ext_knots, (ind + 1), "ext_knots", 1)))), 
                             "assigning variable b_spline");
             }
         } else {
-            current_statement_begin__ = 16;
+            current_statement_begin__ = 29;
             if (as_bool(logical_neq(get_base1(ext_knots, ind, "ext_knots", 1), get_base1(ext_knots, ((ind + order) - 1), "ext_knots", 1)))) {
-                current_statement_begin__ = 17;
+                current_statement_begin__ = 30;
                 stan::math::assign(w1, divide(subtract(to_vector(t), rep_vector(get_base1(ext_knots, ind, "ext_knots", 1), size(t))), (get_base1(ext_knots, ((ind + order) - 1), "ext_knots", 1) - get_base1(ext_knots, ind, "ext_knots", 1))));
             }
-            current_statement_begin__ = 19;
+            current_statement_begin__ = 32;
             if (as_bool(logical_neq(get_base1(ext_knots, (ind + 1), "ext_knots", 1), get_base1(ext_knots, (ind + order), "ext_knots", 1)))) {
-                current_statement_begin__ = 20;
+                current_statement_begin__ = 33;
                 stan::math::assign(w2, subtract(1, divide(subtract(to_vector(t), rep_vector(get_base1(ext_knots, (ind + 1), "ext_knots", 1), size(t))), (get_base1(ext_knots, (ind + order), "ext_knots", 1) - get_base1(ext_knots, (ind + 1), "ext_knots", 1)))));
             }
-            current_statement_begin__ = 23;
+            current_statement_begin__ = 36;
             stan::math::assign(b_spline, add(elt_multiply(w1, build_b_spline(t, ext_knots, ind, (order - 1), pstream__)), elt_multiply(w2, build_b_spline(t, ext_knots, (ind + 1), (order - 1), pstream__))));
         }
-        current_statement_begin__ = 26;
+        current_statement_begin__ = 39;
         return stan::math::promote_scalar<fun_return_scalar_t__>(b_spline);
         }
     } catch (const std::exception& e) {
@@ -162,19 +162,19 @@ public:
         (void) DUMMY_VAR__;  // suppress unused var warning
         try {
             // initialize data block variables from context__
-            current_statement_begin__ = 32;
+            current_statement_begin__ = 45;
             context__.validate_dims("data initialization", "num_data", "int", context__.to_vec());
             num_data = int(0);
             vals_i__ = context__.vals_i("num_data");
             pos__ = 0;
             num_data = vals_i__[pos__++];
-            current_statement_begin__ = 33;
+            current_statement_begin__ = 46;
             context__.validate_dims("data initialization", "num_knots", "int", context__.to_vec());
             num_knots = int(0);
             vals_i__ = context__.vals_i("num_knots");
             pos__ = 0;
             num_knots = vals_i__[pos__++];
-            current_statement_begin__ = 34;
+            current_statement_begin__ = 47;
             validate_non_negative_index("knots", "num_knots", num_knots);
             context__.validate_dims("data initialization", "knots", "vector_d", context__.to_vec(num_knots));
             knots = Eigen::Matrix<double, Eigen::Dynamic, 1>(num_knots);
@@ -184,13 +184,13 @@ public:
             for (size_t j_1__ = 0; j_1__ < knots_j_1_max__; ++j_1__) {
                 knots(j_1__) = vals_r__[pos__++];
             }
-            current_statement_begin__ = 35;
+            current_statement_begin__ = 48;
             context__.validate_dims("data initialization", "spline_degree", "int", context__.to_vec());
             spline_degree = int(0);
             vals_i__ = context__.vals_i("spline_degree");
             pos__ = 0;
             spline_degree = vals_i__[pos__++];
-            current_statement_begin__ = 36;
+            current_statement_begin__ = 49;
             validate_non_negative_index("Y", "num_data", num_data);
             context__.validate_dims("data initialization", "Y", "int", context__.to_vec(num_data));
             Y = std::vector<int>(num_data, int(0));
@@ -200,7 +200,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < Y_k_0_max__; ++k_0__) {
                 Y[k_0__] = vals_i__[pos__++];
             }
-            current_statement_begin__ = 37;
+            current_statement_begin__ = 50;
             validate_non_negative_index("N", "num_data", num_data);
             context__.validate_dims("data initialization", "N", "int", context__.to_vec(num_data));
             N = std::vector<int>(num_data, int(0));
@@ -210,7 +210,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < N_k_0_max__; ++k_0__) {
                 N[k_0__] = vals_i__[pos__++];
             }
-            current_statement_begin__ = 38;
+            current_statement_begin__ = 51;
             validate_non_negative_index("X", "num_data", num_data);
             context__.validate_dims("data initialization", "X", "double", context__.to_vec(num_data));
             X = std::vector<double>(num_data, double(0));
@@ -221,31 +221,31 @@ public:
                 X[k_0__] = vals_r__[pos__++];
             }
             // initialize transformed data variables
-            current_statement_begin__ = 42;
+            current_statement_begin__ = 55;
             num_basis = int(0);
             stan::math::fill(num_basis, std::numeric_limits<int>::min());
             stan::math::assign(num_basis,((num_knots + spline_degree) - 1));
-            current_statement_begin__ = 43;
+            current_statement_begin__ = 56;
             validate_non_negative_index("B", "num_basis", num_basis);
             validate_non_negative_index("B", "num_data", num_data);
             B = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>(num_basis, num_data);
             stan::math::fill(B, DUMMY_VAR__);
-            current_statement_begin__ = 44;
+            current_statement_begin__ = 57;
             validate_non_negative_index("ext_knots_temp", "(spline_degree + num_knots)", (spline_degree + num_knots));
             ext_knots_temp = Eigen::Matrix<double, Eigen::Dynamic, 1>((spline_degree + num_knots));
             stan::math::fill(ext_knots_temp, DUMMY_VAR__);
-            current_statement_begin__ = 45;
+            current_statement_begin__ = 58;
             validate_non_negative_index("ext_knots", "((2 * spline_degree) + num_knots)", ((2 * spline_degree) + num_knots));
             ext_knots = Eigen::Matrix<double, Eigen::Dynamic, 1>(((2 * spline_degree) + num_knots));
             stan::math::fill(ext_knots, DUMMY_VAR__);
             // execute transformed data statements
-            current_statement_begin__ = 46;
+            current_statement_begin__ = 59;
             stan::math::assign(ext_knots_temp, append_row(rep_vector(get_base1(knots, 1, "knots", 1), spline_degree), knots));
-            current_statement_begin__ = 47;
+            current_statement_begin__ = 60;
             stan::math::assign(ext_knots, append_row(ext_knots_temp, rep_vector(get_base1(knots, num_knots, "knots", 1), spline_degree)));
-            current_statement_begin__ = 48;
+            current_statement_begin__ = 61;
             for (int ind = 1; ind <= num_basis; ++ind) {
-                current_statement_begin__ = 49;
+                current_statement_begin__ = 62;
                 stan::model::assign(B, 
                             stan::model::cons_list(stan::model::index_uni(ind), stan::model::cons_list(stan::model::index_omni(), stan::model::nil_index_list())), 
                             to_row_vector(build_b_spline(X, to_array_1d(ext_knots), ind, (spline_degree + 1), pstream__)), 
@@ -255,10 +255,10 @@ public:
             // validate, set parameter ranges
             num_params_r__ = 0U;
             param_ranges_i__.clear();
-            current_statement_begin__ = 54;
+            current_statement_begin__ = 67;
             validate_non_negative_index("a_raw", "num_basis", num_basis);
             num_params_r__ += num_basis;
-            current_statement_begin__ = 55;
+            current_statement_begin__ = 68;
             num_params_r__ += 1;
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(e, current_statement_begin__, prog_reader__());
@@ -277,7 +277,7 @@ public:
         (void) pos__; // dummy call to supress warning
         std::vector<double> vals_r__;
         std::vector<int> vals_i__;
-        current_statement_begin__ = 54;
+        current_statement_begin__ = 67;
         if (!(context__.contains_r("a_raw")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable a_raw missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("a_raw");
@@ -294,7 +294,7 @@ public:
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable a_raw: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 55;
+        current_statement_begin__ = 68;
         if (!(context__.contains_r("tau")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable tau missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("tau");
@@ -332,14 +332,14 @@ public:
         try {
             stan::io::reader<local_scalar_t__> in__(params_r__, params_i__);
             // model parameters
-            current_statement_begin__ = 54;
+            current_statement_begin__ = 67;
             Eigen::Matrix<local_scalar_t__, 1, Eigen::Dynamic> a_raw;
             (void) a_raw;  // dummy to suppress unused var warning
             if (jacobian__)
                 a_raw = in__.row_vector_constrain(num_basis, lp__);
             else
                 a_raw = in__.row_vector_constrain(num_basis);
-            current_statement_begin__ = 55;
+            current_statement_begin__ = 68;
             local_scalar_t__ tau;
             (void) tau;  // dummy to suppress unused var warning
             if (jacobian__)
@@ -347,41 +347,41 @@ public:
             else
                 tau = in__.scalar_lb_constrain(0);
             // transformed parameters
-            current_statement_begin__ = 60;
+            current_statement_begin__ = 73;
             validate_non_negative_index("a", "num_basis", num_basis);
             Eigen::Matrix<local_scalar_t__, 1, Eigen::Dynamic> a(num_basis);
             stan::math::initialize(a, DUMMY_VAR__);
             stan::math::fill(a, DUMMY_VAR__);
-            current_statement_begin__ = 61;
+            current_statement_begin__ = 74;
             validate_non_negative_index("Y_hat", "num_data", num_data);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> Y_hat(num_data);
             stan::math::initialize(Y_hat, DUMMY_VAR__);
             stan::math::fill(Y_hat, DUMMY_VAR__);
             // transformed parameters block statements
-            current_statement_begin__ = 62;
+            current_statement_begin__ = 75;
             stan::model::assign(a, 
                         stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                         get_base1(a_raw, 1, "a_raw", 1), 
                         "assigning variable a");
-            current_statement_begin__ = 63;
+            current_statement_begin__ = 76;
             stan::model::assign(a, 
                         stan::model::cons_list(stan::model::index_uni(2), stan::model::nil_index_list()), 
                         get_base1(a_raw, 2, "a_raw", 1), 
                         "assigning variable a");
-            current_statement_begin__ = 64;
+            current_statement_begin__ = 77;
             for (int i = 3; i <= num_basis; ++i) {
-                current_statement_begin__ = 65;
+                current_statement_begin__ = 78;
                 stan::model::assign(a, 
                             stan::model::cons_list(stan::model::index_uni(i), stan::model::nil_index_list()), 
                             (((2 * get_base1(a, (i - 1), "a", 1)) - get_base1(a, (i - 2), "a", 1)) + (get_base1(a_raw, i, "a_raw", 1) * tau)), 
                             "assigning variable a");
             }
-            current_statement_begin__ = 66;
+            current_statement_begin__ = 79;
             stan::math::assign(Y_hat, to_vector(multiply(a, B)));
             // validate transformed parameters
             const char* function__ = "validate transformed params";
             (void) function__;  // dummy to suppress unused var warning
-            current_statement_begin__ = 60;
+            current_statement_begin__ = 73;
             size_t a_j_1_max__ = num_basis;
             for (size_t j_1__ = 0; j_1__ < a_j_1_max__; ++j_1__) {
                 if (stan::math::is_uninitialized(a(j_1__))) {
@@ -390,7 +390,7 @@ public:
                     stan::lang::rethrow_located(std::runtime_error(std::string("Error initializing variable a: ") + msg__.str()), current_statement_begin__, prog_reader__());
                 }
             }
-            current_statement_begin__ = 61;
+            current_statement_begin__ = 74;
             size_t Y_hat_j_1_max__ = num_data;
             for (size_t j_1__ = 0; j_1__ < Y_hat_j_1_max__; ++j_1__) {
                 if (stan::math::is_uninitialized(Y_hat(j_1__))) {
@@ -400,11 +400,11 @@ public:
                 }
             }
             // model body
-            current_statement_begin__ = 71;
+            current_statement_begin__ = 84;
             lp_accum__.add(normal_log<propto__>(stan::model::rvalue(a_raw, stan::model::cons_list(stan::model::index_min_max(3, num_basis), stan::model::nil_index_list()), "a_raw"), 0, 1));
-            current_statement_begin__ = 72;
+            current_statement_begin__ = 85;
             lp_accum__.add(inv_gamma_log<propto__>(tau, 0.0001, 0.0001));
-            current_statement_begin__ = 75;
+            current_statement_begin__ = 88;
             lp_accum__.add(binomial_logit_log<propto__>(Y, N, Y_hat));
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(e, current_statement_begin__, prog_reader__());
@@ -475,36 +475,36 @@ public:
         if (!include_tparams__ && !include_gqs__) return;
         try {
             // declare and define transformed parameters
-            current_statement_begin__ = 60;
+            current_statement_begin__ = 73;
             validate_non_negative_index("a", "num_basis", num_basis);
             Eigen::Matrix<double, 1, Eigen::Dynamic> a(num_basis);
             stan::math::initialize(a, DUMMY_VAR__);
             stan::math::fill(a, DUMMY_VAR__);
-            current_statement_begin__ = 61;
+            current_statement_begin__ = 74;
             validate_non_negative_index("Y_hat", "num_data", num_data);
             Eigen::Matrix<double, Eigen::Dynamic, 1> Y_hat(num_data);
             stan::math::initialize(Y_hat, DUMMY_VAR__);
             stan::math::fill(Y_hat, DUMMY_VAR__);
             // do transformed parameters statements
-            current_statement_begin__ = 62;
+            current_statement_begin__ = 75;
             stan::model::assign(a, 
                         stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                         get_base1(a_raw, 1, "a_raw", 1), 
                         "assigning variable a");
-            current_statement_begin__ = 63;
+            current_statement_begin__ = 76;
             stan::model::assign(a, 
                         stan::model::cons_list(stan::model::index_uni(2), stan::model::nil_index_list()), 
                         get_base1(a_raw, 2, "a_raw", 1), 
                         "assigning variable a");
-            current_statement_begin__ = 64;
+            current_statement_begin__ = 77;
             for (int i = 3; i <= num_basis; ++i) {
-                current_statement_begin__ = 65;
+                current_statement_begin__ = 78;
                 stan::model::assign(a, 
                             stan::model::cons_list(stan::model::index_uni(i), stan::model::nil_index_list()), 
                             (((2 * get_base1(a, (i - 1), "a", 1)) - get_base1(a, (i - 2), "a", 1)) + (get_base1(a_raw, i, "a_raw", 1) * tau)), 
                             "assigning variable a");
             }
-            current_statement_begin__ = 66;
+            current_statement_begin__ = 79;
             stan::math::assign(Y_hat, to_vector(multiply(a, B)));
             if (!include_gqs__ && !include_tparams__) return;
             // validate transformed parameters

@@ -25,7 +25,8 @@ Imports:
     rstantools (>= 2.1.1),
     splines,
     ggplot2,
-    prevalence
+    prevalence,
+    maditr,
 LinkingTo: 
     BH (>= 1.66.0),
     Rcpp (>= 0.12.0),
