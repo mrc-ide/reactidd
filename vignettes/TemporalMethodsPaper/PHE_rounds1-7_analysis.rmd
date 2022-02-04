@@ -39,7 +39,8 @@ p_spline_mod_phe <- stan_p_spline_phe(X = phe[phe$date>=min_date_r1 & phe$date<=
                                    spline_degree = 3,
                                    iter = 2000,
                                    warmup = 500,
-                                   cores = 1)
+                                   cores = 1,
+                                   chains = 1)
 
 
 ```
@@ -63,10 +64,33 @@ print(p_spline_plot[[1]])
 From the p-spline model we can estimate the date of minimum prevalence and plot the posterior distribution
 
 ```{r Date of minimum from P-Spline model}
-p_spline_min_date <- plot_p_spline_minimum_density(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r4,]$date,
+p_spline_min_date <- plot_p_spline_minimum_density(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
                                    p_spline_fit = p_spline_mod_phe, 
                                     target_dist_between_knots = 5,
                                     spline_degree = 3)
 
 print(p_spline_min_date[[1]])
+```
+
+```{r growth rate from P-Spline model}
+
+p_spline_igr <- plot_p_spline_igr(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   p_spline_fit = p_spline_mod_phe, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                  ylim = 0.2,
+                                  link_function = "log")
+
+print(p_spline_igr[[1]])
+```
+
+```{r Reproduction number from P-Spline model}
+
+p_spline_Rt <- plot_p_spline_R(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   p_spline_fit = p_spline_mod_phe, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                               link_function = "log")
+
+print(p_spline_Rt[[1]])
 ```
