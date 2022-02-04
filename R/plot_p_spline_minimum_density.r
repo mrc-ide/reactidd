@@ -17,22 +17,25 @@ plot_p_spline_minimum_density <- function(X, p_spline_fit, target_dist_between_k
   }
 
   ff <- rstan::extract(p_spline_fit)
-
   X <- as.numeric(X)
+  X <- seq(min(X),max(X),by=1)
+  deriv <- function(x, y) diff(y)/diff(x)
+
+  days_per_knot<-5
   min_date_numeric <- min(X)
   max_date_numeric <- max(X)
-
-  num_knots <- ceiling((max_date_numeric- min_date_numeric)/target_dist_between_knots) + 7
-  days_per_knot <- (max_date_numeric - min_date_numeric)/(num_knots - 7)
+  num_knots <- ceiling((max_date_numeric- min_date_numeric)/target_dist_between_knots)+7
+  days_per_knot <- (max_date_numeric - min_date_numeric)/(num_knots -7)
   num_basis <- num_knots + spline_degree - 1
+  num_data <- length(X)
+  knots <- unname(seq(min(X)-3*days_per_knot, max(X)+3*days_per_knot, length.out = num_knots))
 
-  number_extra <- 3*days_per_knot
 
-  #' Plot of the model fit
-  X_new <- seq(min(X)-3*days_per_knot, max(X)+3*days_per_knot, 1)
 
-  Y_array <- array(data=NA, dim=c(nrow(ff$a), length(X_new)))
-  B_true <- t(splines::bs(X_new, df=num_basis, degree = spline_degree, intercept=TRUE))
+  X_new <- seq(min(X)-3*days_per_knot, max(X)+3*days_per_knot, 0.1)
+  B_true <- splines::bs(X_new, df=num_basis, degree=spline_degree, intercept = TRUE)
+  B_true <- t(predict(B_true, X))
+  Y_array <- array(data=NA, dim=c(nrow(ff$a), length(X)))
 
   #a0<-mean(ff$a0)
   for(i in seq_len(nrow(ff$a))){
@@ -47,7 +50,7 @@ plot_p_spline_minimum_density <- function(X, p_spline_fit, target_dist_between_k
 
   index_list<-c()
   for(i in seq_len(nrow(Y_array))){
-    min_index<- which.min(Y_array[i,(number_extra+1):(ncol(Y_array)-number_extra)])
+    min_index<- which.min(Y_array[i,(1):(ncol(Y_array))])
     index_list<-c(index_list, min_index)
   }
 

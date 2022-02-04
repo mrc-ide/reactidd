@@ -243,7 +243,7 @@ print(p_spline_igr[[1]])
 ```
 
 ```{r Reproduction number calculation}
-p_spline_Rt <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r4,]$X,
+p_spline_Rt <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
                                    p_spline_fit = p_spline_mod_react, 
                                     target_dist_between_knots = 5,
                                     spline_degree = 3)
@@ -253,3 +253,107 @@ print(p_spline_Rt[[1]])
 
 ```
 
+```{r Reproduction number calculation}
+R_estimate_pspline_round1 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r1,
+                                   max_date_num = max_date_r1,
+                                   label = "Round1")
+R_estimate_pspline_round2 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r2,
+                                   max_date_num = max_date_r2,
+                                   label = "Round2")
+R_estimate_pspline_round3 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r3,
+                                   max_date_num = max_date_r3,
+                                   label = "Round3")
+R_estimate_pspline_round4 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r4,
+                                   max_date_num = max_date_r4,
+                                   label = "Round4")
+R_estimate_pspline_round5 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r5,
+                                   max_date_num = max_date_r5,
+                                   label = "Round5")
+R_estimate_pspline_round6 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r6,
+                                   max_date_num = max_date_r6,
+                                   label = "Round6")
+R_estimate_pspline_round7 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r7,
+                                   max_date_num = max_date_r7,
+                                   label = "Round7")
+
+R_estimate_pspline_round12 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r1,
+                                   max_date_num = max_date_r2,
+                                   label = "Round12")
+R_estimate_pspline_round23 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r2,
+                                   max_date_num = max_date_r3,
+                                   label = "Round23")
+R_estimate_pspline_round34 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r3,
+                                   max_date_num = max_date_r4,
+                                   label = "Round34")
+R_estimate_pspline_round45 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r4,
+                                   max_date_num = max_date_r5,
+                                   label = "Round45")
+R_estimate_pspline_round56 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r5,
+                                   max_date_num = max_date_r6,
+                                   label = "Round56")
+R_estimate_pspline_round67 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   min_date_num = min_date_r6,
+                                   max_date_num = max_date_r7,
+                                   label = "Round67")
+
+
+R_table <- rbind(R_estimate_pspline_round1,R_estimate_pspline_round2,R_estimate_pspline_round3,
+                 R_estimate_pspline_round4,R_estimate_pspline_round5,R_estimate_pspline_round6,
+                 R_estimate_pspline_round7,
+                 R_estimate_pspline_round12,R_estimate_pspline_round23,R_estimate_pspline_round34,
+                 R_estimate_pspline_round45,R_estimate_pspline_round56,R_estimate_pspline_round67)
+print(R_table)
+
+
+```
