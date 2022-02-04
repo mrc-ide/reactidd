@@ -14,21 +14,27 @@
 #'
 plot_p_spline_phe <- function(X, Y, p_spline_fit, target_dist_between_knots = 5, spline_degree = 3, ylim=5000.0){
 
+  X_og <- X
   ff <- rstan::extract(p_spline_fit)
-
   X <- as.numeric(X)
+  X <- seq(min(X),max(X),by=1)
+
+  days_per_knot<-5
   min_date_numeric <- min(X)
   max_date_numeric <- max(X)
-
-  num_knots <- ceiling((max_date_numeric- min_date_numeric)/target_dist_between_knots) + 7
-  days_per_knot <- (max_date_numeric - min_date_numeric)/(num_knots - 7)
+  num_knots <- ceiling((max_date_numeric- min_date_numeric)/target_dist_between_knots)+7
+  days_per_knot <- (max_date_numeric - min_date_numeric)/(num_knots -7)
   num_basis <- num_knots + spline_degree - 1
+  num_data <- length(X)
+  knots <- unname(seq(min(X)-3*days_per_knot, max(X)+3*days_per_knot, length.out = num_knots))
 
-  #' Plot of the model fit
+
+
   X_new <- seq(min(X)-3*days_per_knot, max(X)+3*days_per_knot, 0.1)
+  B_true <- splines::bs(X_new, df=num_basis, degree=spline_degree, intercept = TRUE)
+  B_true <- t(predict(B_true, X))
+  Y_array <- array(data=NA, dim=c(nrow(ff$a), length(X)))
 
-  Y_array <- array(data=NA, dim=c(nrow(ff$a), length(X_new)))
-  B_true <- t(splines::bs(X_new, df=num_basis, degree = spline_degree, intercept=TRUE))
 
   for(i in seq_len(nrow(ff$a))){
     a <- array(NA, num_basis)
@@ -41,8 +47,8 @@ plot_p_spline_phe <- function(X, Y, p_spline_fit, target_dist_between_knots = 5,
   }
 
 
-  dfY <- data.frame(x = X_new)
-  for(i in seq_len(length(X_new))){
+  dfY <- data.frame(x = X)
+  for(i in seq_len(length(X))){
     dfY$p[i] <-median(Y_array[,i])
     dfY$lb_2.5[i] <- quantile(Y_array[,i], probs=0.025)
     dfY$lb_25[i] <- quantile(Y_array[,i], probs=0.25)
@@ -54,7 +60,7 @@ plot_p_spline_phe <- function(X, Y, p_spline_fit, target_dist_between_knots = 5,
   df_plot_model <- dfY
   df_plot_model$d_comb <- as.Date(df_plot_model$x-18383, origin=as.Date("2020-05-01"))
 
-  df_plot <- data.frame(X=X, p=Y)
+  df_plot <- data.frame(X=X, p=rev(Y))
   df_plot$d_comb <- as.Date(df_plot$X-18383, origin=as.Date("2020-05-01"))
 
   max_date<-max(df_plot$d_comb)

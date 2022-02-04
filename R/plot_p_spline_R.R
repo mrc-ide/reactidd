@@ -126,7 +126,8 @@ plot_p_spline_R <- function(X, p_spline_fit, target_dist_between_knots = 5, spli
                          alpha=0.2)+
     ggplot2::geom_line(data = df_plot_model,
                        ggplot2::aes(y=prob),
-                       color = 'red')
+                       color = 'red')+
+    ggplot2::geom_hline(yintercept = 1.0, linetype="dashed")
 
   return(list(plot1, df_plot_model))
 }
