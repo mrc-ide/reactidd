@@ -73,7 +73,7 @@ shedding_plot_exp_models <- function(dat, mod1, mod2, label_name, tmax =20){
   colnames(dat2) <- c("time", "estbinres")
   new_dat <- rbind(dat1, dat2)
   tab <- table(new_dat$estbinres, new_dat$time)
-  prop<-add_conf_ints(tab, poscol="1", negcol = "0")
+  prop<-prevalence::propCI(tab[2,], tab[1,]+tab[2,], method = "wilson")
   prop <- data.frame(prop)
   prop$time <- as.numeric(rownames(prop))
 
@@ -83,7 +83,7 @@ shedding_plot_exp_models <- function(dat, mod1, mod2, label_name, tmax =20){
 
   plot1<-ggplot2::ggplot()+
     ggplot2::geom_point(data=prop, ggplot2::aes(x=time,y=p))+
-    ggplot2::geom_errorbar(data=prop, ggplot2::aes(x=time, ymin=lb,ymax=ub))+
+    ggplot2::geom_errorbar(data=prop, ggplot2::aes(x=time, ymin=lower,ymax=upper))+
     ggplot2::geom_ribbon(data=model2, ggplot2::aes(x=time, y=p, ymin=lb_2.5, ymax=ub_97.5, fill = 'red'), alpha=0.4)+
     ggplot2::geom_ribbon(data=model1, ggplot2::aes(x=time, y=p, ymin=lb_2.5, ymax=ub_97.5, fill = 'blue'), alpha=0.4)+
     ggplot2::geom_line(data=model2, ggplot2::aes(x=time, y=p ,color = 'red'))+
@@ -93,7 +93,7 @@ shedding_plot_exp_models <- function(dat, mod1, mod2, label_name, tmax =20){
     ggplot2::xlab("Time since first test")+
     ggplot2::ylab("Proportion positive")+
     ggplot2::theme(legend.position = "none")+
-    ggplot2::geom_point(aes(x=0, y=1), shape=4)+
+    ggplot2::geom_point(ggplot2::aes(x=0, y=1), shape=4)+
     ggplot2::ggtitle(label_name)+
     ggplot2::scale_color_brewer(palette = "Dark2")+
     ggplot2::scale_fill_brewer(palette = "Dark2")

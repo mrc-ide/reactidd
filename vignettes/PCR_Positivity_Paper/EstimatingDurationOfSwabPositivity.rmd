@@ -16,8 +16,8 @@ library(reactidd)
 ## Estimating duration of positivity and sensitivity
 First we must simlate some indiviudal level data. We will simulate two datasets one using an exponential decay model and another with a time delay before exponential decay. Default parameters of the function are sensitivity=0.79 and decay rate = 0.071
 ```{r simualte individual level shedding data}
-shed_dat1 <- shedding_simulate_data(tau=0)
-shed_dat2 <- shedding_simulate_data(tau=3)
+shed_dat1 <- shedding_simulate_data()
+shed_dat2 <- shedding_simulate_data(tau=3.97, sens=0.95, k=0.064)
 ```
 
 Next we will convert the individual data into a structure that can be input into the stan models
@@ -31,8 +31,8 @@ dat2 <- shedding_prepare_data_for_binary_model(shed_dat2)
 We will now fit two models to each data set 1) the exponential decay model of positivity 2) the exponential decay model of positivity with a time delay.
 
 ```{r fit exp decay models}
-mods1 <- stan_both_shedding_exp_models(dat1, iter=2000, warmup = 500)
-mods2 <- stan_both_shedding_exp_models(dat2, iter=2000, warmup = 500)
+mods1 <- stan_both_shedding_exp_models(dat1, iter=2000, warmup = 500, chains=1)
+mods2 <- stan_both_shedding_exp_models(dat2, iter=2000, warmup = 500, chains=1)
 
 ```
 
@@ -40,20 +40,21 @@ We can compare models using the ELPD
 
 ```{r compare exp decay models}
 library(loo)
-loo_dat1_mod1<-loo(mods1[[1]])
-loo_dat1_mod2<-loo(mods1[[2]])
+loo_dat1_mod1<-loo::loo(mods1[[1]])
+loo_dat1_mod2<-loo::loo(mods1[[2]])
 
-loo_dat2_mod1<-loo(mods2[[1]])
-loo_dat2_mod2<-loo(mods2[[2]])
+loo_dat2_mod1<-loo::loo(mods2[[1]])
+loo_dat2_mod2<-loo::loo(mods2[[2]])
 
-loo_compare(loo_dat1_mod1, loo_dat1_mod2)
-loo_compare(loo_dat2_mod1, loo_dat2_mod2)
+loo::loo_compare(loo_dat1_mod1, loo_dat1_mod2)
+loo::loo_compare(loo_dat2_mod1, loo_dat2_mod2)
 
 
 ```
 
 or plot them 
 ```{r plot exp decay models}
+
 plot1 <- shedding_plot_exp_models(shed_dat1, mods1[[1]], mods1[[2]], label_name = "Simulation1")
 plot2 <- shedding_plot_exp_models(shed_dat2, mods2[[1]], mods2[[2]], label_name = "Simulation2")
 

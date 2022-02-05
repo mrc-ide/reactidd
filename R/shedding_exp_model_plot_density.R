@@ -13,7 +13,7 @@
 #'
 
 
-shedding_exp_model_plot_density <- function(mod,label_name, ylims = c(0,1), xlims=c(0,40)){
+shedding_exp_model_plot_density <- function(mod,label_name, ylims = c(0.5,1), xlims=c(0,30)){
 
   ff <- rstan::extract(mod)
   dfplot <- data.frame(sens=ff$sens,
@@ -29,5 +29,5 @@ shedding_exp_model_plot_density <- function(mod,label_name, ylims = c(0,1), xlim
     ggplot2::coord_cartesian(xlim=xlims,ylim=ylims)+
     ggplot2::ggtitle(label_name)
 
-  print(plot1)
+  return(plot1)
 }
