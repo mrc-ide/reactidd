@@ -12,7 +12,7 @@
 #' @param link_function sets the link function used for the model (logit for REACT-1, log for phe case data)
 #' @param n shape parameter of the gamma distribution used for the generation time
 #' @param b rate parameter of the gamma distribution used for the generation time
-#' @return A list of the created plot, the raw data and CI's used in the plot, the raw data for the model fit in the plot.
+#' @return A list of the created plot of R over time and posterior estimates of R_t used in the plots.
 #'
 plot_p_spline_R <- function(X, p_spline_fit, target_dist_between_knots = 5, spline_degree = 3, ylim=2.0,
                             link_function="logit",n=2.29, b=0.36, tau_max=14){

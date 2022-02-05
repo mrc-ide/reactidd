@@ -14,14 +14,14 @@ library(reactidd)
 ```
 
 # Loading the Data
-First we will load the example REACT data available using reactidd::load_example_data() 
+First we will load the REACT data available using reactidd::load_example_data() 
 
 ```{r loading the react data}
 pos <- load_example_data()[[1]]
 tot <- load_example_data()[[2]]
 ```
 
-In order to subset the data we define the dates of each round of the study
+In order to subset the data we define the dates of each of the first 7 rounds of the study
 ```{r setting the minimum and maximum dates}
 min_date_r1 <- as.Date("2020-05-01")
 min_date_r2 <- as.Date("2020-06-19")
@@ -187,7 +187,7 @@ print(subsequent_round_plots[[1]])
 ```
 
 # Fitting the Bayesian P-Spline Model to the data
-We can then fit the Bayesian P-spline model to all of the REACT data for the first 7 rounds of the study
+We can then fit the Bayesian P-spline model to all of the REACT data for the first 7 rounds of the study (iterations and warmup will need to be bigger for accurate estimates)
 
 ```{r Fitting the p-spline model, results='hide'}
 p_spline_mod_react <- stan_p_spline(pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
@@ -195,14 +195,14 @@ p_spline_mod_react <- stan_p_spline(pos[pos$X>=min_date_r1 & pos$X<= max_date_r7
                                    tot[tot$X>=min_date_r1 & tot$X<= max_date_r7,]$England,
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   iter = 2000,
+                                   iter = 5000,
                                    warmup = 500,
                                    cores = 1)
 
 
 ```
 
-The p-spline model can then be plotted with estimated 95%CI and 50%CI
+The p-spline model can then be plotted with estimated 95%CI and 50%CI (the raw data used to produced the plots are avialble by using [[2]] and [[3]] instead of [[1]])
 ```{r Plotting the p-spline model}
 p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
                                    pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$England,
@@ -225,10 +225,11 @@ p_spline_min_date <- plot_p_spline_minimum_density(X = pos[pos$X>=min_date_r1 & 
                                     target_dist_between_knots = 5,
                                     spline_degree = 3)
 
-print(p_spline_min_date[[1]]+ggplot2::coord_cartesian(xlim=c(as.Date("2020-07-01"),as.Date("2020-08-30"))))
+print(p_spline_min_date[[1]])
 
 
 ```
+We can then calculate and plot the instanteous growth rate over the study period
 
 ```{r Instantaneous growth rate calculation}
 p_spline_igr <- plot_p_spline_igr(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
@@ -241,7 +242,7 @@ print(p_spline_igr[[1]])
 
 
 ```
-
+and also the rolling two week average Reproduction number
 ```{r Reproduction number calculation}
 p_spline_Rt <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
                                    p_spline_fit = p_spline_mod_react, 
@@ -252,8 +253,9 @@ print(p_spline_Rt[[1]])
 
 
 ```
+From the Bayeisan P-spline posterior we can also calculate the average growth rate over periods of time covering individual and subsequent rounds.
 
-```{r Reproduction number calculation}
+```{r average Reproduction number calculation}
 R_estimate_pspline_round1 <- estimate_p_spline_average_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
                                    p_spline_fit = p_spline_mod_react, 
                                     target_dist_between_knots = 5,

@@ -5,14 +5,12 @@
 #'
 #' @export
 #' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
 #' @param p_splinefit fit of the model to the same set of data using reactidd::stan_p_spline()
 #' @param target_dist_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
 #' @param ylim sets the ylimit of the plot
 #' @param link_function the link function used in the original fit (logit for REACT-1, log for PHE case numbers)
-#' @return A list of the created plot, the raw data and CI's used in the plot, the raw data for the model fit in the plot.
+#' @return A list of the created plot for instantaneous growth rate and the posterior estimates for growth rate used in the plot.
 #'
 plot_p_spline_igr <- function(X, p_spline_fit, target_dist_between_knots = 5, spline_degree = 3, ylim=1.0, link_function="logit"){
 

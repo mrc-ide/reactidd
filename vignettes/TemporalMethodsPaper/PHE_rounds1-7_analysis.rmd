@@ -71,7 +71,7 @@ p_spline_min_date <- plot_p_spline_minimum_density(X = phe[phe$date>=min_date_r1
 
 print(p_spline_min_date[[1]])
 ```
-
+We can also calculate and plot the instanteous growth rate over the study period
 ```{r growth rate from P-Spline model}
 
 p_spline_igr <- plot_p_spline_igr(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
@@ -83,7 +83,7 @@ p_spline_igr <- plot_p_spline_igr(X = phe[phe$date>=min_date_r1 & phe$date<= max
 
 print(p_spline_igr[[1]])
 ```
-
+and also the rolling two week average Reproduction number
 ```{r Reproduction number from P-Spline model}
 
 p_spline_Rt <- plot_p_spline_R(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,

@@ -5,13 +5,16 @@
 #'
 #' @export
 #' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
 #' @param p_splinefit fit of the model to the same set of data using reactidd::stan_p_spline()
 #' @param target_dist_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
-#' @param ylim sets the ylimit of the plot
-#' @return A list of the created plot, the raw data and CI's used in the plot, the raw data for the model fit in the plot.
+#' @param link_function sets the link function used for the model (logit for REACT-1, log for phe case data)
+#' @param n_mean shape parameter of the gamma distribution used for the generation time
+#' @param b_mean  rate parameter of the gamma distribution used for the generation time
+#' @param min_date_num the minimum date for the period over which average growth rate should be calculated.
+#' @param max_date_num the maximum date for the period over which average growth rate should be calculated.
+#' @param label informative label to label the estimates produced
+#' @return A single row of a dataframe that includes estimates of growth rate, R and doubling/halving times with 95% credible intervals
 #'
 estimate_p_spline_average_R <- function(X, p_spline_fit, target_dist_between_knots = 5, spline_degree = 3, link_function="logit",
                                         min_date_num, max_date_num, n_mean =2.29, b_mean =0.36 ,label="Estimate"){
