@@ -31,12 +31,23 @@ dat2 <- shedding_prepare_data_for_binary_model(shed_dat2)
 We will now fit two models to each data set 1) the exponential decay model of positivity 2) the exponential decay model of positivity with a time delay.
 
 ```{r fit exp decay models}
+mods1 <- stan_both_shedding_exp_models(dat1, iter=2000, warmup = 500)
+mods2 <- stan_both_shedding_exp_models(dat2, iter=2000, warmup = 500)
 
 ```
 
 We can compare models using the ELPD
 
-```{r fit exp decay models}
+```{r compare exp decay models}
+loo_dat1_mod1<-loo(mods1[[1]])
+loo_dat1_mod2<-loo(mods1[[2]])
+
+loo_dat2_mod1<-loo(mods2[[1]])
+loo_dat2_mod2<-loo(mods2[[2]])
+
+loo_compare(loo_dat1_mod1, loo_dat1_mod2)
+loo_compare(loo_dat2_mod1, loo_dat2_mod2)
+
 
 ```
 
