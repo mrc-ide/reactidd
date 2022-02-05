@@ -1,0 +1,96 @@
+---
+title: "Fitting models to PHE pillar 1&2 data for the period of REACT-1 rounds 1-7"
+author: "Oliver Eales"
+date: "4 February, 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load reactidd}
+library(reactidd)
+```
+
+# Loading the Data
+First we will load the example REACT data available using reactidd::load_example_data() 
+
+```{r loading the react data}
+phe <- load_example_phe_data()
+
+```
+
+In order to subset the data we define the dates  of the study
+```{r setting the minimum and maximum dates}
+min_date_r1 <- as.Date("2020-05-01")
+max_date_r7 <- as.Date("2020-12-03")
+```
+
+
+
+# Fitting the Bayesian P-spline model
+We fit the bayesian p-spline model to all the data corresponding to the period of time of the first 4 rounds of the REACT study 
+
+```{r Fit the P-Spline model, echo=TRUE, results='hide'}
+p_spline_mod_phe <- stan_p_spline_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   Y= phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$n_cases,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 500,
+                                   cores = 1,
+                                   chains = 1)
+
+
+```
+
+We can then plot the model fit with 95%CI and 50%CI
+```{r Plotting the p-spline model}
+
+p_spline_plot <- plot_p_spline_phe(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   Y= phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$n_cases,
+                                   p_spline_fit = p_spline_mod_phe, 
+                                    target_dist_between_knots = 5,
+                                  spline_degree = 3,
+                                   ylim = 30000.0)
+
+
+print(p_spline_plot[[1]])
+
+
+```
+
+From the p-spline model we can estimate the date of minimum prevalence and plot the posterior distribution
+
+```{r Date of minimum from P-Spline model}
+p_spline_min_date <- plot_p_spline_minimum_density(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   p_spline_fit = p_spline_mod_phe, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3)
+
+print(p_spline_min_date[[1]])
+```
+We can also calculate and plot the instanteous growth rate over the study period
+```{r growth rate from P-Spline model}
+
+p_spline_igr <- plot_p_spline_igr(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   p_spline_fit = p_spline_mod_phe, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                  ylim = 0.1,
+                                  link_function = "log")
+
+print(p_spline_igr[[1]])
+```
+and also the rolling two week average Reproduction number
+```{r Reproduction number from P-Spline model}
+
+p_spline_Rt <- plot_p_spline_R(X = phe[phe$date>=min_date_r1 & phe$date<= max_date_r7,]$date,
+                                   p_spline_fit = p_spline_mod_phe, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                               link_function = "log")
+
+print(p_spline_Rt[[1]])
+```
