@@ -39,6 +39,7 @@ mods2 <- stan_both_shedding_exp_models(dat2, iter=2000, warmup = 500)
 We can compare models using the ELPD
 
 ```{r compare exp decay models}
+library(loo)
 loo_dat1_mod1<-loo(mods1[[1]])
 loo_dat1_mod2<-loo(mods1[[2]])
 
@@ -49,6 +50,15 @@ loo_compare(loo_dat1_mod1, loo_dat1_mod2)
 loo_compare(loo_dat2_mod1, loo_dat2_mod2)
 
 
+```
+
+or plot them 
+```{r plot exp decay models}
+plot1 <- shedding_plot_exp_models(shed_dat1, mods1[[1]], mods1[[2]], label_name = "Simulation1")
+plot2 <- shedding_plot_exp_models(shed_dat2, mods2[[1]], mods2[[2]], label_name = "Simulation2")
+
+print(plot1)
+print(plot2)
 ```
 
 
