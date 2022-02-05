@@ -27,6 +27,7 @@ Imports:
     ggplot2,
     prevalence,
     maditr,
+    loo,
 LinkingTo: 
     BH (>= 1.66.0),
     Rcpp (>= 0.12.0),

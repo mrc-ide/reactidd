@@ -61,7 +61,33 @@ print(plot1)
 print(plot2)
 ```
 
+We can extract the parameter values and credible intervals as well
+```{r get parameter values from exp models}
+row1 <- shedding_get_params(mods1[[1]], label="Data 1 Model 1")
+row2 <- shedding_get_params(mods1[[2]], label="Data 1 Model 2")
+row3 <- shedding_get_params(mods2[[1]], label="Data 2 Model 1")
+row4 <- shedding_get_params(mods2[[2]], label="Data 2 Model 2")
 
+tab <- rbind(row1, row2, row3, row4)
+print(tab)
+
+```
+
+Or plot a 2d density map of the posterior
+
+```{r plot 2d density maps}
+
+plot1 <-shedding_exp_model_plot_density(mods1[[1]], label_name = "Data 1 Model 1")
+plot2 <-shedding_exp_model_plot_density(mods1[[2]], label_name = "Data 1 Model 2")
+plot3 <-shedding_exp_model_plot_density(mods2[[1]], label_name = "Data 2 Model 1")
+plot4 <-shedding_exp_model_plot_density(mods2[[2]], label_name = "Data 2 Model 2")
+
+print(plot1)
+print(plot2)
+print(plot3)
+print(plot4)
+
+```
 
 ## Caclulating Incidence and Swab-positivity over time
 Now we will load the weighted REACT data available using reactidd::load_example_data_weighted() 
