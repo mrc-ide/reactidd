@@ -24,7 +24,8 @@ shedding_simulate_data <- function(N_3tests=662, N_2tests=212,min_T=6, max_T=17,
     t2 <- round(runif(1,min_T+dif, max_T))
     # True positive at those days?
     p1 <- rbinom(1, 1, min(exp(-k*(t1-tau)), 1) )
-    p2 <- p1 * rbinom(1, 1, min(exp(-k*(t2-t1)), 1) )
+    p2gp1 <- min(exp(-k*(t2-tau)), 1)/min(exp(-k*(t1-tau)), 1)
+    p2 <- p1 * rbinom(1, 1, p2gp1 )
     # Test positive at those days?
     e1 <- rbinom(1, 1, p1*sens)
     e2 <- rbinom(1, 1, p2*sens)
