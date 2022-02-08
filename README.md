@@ -16,6 +16,8 @@ The vignette `TemporalAnalysisREACT.rmd` demonstrates how the REACT data can be 
 
 ### [Resurgence of SARS-CoV-2: Detection by Community Viral Surveillance](http://dx.doi.org/10.1126/science.abf0874)
 
+The two vignettes `TemporalAnalysisREACT.rmd` and `TemporalAnalysisPHE.rmd` demonstrate the temporal analysis used in this publication
+
 The spatial analyses is contained in the directory `inst/spatial`. Each of the R scripts there can be run in sequence to regenerate spatial output for rounds 1 to 4, using the geospatial modelling framework.
 
 This code was tested with R version 3.6.3 on Ubuntu 18.04 LTS.
@@ -37,4 +39,12 @@ The `R` folder contains the `functions.R` file that has a set of costum function
 
 ### [REACT-1 round 13 final report: exponential growth, high prevalence of SARS-CoV-2 and vaccine effectiveness associated with Delta variant in England during May to July 2021](https://doi.org/10.1101/2021.09.02.21262979)
 
-TBC
+The vignette `TemporalAnalysisREACT_rounds12and13.rmd` demonstrates the temporal analysis used in this publication
+
+### [Characterising the persistence of RT-PCR positivity and incidence in a community survey of SARS-CoV-2 (preprint)](https://doi.org/10.1101/2021.08.12.21261987)
+
+The vignette `EstimatingDurationOfSwabPositivity.rmd` in the vignette subfolder `PCR_Positivity_Paper` containts the code used in the analysis for this preprint. The analysis perfomed on the data for repeat tests is demonstrated on simulated data as the indiviudal level data could not be shared due to ethical/security considerations.
+
+### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (preprint)](https://doi.org/10.1101/2022.02.04.22270426)
+
+The vignettes `REACT_rounds1-7_analysis.rmd` and `PHE_rounds1-7_analysis.rmd` in the vigentte subfolder `TemporalMethodsPaper` demonstrate the temporal analysis used in this preprint.
