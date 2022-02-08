@@ -7,14 +7,16 @@
 #' @param X date vector.
 #' @param Y Numeric vector of number of positive samples
 #' @param N Numeric vector of total number of samples
-#' @param p_splinefit fit of the model to the same set of data using reactidd::stan_p_spline()
+#' @param p_spline_fit fit of the model to the same set of data using reactidd::stan_p_spline()
+#' @param prev_plot ggplot object obtained from `reactidd::plot_p_spline_prev()` to add incidence line to
 #' @param target_dist_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
-#' @param ylim sets the ylimit of the plot
+#' @param k value of k used in the incidence model fit (used to work out scaling factor for y-axis)
+#' @param sens value of sens used in the incidence model fit (used to work out scaling factor for y-axis)
 #' @return A list of the created plot, the raw data and CI's used in the plot, the raw data for the model fit in the plot.
 #'
 plot_p_spline_inc <- function(X, Y, N, p_spline_fit, prev_plot, target_dist_between_knots = 5,
-                              spline_degree = 3, ylim=1.0, k=0.07126, sens=0.79){
+                              spline_degree = 3, k=0.07126, sens=0.79){
 
   inv_logit <- function(Num){
     1/(1+exp(-Num))

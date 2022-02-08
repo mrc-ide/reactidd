@@ -8,6 +8,8 @@
 #' @param N Numeric vector of weighted total number of samples
 #' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
+#' @param k set the decay rate of swab-positivity (default = 0.07126)
+#' @param sens sets the sensitivity of the test (P0 for model fit to all data) (default = 0.79)
 #' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
 #' @return An object of class `stanfit` returned by `rstan::sampling`
 #'

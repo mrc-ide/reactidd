@@ -1,18 +1,17 @@
-# Save this file as `R/stan_p_spline.R`
-
-#' Bayesian p-spline model using stan
+#' Simulate shedding data
 #'
 #' @export
-#' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
-#' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
-#' @param spline_degree sets the degree of the splines (default = 3)
-#' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
-#' @return An object of class `stanfit` returned by `rstan::sampling`
+#' @param N_3tests The number of indiviudals with 3 tests to simulate (default = 662).
+#' @param N_2tests The number of indiviudals with 2 tests to simulate (default = 212).
+#' @param min_T minimum date for second test after first date (default = 6)
+#' @param max_T maximum date for second/third test after first date (default = 17)
+#' @param sens the true value of P0 the sensitivity of the test (default = 0.79)
+#' @param k the exponential decay rate of swab-positivity (default = 0.07126)
+#' @param tau time delay before exponential decay (default = 0)
+#' @return A data.frame  objectwith indiviudal level data for N_3tests + N_2tests individuals
 #'
 
-shedding_simulate_data <- function(N_3tests=662, N_2tests=212,min_T=6, max_T=17,sens=0.79, k=0.071, tau=0){
+shedding_simulate_data <- function(N_3tests=662, N_2tests=212,min_T=6, max_T=17,sens=0.79, k=0.07126, tau=0){
 
   df <- data.frame()
   dif <- (max_T - min_T)/2

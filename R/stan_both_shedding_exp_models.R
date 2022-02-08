@@ -1,13 +1,9 @@
 # Save this file as `R/stan_p_spline.R`
 
-#' Bayesian p-spline model using stan
+#' Fit exponetial decay models for shedding data
 #'
 #' @export
-#' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
-#' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
-#' @param spline_degree sets the degree of the splines (default = 3)
+#' @param dat list of input data created by `reactidd::shedding_prepare_data_for_binary_model`
 #' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
 #' @return An object of class `stanfit` returned by `rstan::sampling`
 #'

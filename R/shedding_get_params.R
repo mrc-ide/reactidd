@@ -3,13 +3,9 @@
 #' Bayesian p-spline model using stan
 #'
 #' @export
-#' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
-#' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
-#' @param spline_degree sets the degree of the splines (default = 3)
-#' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
-#' @return An object of class `stanfit` returned by `rstan::sampling`
+#' @param mod  an object of class `rstan::sampling` from exponenital models fit to shedding data
+#' @param label row label for this model
+#' @return A data.frame row with all quantities of interest + 95% credible intervals
 #'
 
 

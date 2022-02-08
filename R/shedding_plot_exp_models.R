@@ -1,15 +1,13 @@
-# Save this file as `R/stan_p_spline.R`
 
-#' Bayesian p-spline model using stan
+#' Plot both shedding exponential models
 #'
 #' @export
-#' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
-#' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
-#' @param spline_degree sets the degree of the splines (default = 3)
-#' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
-#' @return An object of class `stanfit` returned by `rstan::sampling`
+#' @param dat simulated shedding data from `reactidd::shedding_simulate_data`
+#' @param mod1 object of class `rstan::sampling` from exponetial model fit to shedding data
+#' @param mod2 object of class `rstan::sampling` from exponetial model (with time delta) fit to shedding data
+#' @param label_name name to label the figue produced with.
+#' @param tmax maximum time for the xaxis of the plot
+#' @return A plot returned by `ggplot2::ggplot`
 #'
 
 

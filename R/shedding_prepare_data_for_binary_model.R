@@ -1,17 +1,9 @@
-# Save this file as `R/stan_p_spline.R`
-
-#' Bayesian p-spline model using stan
+#' Formatting simulated individual level data to be fed to stan model
 #'
 #' @export
-#' @param X date vector.
-#' @param Y Numeric vector of number of positive samples
-#' @param N Numeric vector of total number of samples
-#' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
-#' @param spline_degree sets the degree of the splines (default = 3)
-#' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
-#' @return An object of class `stanfit` returned by `rstan::sampling`
+#' @param she_dat simulated indiviudal level data obtained from `reactidd::shedding_simultate_data`function.
+#' @return A list of input data that can be given to the function `reactidd::stan_both_shedding_exp_models`
 #'
-
 
 shedding_prepare_data_for_binary_model <- function(shed_dat){
   IDS_missing <- shed_dat[is.na(shed_dat$estbinres_shed2)==TRUE,]$passcode

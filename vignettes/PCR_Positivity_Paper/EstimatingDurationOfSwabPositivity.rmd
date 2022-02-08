@@ -14,7 +14,7 @@ library(reactidd)
 ```
 
 ## Estimating duration of positivity and sensitivity
-First we must simlate some indiviudal level data. We will simulate two datasets one using an exponential decay model and another with a time delay before exponential decay. Default parameters of the function are sensitivity=0.79 and decay rate = 0.071
+First we must simlate some indiviudal level data. We will simulate two datasets one using an exponential decay model and another with a time delay before exponential decay. Default parameters of the function are sensitivity=0.79 and decay rate = 0.07126. The first simulated dataset uses parameters from the model fit to all data. The second simulated dataset uses paramters from the fit to those with N-gene Ct value <= 24.5 (with time delay).
 ```{r simualte individual level shedding data}
 shed_dat1 <- shedding_simulate_data()
 shed_dat2 <- shedding_simulate_data(tau=3.97, sens=0.95, k=0.064)
@@ -28,7 +28,7 @@ dat2 <- shedding_prepare_data_for_binary_model(shed_dat2)
 ```
 
 # Fitting exponential decay models
-We will now fit two models to each data set 1) the exponential decay model of positivity 2) the exponential decay model of positivity with a time delay.
+We will now fit two models to each data set 1) the exponential decay model of positivity 2) the exponential decay model of positivity with a time delay. Note more iterations may be required for reliable fits.
 
 ```{r fit exp decay models}
 mods1 <- stan_both_shedding_exp_models(dat1, iter=2000, warmup = 500, chains=1)
@@ -39,7 +39,6 @@ mods2 <- stan_both_shedding_exp_models(dat2, iter=2000, warmup = 500, chains=1)
 We can compare models using the ELPD
 
 ```{r compare exp decay models}
-library(loo)
 loo_dat1_mod1<-loo::loo(mods1[[1]])
 loo_dat1_mod2<-loo::loo(mods1[[2]])
 
@@ -111,8 +110,8 @@ max_date_r13 <- as.Date("2021-07-12")
 
 
 
-# Fitting the Bayesian P-Spline Model to the data
-We can then fit the Bayesian P-spline model to all of the REACT data for the first 13 rounds of the study
+# Fitting the Bayesian P-Spline Models
+We can then fit the Bayesian P-spline model for incidence to all of the REACT data for the first 13 rounds of the study
 Note that a larger number of iterations is required to get a reliable fit.
 
 ```{r Fitting the p-spline model, results='hide'}
@@ -129,6 +128,7 @@ p_spline_mod_inc <- stan_p_spline_weighted_incidence(pos[pos$X>=min_date_r1 & po
 
 ```
 
+Similarly we can git a Bayesian P-spline model for prevelance to the same data.
 ```{r Fitting the p-spline model, results='hide'}
 p_spline_mod_prev <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
                                    pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
@@ -143,7 +143,7 @@ p_spline_mod_prev <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= max
 
 ```
 
-The p-spline model can then be plotted with estimated 95% and 50% credible intervals
+The p-spline model for prevelance can then be plotted with estimated 95% and 50% credible intervals
 ```{r Plotting the p-spline model}
 p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
                                    pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
@@ -164,6 +164,7 @@ print(p_spline_plot[[1]])
 
 ```
 
+The Bayesian P-spline model of incidence can then be added to the plot
 ```{r Plotting the p-spline model}
 p_spline_inc_plot <- plot_p_spline_inc(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
                                    pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
@@ -171,8 +172,7 @@ p_spline_inc_plot <- plot_p_spline_inc(pos[pos$X>=min_date_r1 & pos$X<= max_date
                                    p_spline_fit = p_spline_mod_inc,
                                    prev_plot = p_spline_plot[[1]],
                                     target_dist_between_knots = 5,
-                                    spline_degree = 3,
-                                   ylim = 0.3)
+                                    spline_degree = 3)
 
 
 
