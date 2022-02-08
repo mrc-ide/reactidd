@@ -1,0 +1,186 @@
+---
+title: "Fitting models to estimate duration of swab-test pcr-positivity"
+author: "Oliver Eales"
+date: "5 February, 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load reactidd}
+library(reactidd)
+```
+
+## Estimating duration of positivity and sensitivity
+First we must simlate some indiviudal level data. We will simulate two datasets one using an exponential decay model and another with a time delay before exponential decay. Default parameters of the function are sensitivity=0.79 and decay rate = 0.07126. The first simulated dataset uses parameters from the model fit to all data. The second simulated dataset uses paramters from the fit to those with N-gene Ct value <= 24.5 (with time delay).
+```{r simualte individual level shedding data}
+shed_dat1 <- shedding_simulate_data()
+shed_dat2 <- shedding_simulate_data(tau=3.97, sens=0.95, k=0.064)
+```
+
+Next we will convert the individual data into a structure that can be input into the stan models
+
+```{r reformat indiviudla level data}
+dat1 <- shedding_prepare_data_for_binary_model(shed_dat1)
+dat2 <- shedding_prepare_data_for_binary_model(shed_dat2)
+```
+
+# Fitting exponential decay models
+We will now fit two models to each data set 1) the exponential decay model of positivity 2) the exponential decay model of positivity with a time delay. Note more iterations may be required for reliable fits.
+
+```{r fit exp decay models}
+mods1 <- stan_both_shedding_exp_models(dat1, iter=2000, warmup = 500, chains=1)
+mods2 <- stan_both_shedding_exp_models(dat2, iter=2000, warmup = 500, chains=1)
+
+```
+
+We can compare models using the ELPD
+
+```{r compare exp decay models}
+loo_dat1_mod1<-loo::loo(mods1[[1]])
+loo_dat1_mod2<-loo::loo(mods1[[2]])
+
+loo_dat2_mod1<-loo::loo(mods2[[1]])
+loo_dat2_mod2<-loo::loo(mods2[[2]])
+
+loo::loo_compare(loo_dat1_mod1, loo_dat1_mod2)
+loo::loo_compare(loo_dat2_mod1, loo_dat2_mod2)
+
+
+```
+
+or plot them 
+```{r plot exp decay models}
+
+plot1 <- shedding_plot_exp_models(shed_dat1, mods1[[1]], mods1[[2]], label_name = "Simulation1")
+plot2 <- shedding_plot_exp_models(shed_dat2, mods2[[1]], mods2[[2]], label_name = "Simulation2")
+
+print(plot1)
+print(plot2)
+```
+
+We can extract the parameter values and credible intervals as well
+```{r get parameter values from exp models}
+row1 <- shedding_get_params(mods1[[1]], label="Data 1 Model 1")
+row2 <- shedding_get_params(mods1[[2]], label="Data 1 Model 2")
+row3 <- shedding_get_params(mods2[[1]], label="Data 2 Model 1")
+row4 <- shedding_get_params(mods2[[2]], label="Data 2 Model 2")
+
+tab <- rbind(row1, row2, row3, row4)
+print(tab)
+
+```
+
+Or plot a 2d density map of the posterior
+
+```{r plot 2d density maps}
+
+plot1 <-shedding_exp_model_plot_density(mods1[[1]], label_name = "Data 1 Model 1")
+plot2 <-shedding_exp_model_plot_density(mods1[[2]], label_name = "Data 1 Model 2")
+plot3 <-shedding_exp_model_plot_density(mods2[[1]], label_name = "Data 2 Model 1")
+plot4 <-shedding_exp_model_plot_density(mods2[[2]], label_name = "Data 2 Model 2")
+
+print(plot1)
+print(plot2)
+print(plot3)
+print(plot4)
+
+```
+
+## Caclulating Incidence and Swab-positivity over time
+Now we will load the weighted REACT data available using reactidd::load_example_data_weighted() 
+Datasets have the weighted number of positives by english region and for England as a whole (pos below)
+and the weighted number of total tests by english region and for England as a whole (tot)
+
+```{r loading the react data}
+pos <- load_example_data_weighted()[[1]]
+tot <- load_example_data_weighted()[[2]]
+```
+
+In order to subset the data we define the dates of each round of the study
+```{r setting the minimum and maximum dates}
+min_date_r1 <- as.Date("2020-05-01")
+min_date_r13 <- as.Date("2021-06-24")
+
+max_date_r1 <- as.Date("2020-06-01")
+max_date_r13 <- as.Date("2021-07-12")
+```
+
+
+
+# Fitting the Bayesian P-Spline Models
+We can then fit the Bayesian P-spline model for incidence to all of the REACT data for the first 13 rounds of the study
+Note that a larger number of iterations is required to get a reliable fit.
+
+```{r Fitting the p-spline model, results='hide'}
+p_spline_mod_inc <- stan_p_spline_weighted_incidence(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 500,
+                                   cores = 1,
+                                   chains=1)
+
+
+```
+
+Similarly we can git a Bayesian P-spline model for prevelance to the same data.
+```{r Fitting the p-spline model, results='hide'}
+p_spline_mod_prev <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 500,
+                                   cores = 1,
+                                   chain = 1)
+
+
+```
+
+The p-spline model for prevelance can then be plotted with estimated 95% and 50% credible intervals
+```{r Plotting the p-spline model}
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   p_spline_fit = p_spline_mod_prev, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 3.0)
+
+print(p_spline_plot[[1]])
+
+p_spline_plot[[1]] <- p_spline_plot[[1]]+
+  ggplot2::coord_cartesian(xlim=c(min_date_r1, max_date_r13), ylim = c(0.01,3))+
+  ggplot2::scale_y_log10()
+
+print(p_spline_plot[[1]])
+
+
+```
+
+The Bayesian P-spline model of incidence can then be added to the plot
+```{r Plotting the p-spline model}
+p_spline_inc_plot <- plot_p_spline_inc(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   p_spline_fit = p_spline_mod_inc,
+                                   prev_plot = p_spline_plot[[1]],
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3)
+
+
+
+
+print(p_spline_inc_plot[[1]])
+
+
+```
+
+
+
