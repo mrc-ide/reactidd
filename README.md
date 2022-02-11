@@ -43,7 +43,7 @@ The vignette `TemporalAnalysisREACT_rounds12and13.rmd` demonstrates the temporal
 
 ### [Characterising the persistence of RT-PCR positivity and incidence in a community survey of SARS-CoV-2 (preprint)](https://doi.org/10.1101/2021.08.12.21261987)
 
-The vignette `EstimatingDurationOfSwabPositivity.rmd` in the vignette subfolder `PCR_Positivity_Paper` containts the code used in the analysis for this preprint. The analysis perfomed on the data for repeat tests is demonstrated on simulated data as the indiviudal level data could not be shared due to ethical/security considerations.
+The vignette `EstimatingDurationOfSwabPositivity.rmd` in the vignette subfolder `PCR_Positivity_Paper` contains the code used in the analysis for this preprint. The analysis perfomed on the data for repeat tests is demonstrated on simulated data as the indiviudal level data could not be shared due to ethical/security considerations. Also in the vignette subfolder named `PCR_Positivity_Paper` is the extended data to support the submission of the paper to Wellcome Open. The files included are 1) `COG_UK authorship.xlsx`, which contains the author deatils for the Covid-19 Genomics UK (COG-UK) consortium 2) `SupplementaryFigure1.pdf` which contains supplementary figure 1 3) `SupplementaryTable1.xlsx` which contains supplementary table 1 and 4) `Extended data descriptions.docx` which contains the legends for each supplementary materials.
 
 ### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (preprint)](https://doi.org/10.1101/2022.02.04.22270426)
 
