@@ -101,7 +101,7 @@ p_spline_Rt <- plot_p_spline_R_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<
                                    n2=0.89, b2=0.27,
                                    tau_max = 14,
                                    labs =c("Delta","Omicron"),
-                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"),
+                                   colors1 = RColorBrewer::brewer.pal(2, "Set1"),
                                    mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
                                    mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
 
