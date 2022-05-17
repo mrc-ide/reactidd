@@ -14,12 +14,13 @@ library(reactidd)
 ```
 
 # Loading the Data
-First we will load the REACT data available using reactidd::load_example_data() 
+First we will load the REACT data
 
 ```{r loading the react data}
 pos <- load_example_data_weighted()[[1]]
 tot <- load_example_data_weighted()[[2]]
 
+# Reading in the variant data and creating a combined Omicron variable
 lins <- read.csv(system.file("extdata", "variants.csv", package = "reactidd"))
 lins$Omicron <- lins$BA.1 + lins$BA.1.1 + lins$BA.2
 lins$X <- as.Date(lins$X)
@@ -36,37 +37,70 @@ max_date_r18 <- as.Date("2022-03-03")
 
 
 # Fitting the Bayesian P-Spline Model to the data
-We can then fit the Bayesian P-spline model to all of the REACT data for the first 7 rounds of the study (iterations and warmup will need to be bigger for accurate estimates)
+We can then fit the Bayesian P-spline model to all of the REACT data for rounds 14 to 18 of the study with variants divided into Omicron and Delta (iterations and warmup will need to be bigger for accurate estimates). All of this code could also be used to fit BA.2 vs BA.1/BA.1.1 for round 17 and 18 only as was also done in the paper.
 
 ```{r Fitting the p-spline model, results='hide'}
 
 p_spline_mod_react <- stan_p_spline_weighted_two_variants(pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
                                    pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$England,
                                    tot[tot$X>=min_date_r14 & tot$X<= max_date_r18,]$England,
-                                   lins[c("X","Delta","Omicron"),],
+                                   lins[c("X","Delta","Omicron")],
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   iter = 5000,
+                                   iter = 2000,
                                    warmup = 500,
                                    cores = 1)
 
 
 ```
 
-The p-spline model can then be plotted with estimated 95%CI and 50%CI (the raw data used to produced the plots are avialble by using [[2]] and [[3]] instead of [[1]])
+The p-spline model can then be plotted with estimated 95%CI  for prevalence and proportion Omicron (all the raw data used to produced the plots are also avialble by using [[3]] to [[7]])
 ```{r Plotting the p-spline model}
-p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
-                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$England,
-                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r7,]$England,
+p_spline_plot <- plot_p_spline_prev_two_variants(pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$England,
+                                   tot[tot$X>=min_date_r14 & tot$X<= max_date_r18,]$England,
+                                   lins[c("X","Delta","Omicron")],
                                    p_spline_fit = p_spline_mod_react, 
-                                    target_dist_between_knots = 5,
-                                    spline_degree = 3,
-                                   ylim = 2.0)
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   ylim = 10.0,
+                                   labs =c("Delta","Omicron"),
+                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"))
 
 print(p_spline_plot[[1]])
+print(p_spline_plot[[2]])
+
+```
+
+
+We can then calculate and plot the instanteous growth rate over the study period
+
+```{r Instantaneous growth rate calculation}
+p_spline_igr <- plot_p_spline_igr_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   ylim = 0.4,
+                                   labs =c("Delta","Omicron"),
+                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"))
+
+print(p_spline_igr[[1]])
 
 
 ```
+and also the rolling two week average Reproduction number
+```{r Reproduction number calculation}
+p_spline_Rt <- plot_p_spline_R_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3)
+
+print(p_spline_Rt[[1]])
+
+
+```
+
+
 
 From the p-spline model we can estimate the date of minimum prevalence and plot the posterior probability density
 
@@ -78,34 +112,5 @@ p_spline_min_date <- plot_p_spline_minimum_density(X = pos[pos$X>=min_date_r1 & 
 
 print(p_spline_min_date[[1]])
 
-
-```
-We can then calculate and plot the instanteous growth rate over the study period
-
-```{r Instantaneous growth rate calculation}
-p_spline_igr <- plot_p_spline_igr(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
-                                   p_spline_fit = p_spline_mod_react, 
-                                    target_dist_between_knots = 5,
-                                    spline_degree = 3,
-                                  ylim = 0.2)
-
-print(p_spline_igr[[1]])
-
-
-```
-and also the rolling two week average Reproduction number
-```{r Reproduction number calculation}
-p_spline_Rt <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
-                                   p_spline_fit = p_spline_mod_react, 
-                                    target_dist_between_knots = 5,
-                                    spline_degree = 3)
-
-print(p_spline_Rt[[1]])
-
-
-```
-From the Bayeisan P-spline posterior we can also calculate the average growth rate over periods of time covering individual and subsequent rounds.
-
-```{r average Reproduction number calculation}
 
 ```
