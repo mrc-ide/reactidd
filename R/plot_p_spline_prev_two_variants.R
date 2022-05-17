@@ -117,6 +117,7 @@ plot_p_spline_prev_two_variants <- function(X, Y, N, V, p_spline_fit, target_dis
 
 
   plot1 <- ggplot2::ggplot()+
+    ggplot2::coord_cartesian(ylim=c(0.,ylim), xlim=c(min_date, max_date))+
     ggplot2::geom_point(data = df_plot, ggplot2::aes(x=d_comb,y=p*100))+
     ggplot2::geom_errorbar(data = df_plot, ggplot2::aes(x=d_comb,y=p*100, ymin=lb*100,ymax=ub*100),width=0)+
     ggplot2::geom_line(data=df_plot_modelT, ggplot2::aes(x = d_comb, y=p*100, ymin=lb_2.5*100, ymax=ub_97.5*100,col='black'))+
@@ -125,7 +126,6 @@ plot_p_spline_prev_two_variants <- function(X, Y, N, V, p_spline_fit, target_dis
     ggplot2::geom_ribbon(data=df_plot_model1, ggplot2::aes(x = d_comb, y=p*100, ymin=lb_2.5*100, ymax=ub_97.5*100, fill='red'),alpha=0.3)+
     ggplot2::geom_line(data=df_plot_model2, ggplot2::aes(x = d_comb, y=p*100, ymin=lb_2.5*100, ymax=ub_97.5*100, col='blue'))+
     ggplot2::geom_ribbon(data=df_plot_model2, ggplot2::aes(x = d_comb, y=p*100, ymin=lb_2.5*100, ymax=ub_97.5*100, fill='blue'),alpha=0.3)+
-    ggplot2::coord_cartesian(ylim=c(0.1,ylim), xlim=c(min_date, max_date))+
     ggplot2::theme_bw(base_size = 10)+
     ggplot2::xlab("Date (2021-2022)")+
     ggplot2::ylab("Prevalence (%)")+
@@ -136,7 +136,6 @@ plot_p_spline_prev_two_variants <- function(X, Y, N, V, p_spline_fit, target_dis
                       name= "Variant",
                       labels=c("Total",labs))+
     ggplot2::scale_x_date(date_breaks = "1 month", date_labels = "%b\n%Y")+
-    ggplot2::scale_y_log10()+
     ggplot2::theme(legend.position = "bottom")
 
 
@@ -150,7 +149,7 @@ plot_p_spline_prev_two_variants <- function(X, Y, N, V, p_spline_fit, target_dis
     ggplot2::coord_cartesian(ylim=c(0,1), xlim=c(min_date, max_date))+
     ggplot2::theme_bw(base_size = 10)+
     ggplot2::xlab("Day of swab")+
-    ggplot2::ylab(paste("Proportion ",labs[2]))+
+    ggplot2::ylab(paste("Proportion ",labs[1]))+
     ggplot2::scale_x_date(date_breaks = "1 month", date_labels = "%b\n%Y")
 
   #df_plot_model<-df_plot_model[df_plot_model$d_comb>=min_date & df_plot_model$d_comb<=max_date,]

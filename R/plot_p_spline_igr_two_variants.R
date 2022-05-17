@@ -15,7 +15,9 @@
 #' @return A list of the created plot for instantaneous growth rate and the posterior estimates for growth rate used in the plot.
 #'
 plot_p_spline_igr_two_variants <- function(X, p_spline_fit, target_dist_between_knots = 5, spline_degree = 3, ylim=1.0, link_function="logit",
-                                           labs = c("Delta","Omicron"), colors1=c("black","blue","red")){
+                                           labs = c("Delta","Omicron"), colors1=c("black","blue","red"),
+                                           mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
+                                           mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03")){
 
   inv_logit <- function(Num){
     1/(1+exp(-Num))
@@ -29,7 +31,7 @@ plot_p_spline_igr_two_variants <- function(X, p_spline_fit, target_dist_between_
 
   min_date_numeric <- min(X)
   max_date_numeric <- max(X)
-  num_knots <- ceiling((max_date_numeric- min_date_numeric)/days_per_knot)+7
+  num_knots <- ceiling((max_date_numeric- min_date_numeric)/target_dist_between_knots)+7
   days_per_knot <- (max_date_numeric - min_date_numeric)/(num_knots -7)
   num_basis <- num_knots + spline_degree - 1
   num_data <- length(X)
@@ -125,9 +127,17 @@ plot_p_spline_igr_two_variants <- function(X, p_spline_fit, target_dist_between_
   df_plot_model_r2$d_comb <- as.Date(df_plot_model_r2$x-18383, origin=as.Date("2020-05-01"))
   df_plot_model_rC$d_comb <- as.Date(df_plot_model_rC$x-18383, origin=as.Date("2020-05-01"))
 
+  min_omi_date <- as.Date("2021-12-03")
+  max_delta_date <- as.Date("2022-02-14")
 
   max_date<-max(df_plot_model_r1$d_comb)
   min_date<-min(df_plot_model_r1$d_comb)
+
+  df_plot_model_r1 <- df_plot_model_r1[df_plot_model_r1$d_comb>=mindateVar1 &df_plot_model_r1$d_comb<=maxdateVar1,]
+  df_plot_model_r2 <- df_plot_model_r2[df_plot_model_r2$d_comb>=mindateVar2 &df_plot_model_r2$d_comb<=maxdateVar2,]
+  df_plot_model_rC <- df_plot_model_rC[df_plot_model_rC$d_comb>=mindateVar2 &df_plot_model_rC$d_comb<=maxdateVar1,]
+
+
 
 
   plot1 <- ggplot2::ggplot()+
@@ -137,7 +147,7 @@ plot_p_spline_igr_two_variants <- function(X, p_spline_fit, target_dist_between_
     ggplot2::geom_ribbon(data=df_plot_model_r1, ggplot2::aes(x = d_comb, y=r , ymin=lb_2.5 , ymax=ub_97.5 , fill='blue'),alpha=0.3)+
     ggplot2::geom_line(data=df_plot_model_r2, ggplot2::aes(x = d_comb, y=r , ymin=lb_2.5 , ymax=ub_97.5 , col='red'))+
     ggplot2::geom_ribbon(data=df_plot_model_r2, ggplot2::aes(x = d_comb, y=r , ymin=lb_2.5 , ymax=ub_97.5 , fill='red'),alpha=0.3)+
-    ggplot2::coord_cartesian(ylim=c(-0.5,0.5), xlim=c(min_date, max_date))+
+    ggplot2::coord_cartesian(ylim=c(-ylim,ylim), xlim=c(min_date, max_date))+
     ggplot2::theme_bw(base_size = 10)+
     ggplot2::xlab("Date (2021-2022)")+
     ggplot2::ylab("Growth rate (1/day)")+

@@ -63,8 +63,8 @@ p_spline_plot <- plot_p_spline_prev_two_variants(pos[pos$X>=min_date_r14 & pos$X
                                    p_spline_fit = p_spline_mod_react, 
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   ylim = 10.0,
-                                   labs =c("Delta","Omicron"),
+                                   ylim = 15.0,
+                                   labs =c("Omicron","Delta"),
                                    colors1 = RColorBrewer::brewer.pal(3, "Dark2"))
 
 print(p_spline_plot[[1]])
@@ -80,9 +80,11 @@ p_spline_igr <- plot_p_spline_igr_two_variants(X = pos[pos$X>=min_date_r14 & pos
                                    p_spline_fit = p_spline_mod_react, 
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   ylim = 0.4,
+                                   ylim = 0.5,
                                    labs =c("Delta","Omicron"),
-                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"))
+                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"),
+                                   mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
+                                   mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
 
 print(p_spline_igr[[1]])
 
@@ -92,8 +94,16 @@ and also the rolling two week average Reproduction number
 ```{r Reproduction number calculation}
 p_spline_Rt <- plot_p_spline_R_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
                                    p_spline_fit = p_spline_mod_react, 
-                                    target_dist_between_knots = 5,
-                                    spline_degree = 3)
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   ylim = 0.5,
+                                   n1=2.20, b1=0.48,
+                                   n2=0.89, b2=0.27,
+                                   tau_max = 14,
+                                   labs =c("Delta","Omicron"),
+                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"),
+                                   mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
+                                   mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
 
 print(p_spline_Rt[[1]])
 
