@@ -48,3 +48,8 @@ The vignette `EstimatingDurationOfSwabPositivity.rmd` in the vignette subfolder 
 ### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (preprint)](https://doi.org/10.1101/2022.02.04.22270426)
 
 The vignettes `REACT_rounds1-7_analysis.rmd` and `PHE_rounds1-7_analysis.rmd` in the vigentte subfolder `TemporalMethodsPaper` demonstrate the temporal analysis used in this preprint.
+
+
+### [The new normal? Dynamics and scale of the SARS-CoV-2 variant Omicron epidemic in England (preprint)](https://www.medrxiv.org/content/10.1101/2022.03.29.22273042v1)
+
+The vignette `REACT_rounds14-18_omicron_analysis.rmd` in the vigentte subfolder `TemporalOmicronPaper` demonstrate the temporal analysis used in this preprint. The code allows the analysis of two competing variants when overall prevalence is known and the daily proportion of both competing variants is known.
