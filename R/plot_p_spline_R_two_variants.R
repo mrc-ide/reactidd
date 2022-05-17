@@ -131,20 +131,20 @@ plot_p_spline_R_two_variants <- function(X, p_spline_fit, target_dist_between_kn
   max_date<-max(nat_plot_1$d_comb)
   min_date<-min(nat_plot_1$d_comb)
 
-  nat_plot_2<-nat_plot_2[nat_plot_2$d_comb>=mindateVar1+tau_max & nat_plot_2$d_comb<=maxdateVar2,]
-  nat_plot_2[is.na(nat_plot_2$r)==TRUE,]$prob <- NA
+  nat_plot_2<-nat_plot_2[nat_plot_2$d_comb>=mindateVar2+tau_max & nat_plot_2$d_comb<=maxdateVar2,]
+  #nat_plot_2[is.na(nat_plot_2$r)==TRUE,]$prob <- NA
   nat_plot_1<-nat_plot_1[nat_plot_1$d_comb>=mindateVar1+tau_max & nat_plot_1$d_comb<=maxdateVar1,]
-  nat_plot_1[is.na(nat_plot_1$r)==TRUE,]$prob <- NA
+  #nat_plot_1[is.na(nat_plot_1$r)==TRUE,]$prob <- NA
 
 
 
-  plot1<-ggplot2::ggplot(data = nat_plot_omi, ggplot2::aes(x=d_comb,y=r))+
+  plot9<-ggplot2::ggplot(data = nat_plot_2, ggplot2::aes(x=d_comb,y=r))+
     ggplot2::geom_line(ggplot2::aes(color="Omicron"))+
     ggplot2::geom_ribbon(ggplot2::aes(ymin=lb_2.5, ymax=ub_97.5, fill="Omicron"), alpha=0.2)+
     ggplot2::geom_ribbon(ggplot2::aes(ymin=lb_25, ymax=ub_75, fill="Omicron"), alpha=0.2)+
-    ggplot2::geom_line(data=nat_plot_delta, ggplot2::aes(color="Delta"))+
-    ggplot2::geom_ribbon(data=nat_plot_delta,ggplot2::aes(ymin=lb_2.5, ymax=ub_97.5,fill="Delta"), alpha=0.2)+
-    ggplot2::geom_ribbon(data=nat_plot_delta,ggplot2::aes(ymin=lb_25, ymax=ub_75,fill="Delta"), alpha=0.2)+
+    ggplot2::geom_line(data=nat_plot_1, ggplot2::aes(color="Delta"))+
+    ggplot2::geom_ribbon(data=nat_plot_1,ggplot2::aes(ymin=lb_2.5, ymax=ub_97.5,fill="Delta"), alpha=0.2)+
+    ggplot2::geom_ribbon(data=nat_plot_1,ggplot2::aes(ymin=lb_25, ymax=ub_75,fill="Delta"), alpha=0.2)+
     ggplot2::coord_cartesian(ylim=c(0,ylim), xlim=c(min_date, max_date))+
     ggplot2::theme_bw(base_size = 10)+
     ggplot2::geom_hline(yintercept = 1, linetype='dashed')+
@@ -157,11 +157,11 @@ plot_p_spline_R_two_variants <- function(X, p_spline_fit, target_dist_between_kn
                                 labels=labs)+
     ggplot2::scale_fill_manual(values=colors1,
                                name= "Variant",
-                               labels=labs)+
+                               labels=labs)
 
 
 
-  return(list(plot1,nat_plot_1, nat_plot_2))
+  return(list(plot9,nat_plot_1, nat_plot_2))
 }
 
 

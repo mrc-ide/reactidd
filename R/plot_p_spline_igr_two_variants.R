@@ -12,6 +12,10 @@
 #' @param link_function the link function used in the original fit (logit for REACT-1, log for PHE case numbers)
 #' @param labs names of the the two variants compared
 #' @param colors1 sets the three colours used for growth rate advantage and both variant's growth rates
+#' @param mindateVar1 first date that variant 1 was detected
+#' @param mindateVar2 first date that variant 2 was detected
+#' @param maxdateVar1 last date that variant 1 was detected
+#' @param maxdateVar2 last date that variant 2 was detected
 #' @return A list of the created plot for instantaneous growth rate and the posterior estimates for growth rate used in the plot.
 #'
 plot_p_spline_igr_two_variants <- function(X, p_spline_fit, target_dist_between_knots = 5, spline_degree = 3, ylim=1.0, link_function="logit",

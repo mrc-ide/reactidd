@@ -96,7 +96,7 @@ p_spline_Rt <- plot_p_spline_R_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<
                                    p_spline_fit = p_spline_mod_react, 
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   ylim = 0.5,
+                                   ylim = 2.5,
                                    n1=2.20, b1=0.48,
                                    n2=0.89, b2=0.27,
                                    tau_max = 14,
@@ -112,15 +112,3 @@ print(p_spline_Rt[[1]])
 
 
 
-From the p-spline model we can estimate the date of minimum prevalence and plot the posterior probability density
-
-```{r Date of minimum from P-Spline model}
-p_spline_min_date <- plot_p_spline_minimum_density(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r7,]$X,
-                                   p_spline_fit = p_spline_mod_react, 
-                                    target_dist_between_knots = 5,
-                                    spline_degree = 3)
-
-print(p_spline_min_date[[1]])
-
-
-```

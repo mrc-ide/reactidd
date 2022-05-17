@@ -6,6 +6,7 @@
 #' @param X date vector.
 #' @param Y Numeric vector of weighted number of positive samples
 #' @param N Numeric vector of weighted total number of samples
+#' @param V data.frame with columns of date, variant 1, variant 2
 #' @param target_distance_between_knots sets the number of days between adjacent knots (default = 5)
 #' @param spline_degree sets the degree of the splines (default = 3)
 #' @param ... Arguments passed to `rstan::sampling` (iter, warmup).
