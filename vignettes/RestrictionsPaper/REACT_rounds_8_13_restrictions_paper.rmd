@@ -95,4 +95,28 @@ print(p_spline_Rt_D[[1]])
 ```
 
 
+# Fitting the Segmented model to the data
+We can fit the Segmented model to all of the REACT data for rounds 8 to 13 of the study.
 
+```{r Fitting the p-spline model, results='hide'}
+
+#Setting the key dtaes of the changes in restrictions
+res0 <- as.Date("2021-01-06")
+res1 <- as.Date("2021-03-08")
+res2 <- as.Date("2021-03-29")
+res3 <- as.Date("2021-04-12")
+res4 <- as.Date("2021-05-17")
+
+rest_dates <- c(res0,res1,res2,res3,res4)
+
+breakpoint_mod_react <- stan_breakpoint_model_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 500,
+                                   cores = 1)
+
+
+```
