@@ -124,7 +124,10 @@ breakpoint_mod_react <- stan_breakpoint_model_weighted(pos[pos$X>=min_date_r8 & 
 We can then plot the estimated R's and multiplicative changes in R as inferred from the Segmented model
 
 ```{r Plotting the segmented model, results='hide'}
+breakpoint_plot <- plot_breakpoint_R(pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$X,
+                                     breakpoint_mod_react)
 
+breakpoint_plot[[1]]
 
 ```
 

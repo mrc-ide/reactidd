@@ -11,7 +11,7 @@
 #' @param b rate parameter of the gamma distribution used for the generation time
 #' @return A list of the created plot of R over time and posterior estimates of R_t used in the plots.
 #'
-plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36){
+plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36, name="England"){
 
   ff <- rstan::extract(stan_fit)
 
@@ -35,7 +35,7 @@ plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36){
   df6 <- data.frame(name = name,period = "5", beta = beta6[[1]],beta_lb=beta6[[2]],beta_ub=beta6[[3]])
 
   df_R <- rbind(df1, df2, df3, df4, df5, df6)
-  df_delay <- data.frame(name="England", delay = p_delay[[1]], delay_lb = p_delay[[2]], delay_ub = p_delay[[3]])
+  df_delay <- data.frame(name=name, delay = p_delay[[1]], delay_lb = p_delay[[2]], delay_ub = p_delay[[3]])
 
   test<-(1+(ff$beta[,2]/b))**n/(1+(ff$beta[,1]/b))**n
   test[ff$beta[,2]< -b] <- 0.0
@@ -139,8 +139,8 @@ plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36){
     ggplot2::geom_errorbar(data=eng[[3]], ggplot2::aes(y=beta, ymin=beta_lb, ymax=beta_ub, color=period), width=0.1)+
     ggplot2::scale_color_brewer(palette="Set1",labels=c("Lockdown","Step 1a","Step 1b","Step 2","Step 3"))+
     ggplot2::theme(legend.position = c(0.83,0.73),
-          legend.title = element_blank(),
-          panel.grid = element_blank())+
+          legend.title = ggplot2::element_blank(),
+          panel.grid = ggplot2::element_blank())+
     ggplot2::scale_y_continuous(sec.axis = ggplot2::sec_axis(~., name = "Multiplicative growth"))+
     ggplot2::coord_cartesian(ylim=c(0,4),xlim=c(as.Date("2020-12-30"), as.Date("2021-07-12")))+
     ggplot2::scale_x_date(date_breaks = "1 month", date_labels = "%b\n%Y")
@@ -148,5 +148,5 @@ plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36){
 
 
 
-  return(list(plot2))
+  return(list(plot2, df_beta, eng[[3]]))
 }
