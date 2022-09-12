@@ -63,39 +63,33 @@ print(p_spline_plot[[1]])
 ```
 
 
-We can then calculate and plot the instanteous growth rate over the study period
-
-```{r Instantaneous growth rate calculation}
-p_spline_igr <- plot_p_spline_igr_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+We can then calculate and plot the rolling two week average Reproduction number using a generation time suitable for Alpha 
+```{r Reproduction number calculation}
+p_spline_Rt_A <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
                                    p_spline_fit = p_spline_mod_react, 
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   ylim = 0.5,
-                                   labs =c("Delta","Omicron"),
-                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"),
-                                   mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
-                                   mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
+                                   ylim = 2.,
+                                   n1=2.29, b1=0.36,
+                                   tau_max = 14)
 
-print(p_spline_igr[[1]])
+print(p_spline_Rt_A[[1]])
 
 
 ```
-and also the rolling two week average Reproduction number
+
+
+Or as a sensitivity analysis using a generation time approporate for the Delta variant.
 ```{r Reproduction number calculation}
-p_spline_Rt <- plot_p_spline_R_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+p_spline_Rt_D <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
                                    p_spline_fit = p_spline_mod_react, 
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   ylim = 2.5,
+                                   ylim = 2.,
                                    n1=2.20, b1=0.48,
-                                   n2=0.89, b2=0.27,
-                                   tau_max = 14,
-                                   labs =c("Delta","Omicron"),
-                                   colors1 = RColorBrewer::brewer.pal(2, "Set1"),
-                                   mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
-                                   mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
+                                   tau_max = 14)
 
-print(p_spline_Rt[[1]])
+print(p_spline_Rt_D[[1]])
 
 
 ```
