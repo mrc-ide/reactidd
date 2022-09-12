@@ -1,0 +1,111 @@
+---
+title: "Temporal analysis of rounds 8-13 of REACT-1 when national restrictions were eased"
+author: "Oliver Eales"
+date: "12 September, 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load reactidd}
+library(reactidd)
+```
+
+# Loading the Data
+First we will load the REACT data
+
+```{r loading the react data}
+pos <- load_example_data_weighted()[[1]]
+tot <- load_example_data_weighted()[[2]]
+
+
+
+
+```
+
+In order to subset the data we define the dates for rounds 14 to 18 of the study
+```{r setting the minimum and maximum dates}
+min_date_r14 <- as.Date("2021-09-09")
+max_date_r18 <- as.Date("2022-03-03")
+```
+
+
+
+# Fitting the Bayesian P-Spline Model to the data
+We can then fit the Bayesian P-spline model to all of the REACT data for rounds 14 to 18 of the study with variants divided into Omicron and Delta (iterations and warmup will need to be bigger for accurate estimates). All of this code could also be used to fit BA.2 vs BA.1/BA.1.1 for round 17 and 18 only as was also done in the paper.
+
+```{r Fitting the p-spline model, results='hide'}
+
+p_spline_mod_react <- stan_p_spline_weighted_two_variants(pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$England,
+                                   tot[tot$X>=min_date_r14 & tot$X<= max_date_r18,]$England,
+                                   lins[c("X","Delta","Omicron")],
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 2000,
+                                   warmup = 500,
+                                   cores = 1)
+
+
+```
+
+The p-spline model can then be plotted with estimated 95%CI  for prevalence and proportion Omicron (all the raw data used to produced the plots are also avialble by using [[3]] to [[7]])
+```{r Plotting the p-spline model}
+p_spline_plot <- plot_p_spline_prev_two_variants(pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$England,
+                                   tot[tot$X>=min_date_r14 & tot$X<= max_date_r18,]$England,
+                                   lins[c("X","Delta","Omicron")],
+                                   p_spline_fit = p_spline_mod_react, 
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   ylim = 15.0,
+                                   labs =c("Omicron","Delta"),
+                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"))
+
+print(p_spline_plot[[1]])
+print(p_spline_plot[[2]])
+
+```
+
+
+We can then calculate and plot the instanteous growth rate over the study period
+
+```{r Instantaneous growth rate calculation}
+p_spline_igr <- plot_p_spline_igr_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   ylim = 0.5,
+                                   labs =c("Delta","Omicron"),
+                                   colors1 = RColorBrewer::brewer.pal(3, "Dark2"),
+                                   mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
+                                   mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
+
+print(p_spline_igr[[1]])
+
+
+```
+and also the rolling two week average Reproduction number
+```{r Reproduction number calculation}
+p_spline_Rt <- plot_p_spline_R_two_variants(X = pos[pos$X>=min_date_r14 & pos$X<= max_date_r18,]$X,
+                                   p_spline_fit = p_spline_mod_react, 
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   ylim = 2.5,
+                                   n1=2.20, b1=0.48,
+                                   n2=0.89, b2=0.27,
+                                   tau_max = 14,
+                                   labs =c("Delta","Omicron"),
+                                   colors1 = RColorBrewer::brewer.pal(2, "Set1"),
+                                   mindateVar1 = as.Date("2021-09-09"), maxdateVar1 = as.Date("2022-02-14"),
+                                   mindateVar2 = as.Date("2021-12-03"), maxdateVar2 = as.Date("2022-03-03"))
+
+print(p_spline_Rt[[1]])
+
+
+```
+
+
+
