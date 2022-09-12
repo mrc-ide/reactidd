@@ -41,15 +41,21 @@ The `R` folder contains the `functions.R` file that has a set of costum function
 
 The vignette `TemporalAnalysisREACT_rounds12and13.rmd` demonstrates the temporal analysis used in this publication
 
-### [Characterising the persistence of RT-PCR positivity and incidence in a community survey of SARS-CoV-2](http://dx.doi.org/10.12688/wellcomeopenres.17723.1)
+### [Characterising the persistence of RT-PCR positivity and incidence in a community survey of SARS-CoV-2 (Wellcome Open)](http://dx.doi.org/10.12688/wellcomeopenres.17723.1)
 
 The vignette `EstimatingDurationOfSwabPositivity.rmd` in the vignette subfolder `PCR_Positivity_Paper` contains the code used in the analysis for this preprint. The analysis perfomed on the data for repeat tests is demonstrated on simulated data as the indiviudal level data could not be shared due to ethical/security considerations. Also in the vignette subfolder named `PCR_Positivity_Paper` is the extended data to support the submission of the paper to Wellcome Open. The files included are 1) `COG_UK authorship.xlsx`, which contains the author deatils for the Covid-19 Genomics UK (COG-UK) consortium 2) `SupplementaryFigure1.pdf` which contains supplementary figure 1 3) `SupplementaryTable1.xlsx` which contains supplementary table 1 and 4) `Extended data descriptions.docx` which contains the legends for each supplementary materials.
 
-### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (preprint)](https://doi.org/10.1101/2022.02.04.22270426)
+### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (Epidemics)](https://www.sciencedirect.com/science/article/pii/S1755436522000482?via%25)
 
 The vignettes `REACT_rounds1-7_analysis.rmd` and `PHE_rounds1-7_analysis.rmd` in the vigentte subfolder `TemporalMethodsPaper` demonstrate the temporal analysis used in this preprint.
 
 
-### [The new normal? Dynamics and scale of the SARS-CoV-2 variant Omicron epidemic in England (preprint)](https://www.medrxiv.org/content/10.1101/2022.03.29.22273042v1)
+### [Dynamics of competing SARS-CoV-2 variants during the Omicron epidemic in England (Nature Communications)](https://www.nature.com/articles/s41467-022-32096-4)
 
 The vignette `REACT_rounds14-18_omicron_analysis.rmd` in the vigentte subfolder `TemporalOmicronPaper` demonstrate the temporal analysis used in this preprint. The code allows the analysis of two competing variants when overall prevalence is known and the daily proportion of both competing variants is known.
+
+
+### [Trends in SARS-CoV-2 infection prevalence during England’s roadmap out of
+lockdown, January to July 2021 (preprint)](https://www.medrxiv.org/content/10.1101/2022.06.02.22275900v1)
+
+The vignette `REACT_rounds_8_13_restrictions_paper.rmd` in the vigentte subfolder `RestrictionsPaper` demonstrate the temporal analysis used in this preprint.
