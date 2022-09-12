@@ -55,7 +55,6 @@ The vignettes `REACT_rounds1-7_analysis.rmd` and `PHE_rounds1-7_analysis.rmd` in
 The vignette `REACT_rounds14-18_omicron_analysis.rmd` in the vigentte subfolder `TemporalOmicronPaper` demonstrate the temporal analysis used in this preprint. The code allows the analysis of two competing variants when overall prevalence is known and the daily proportion of both competing variants is known.
 
 
-### [Trends in SARS-CoV-2 infection prevalence during England’s roadmap out of
-lockdown, January to July 2021 (preprint)](https://www.medrxiv.org/content/10.1101/2022.06.02.22275900v1)
+### [Trends in SARS-CoV-2 infection prevalence during England’s roadmap out of lockdown, January to July 2021 (preprint)](https://www.medrxiv.org/content/10.1101/2022.06.02.22275900v1)
 
 The vignette `REACT_rounds_8_13_restrictions_paper.rmd` in the vigentte subfolder `RestrictionsPaper` demonstrate the temporal analysis used in this preprint.
