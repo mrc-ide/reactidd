@@ -134,10 +134,11 @@ We can then plot the estimated R's and multiplicative changes in R as inferred f
 We can fit the Segmented model including effects due to vaccination and the Delta variant to all of the REACT data for rounds 8 to 13 of the study.
 
 
-```{r Read in data on vaccination and variant proportion, results='hide'}
+```{r Read in some formatted data on vaccination and variant proportion, results='hide'}
 
-
-
+Vax1 <- readRDS(system.file("extdata", "Vax1.rds", package = "reactidd"))
+Vax2 <- readRDS(system.file("extdata", "Vax2.rds", package = "reactidd"))
+Delta <- readRDS(system.file("extdata", "Delta.rds", package = "reactidd"))
 
 ```
 
@@ -147,6 +148,9 @@ breakpoint_mod_complex_react <- stan_breakpoint_model_complex_weighted(pos[pos$X
                                    pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$England,
                                    tot[tot$X>=min_date_r8 & tot$X<= max_date_r13,]$England,
                                    restriction_dates = rest_dates,
+                                   Vax1,
+                                   Vax2,
+                                   Delta,
                                    iter = 2000,
                                    warmup = 500,
                                    cores = 1)
