@@ -70,7 +70,7 @@ p_spline_Rt_A <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
                                    ylim = 2.,
-                                   n1=2.29, b1=0.36,
+                                   n=2.29, b=0.36,
                                    tau_max = 14)
 
 print(p_spline_Rt_A[[1]])
@@ -86,7 +86,7 @@ p_spline_Rt_D <- plot_p_spline_R(X = pos[pos$X>=min_date_r1 & pos$X<= max_date_r
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
                                    ylim = 2.,
-                                   n1=2.20, b1=0.48,
+                                   n=2.20, b=0.48,
                                    tau_max = 14)
 
 print(p_spline_Rt_D[[1]])
