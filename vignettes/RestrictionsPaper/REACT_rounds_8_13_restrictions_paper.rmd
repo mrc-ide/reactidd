@@ -98,7 +98,7 @@ print(p_spline_Rt_D[[1]])
 # Fitting the Segmented model to the data
 We can fit the Segmented model to all of the REACT data for rounds 8 to 13 of the study.
 
-```{r Fitting the p-spline model, results='hide'}
+```{r Fitting the segmented model, results='hide'}
 
 #Setting the key dtaes of the changes in restrictions
 res0 <- as.Date("2021-01-06")
@@ -109,14 +109,55 @@ res4 <- as.Date("2021-05-17")
 
 rest_dates <- c(res0,res1,res2,res3,res4)
 
-breakpoint_mod_react <- stan_breakpoint_model_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
-                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
-                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
-                                   target_dist_between_knots = 5,
-                                   spline_degree = 3,
+breakpoint_mod_react <- stan_breakpoint_model_weighted(pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r8 & tot$X<= max_date_r13,]$England,
+                                   restriction_dates = rest_dates,
                                    iter = 2000,
                                    warmup = 500,
                                    cores = 1)
+
+
+```
+
+
+We can then plot the estimated R's and multiplicative changes in R as inferred from the Segmented model
+
+```{r Plotting the segmented model, results='hide'}
+
+
+```
+
+
+
+# Fitting the Segmented model with vaccine + variant effects
+We can fit the Segmented model including effects due to vaccination and the Delta variant to all of the REACT data for rounds 8 to 13 of the study.
+
+
+```{r Read in data on vaccination and variant proportion, results='hide'}
+
+
+
+
+```
+
+```{r Fitting the complex segmented model, results='hide'}
+
+breakpoint_mod_complex_react <- stan_breakpoint_model_complex_weighted(pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$X,
+                                   pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$England,
+                                   tot[tot$X>=min_date_r8 & tot$X<= max_date_r13,]$England,
+                                   restriction_dates = rest_dates,
+                                   iter = 2000,
+                                   warmup = 500,
+                                   cores = 1)
+
+
+```
+
+
+We can then plot the estimated R's and multiplicative changes in R as inferred from the Segmented model
+
+```{r Plotting the complex segmented model, results='hide'}
 
 
 ```
