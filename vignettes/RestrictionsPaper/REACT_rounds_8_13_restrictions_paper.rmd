@@ -125,7 +125,8 @@ We can then plot the estimated R's and multiplicative changes in R as inferred f
 
 ```{r Plotting the segmented model, results='hide'}
 breakpoint_plot <- plot_breakpoint_R(pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$X,
-                                     breakpoint_mod_react)
+                                     breakpoint_mod_react,
+                                     rest_dates)
 
 breakpoint_plot[[1]]
 
@@ -162,9 +163,14 @@ breakpoint_mod_complex_react <- stan_breakpoint_model_complex_weighted(pos[pos$X
 ```
 
 
-We can then plot the estimated R's and multiplicative changes in R as inferred from the Segmented model
+We can then plot the estimated R's inferred from the Segmented model including vaccination and Delta proportion as additional effects.
 
 ```{r Plotting the complex segmented model, results='hide'}
+breakpoint_complex_plot <- plot_breakpoint_complex_R(pos[pos$X>=min_date_r8 & pos$X<= max_date_r13,]$X,
+                                                     breakpoint_mod_complex_react,
+                                                     rest_dates,
+                                                     ylim=3.0)
 
+breakpoint_complex_plot[[1]]
 
 ```

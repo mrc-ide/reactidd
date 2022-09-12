@@ -6,12 +6,13 @@
 #' @export
 #' @param X date vector.
 #' @param stan_fit fit of the model to the same set of data using reactidd::stan_p_spline()
+#' @param rest_dates date of key restriction changes
 #' @param ylim sets the ylimit of the plot
 #' @param n shape parameter of the gamma distribution used for the generation time
 #' @param b rate parameter of the gamma distribution used for the generation time
 #' @return A list of the created plot of R over time and posterior estimates of R_t used in the plots.
 #'
-plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36, name="England"){
+plot_breakpoint_R <- function(X, stan_fit,rest_dates, ylim=4.0, n=2.29, b=0.36, name="England"){
 
   ff <- rstan::extract(stan_fit)
 
@@ -116,7 +117,7 @@ plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36, name="Engla
 
 
   plot2<-ggplot2::ggplot(data=df_beta, ggplot2::aes(x= d_comb, y =p*100))+
-    ggplot2::coord_cartesian(ylim=c(0.0,3))+
+    ggplot2::coord_cartesian(ylim=c(0.0,ylim))+
     ggplot2::theme_bw(base_size = 18)+
     ggplot2::xlab("Date")+
     ggplot2::ylab("Reproduction number")+
@@ -142,7 +143,7 @@ plot_breakpoint_R <- function(X, stan_fit, ylim=2.0, n=2.29, b=0.36, name="Engla
           legend.title = ggplot2::element_blank(),
           panel.grid = ggplot2::element_blank())+
     ggplot2::scale_y_continuous(sec.axis = ggplot2::sec_axis(~., name = "Multiplicative growth"))+
-    ggplot2::coord_cartesian(ylim=c(0,4),xlim=c(as.Date("2020-12-30"), as.Date("2021-07-12")))+
+    ggplot2::coord_cartesian(ylim=c(0,ylim),xlim=c(as.Date("2020-12-30"), as.Date("2021-07-12")))+
     ggplot2::scale_x_date(date_breaks = "1 month", date_labels = "%b\n%Y")
 
 
