@@ -32,7 +32,7 @@ max_date_r13 <- as.Date("2021-07-12")
 
 
 # Fitting the Bayesian P-Spline Model to the data
-We can then fit the Bayesian P-spline model to all of the REACT data for rounds 1 to 13 of the study.
+We can then fit the Bayesian P-spline model to all of the REACT data for rounds 1 to 13 of the study. Note that the dataframes pos and tot also include daily weighted counts by region as well as nationally and so all analysis can easily be extended to look at each region of England.
 
 ```{r Fitting the p-spline model, results='hide'}
 
