@@ -23,15 +23,14 @@ pos <- load_example_data_weighted()[[1]]
 tot <- load_example_data_weighted()[[2]]
 ```
 
-In order to subset the data we define the dates of each round of the study
+In order to subset the data we define some dates to subset into REACT-1 rounds
 ```{r setting the minimum and maximum dates}
 min_date_r1 <- as.Date("2020-05-01")
-min_date_r12 <- as.Date("2021-05-20")
-min_date_r13 <- as.Date("2021-06-24")
+min_date_r14 <- as.Date("2021-09-09")
 
-max_date_r1 <- as.Date("2020-06-01")
-max_date_r12 <- as.Date("2021-06-07")
+max_date_r7 <- as.Date("2020-12-03")
 max_date_r13 <- as.Date("2021-07-12")
+max_date_r19 <- as.Date("2022-03-31")
 ```
 
 
