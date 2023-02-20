@@ -1,0 +1,247 @@
+---
+title: "Fitting time-lag models between death data and REACT-1 swab-positivity to estimate the IFR"
+author: "Oliver Eales"
+date: "February 20, 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load reactidd}
+library(reactidd)
+```
+
+# Loading the Data
+First we will load the weighted REACT data available using reactidd::load_example_data_weighted() 
+Datasets have the weighted number of positives by english region and for England as a whole (pos below)
+and the weighted number of total tests by english region and for England as a whole (tot)
+
+```{r loading the react data}
+pos <- load_example_data_weighted()[[1]]
+tot <- load_example_data_weighted()[[2]]
+```
+
+In order to subset the data we define some dates to subset into REACT-1 rounds
+```{r setting the minimum and maximum dates}
+min_date_r1 <- as.Date("2020-05-01")
+min_date_r14 <- as.Date("2021-09-09")
+
+max_date_r7 <- as.Date("2020-12-03")
+max_date_r13 <- as.Date("2021-07-12")
+max_date_r19 <- as.Date("2022-04-01")
+```
+
+
+
+# Fitting the Bayesian P-Spline Model to the data
+We can fit the Bayesian P-spline model to all of the REACT data for all 19 rounds of the study
+Note that a much larger number of iterations is required to get a reliable fit.
+
+```{r Fitting the p-spline model, results='hide'}
+p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 20000,
+                                   warmup = 2000,
+                                   cores = 1,
+                                   chains=4)
+
+
+```
+
+
+
+
+The p-spline model can then be plotted with estimated 95% and 50% credible intervals
+```{r Plotting the p-spline model}
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 12.0)
+
+print(p_spline_plot[[1]])
+
+p_spline_plot[[1]] <- p_spline_plot[[1]]+
+  ggplot2::coord_cartesian(xlim=c(min_date_r1, max_date_r19), ylim = c(0.01,10))+
+  ggplot2::scale_y_log10()
+
+print(p_spline_plot[[1]])
+
+
+```
+
+# Comparing REACT data to deaths 
+We can compare REACT-1 data to the public data available on deaths to estimate the IFR. 
+We demonstrate the code on publicly available death data (obtained from the COVID-19 UK dashboard) for deaths. All analysis could be perfomed using the other data sets available (new cases and hospitalizations).
+
+First we load the public data for deaths that was used in the analysis for the IFR paper
+
+```{r loading the react data}
+death_dat <- read.csv(system.file("extdata", "public_data_age_deaths_2022-05-20.csv", package = "reactidd"))
+
+death <- clean_death_data(death_dat, max_date=as.Date("2022-05-15"))
+
+```
+
+The public dataset used here has data available for the date ("date"), the total number of daily outcomes ("all"), the total number of outcomes in those aged 64 and under ("age_64_under")  and the total number of outcomes in those aged 65 and over ("aged_65_over"). 
+We present here the results for models fit to all data but the code can easily be used for the two timeseries split by age.
+
+We first fit Bayesian P-spline models to the daily death data. (Note again more iterations are required for an accurate fit)
+
+```{r Fit the P-Spline model to public data sets for death and hospitalizations, echo=TRUE, results='hide'}
+death_spline <- stan_p_spline_phe(X = death$date,
+                                   Y= death$all,
+                                   target_dist_between_knots = 5,
+                                   spline_degree = 3,
+                                   iter = 5000,
+                                   warmup = 500,
+                                   cores = 1,
+                                  chains=4)
+
+
+```
+
+Bayesian P-spline models posteriors are extracted and converted into the actual response variable. A number of samples are drawn randomly from the posterior. We have drawn 100 samples for speed but in the main analysis 1000 samples were drawn.
+```{r Format the spline data to get sample of response values , echo=TRUE, results='hide'}
+
+# Extract posteriors from splines
+death_post <- rstan::extract(death_spline)
+
+# Get response values
+death_post_Y <- death_post$Y_hat
+
+# Select random sample from posterior
+death_post_Y<-death_post_Y[sample(nrow(death_post_Y), 100),]
+
+# Exponentiate to get actual value
+death_post_Y <- exp(death_post_Y)
+```
+
+With these response posteriors we can then fit the time lag model to the REACT data. Note for analysis using age seperated data the REACT data is available using "read.csv(system.file("extdata", "ages_weighted.csv", package = "reactidd"))" which has the weighted positives and total tests for both those aged 64 and under and those aged 65 and over by date.
+
+```{r Fit the time lag models to deaths, echo=TRUE, results='hide'}
+
+# Set initial parameters for time lag and log difference (scaling parameter)
+init_pars <- c(10, -10)
+# Set number of iterations 
+N <- 10000
+
+# Set range of REACT data to fit to
+# Only fitting to rounds 1-7 due to the time lag
+ensemble = data.frame(day=pos$X,
+                      pos=pos$England,
+                      obs=tot$England)
+
+ensemble1_7 <- ensemble[ensemble$day <=max_date_r7,]
+ensemble14_19 <- ensemble[ensemble$day <=max_date_r19 &ensemble$day >= min_date_r14,]
+
+# Run model to get time lag and log difference for all timeseries
+death_eng1 <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble1_7,  dates=death$date , ENG = death_post_Y, burnin=2000,name="All", rounds = "Rounds 1-7", data_source = "Deaths")
+
+death_eng2 <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble14_19,  dates=death$date , ENG = death_post_Y, burnin=2000,name="All", rounds = "Rounds 14-19", data_source = "Deaths")
+
+
+
+
+death_eng1[[1]]
+death_eng2[[1]]
+
+## Can convert log difference into the IFR using population estimates and a factor of 11.06
+# Population estimate of England
+pop <- 56286961
+
+
+11.06*100/(pop*exp(death_eng1[[1]]$alpha))
+11.06*100/(pop*exp(death_eng2[[1]]$alpha))
+
+
+```
+
+We can then plot the death and hospitalization P-spline fits translated by the best fitting time -lag parameter and scaled by the scaling parameter.
+We plot it against the previously fit REACT Bayesian P-spline model to compare the time-series.
+
+```{r plot the time lag models of deaths against REACT data, echo=TRUE, results='hide'}
+
+
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 10.0)
+
+
+death_plot1 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng1[[1]], X=death$date, dat = death)
+
+death_plot2 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng2[[1]], X=death$date, dat = death)
+
+
+print(death_plot1[[1]])
+print(death_plot2[[1]])
+
+
+```
+
+
+dd
+
+```{r Plot the IFR over time, echo=TRUE, results='hide'}
+
+
+# Get full posterior of death spline
+death_post <- rstan::extract(death_spline)
+death_array <- death_post$Y_hat
+
+
+#Get full posterior of REACT spline
+X_REACT <- ensemble$day
+react_post <- rstan::extract(p_spline_mod_react)
+react_array <- get_response_posterior(react_post,
+                                      as.numeric(X_REACT))
+react_array_log <- log(boot::inv.logit(react_array))
+
+
+#Get difference between splines first for time lag from model fit to rounds 1-7
+death_dif1<-plot_spline_difference(X_REACT, react_array_log,
+                             death$date, death_array,
+                             time_delay = 26)
+death_dif1 <- death_dif1[death_dif1$date<=max_date_r13,]
+
+#Get difference between splines first for time lag from model fit to rounds 14-19
+death_dif2<-plot_spline_difference(X_REACT, react_array_log,
+                             death$date, death_array,
+                             time_delay = 18)
+death_dif2 <- death_dif2[death_dif2$date>=min_date_r14,]
+
+
+# Convert difference to IFR
+death_dif1$mean <- 11.06*100/(pop*exp(death_dif1$mean))
+death_dif1$lb <- 11.06*100/(pop*exp(death_dif1$lb))
+death_dif1$ub <- 11.06*100/(pop*exp(death_dif1$ub))
+
+death_dif2$mean <- 11.06*100/(pop*exp(death_dif2$mean))
+death_dif2$lb <- 11.06*100/(pop*exp(death_dif2$lb))
+death_dif2$ub <- 11.06*100/(pop*exp(death_dif2$ub))
+
+
+#Plot the IFR over time
+ggplot2::ggplot()+
+  ggplot2::geom_line(data = death_dif1, ggplot2::aes(x=date, y=mean))+
+  ggplot2::geom_ribbon(data = death_dif1, ggplot2::aes(x=date,y=mean, ymin=lb, ymax=ub))+
+  ggplot2::geom_line(data = death_dif2, ggplot2::aes(x=date, y=mean))+
+  ggplot2::geom_ribbon(data = death_dif2, ggplot2::aes(x=date,y=mean, ymin=lb, ymax=ub))+
+  ggplot2::theme_bw()+
+  ggplot2::coord_cartesian(ylim=c(0.001,10))+
+  ggplot2::scale_y_log10()
+
+
+```
+
