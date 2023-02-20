@@ -178,10 +178,10 @@ p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r1
                                    ylim = 10.0)
 
 
-
 death_plot1 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng1[[1]], X=death$date, dat = death)
 
 death_plot2 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng2[[1]], X=death$date, dat = death)
+
 
 print(death_plot1[[1]])
 print(death_plot2[[1]])
