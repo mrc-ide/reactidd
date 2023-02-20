@@ -1,7 +1,7 @@
 ---
-title: "Fitting models to REACT data as seen in round 13 final"
+title: "Fitting time-lag models between death data and REACT-1 swab-positivity to estimate the IFR"
 author: "Oliver Eales"
-date: "October 11, 2021"
+date: "February 20, 2022"
 output: html_document
 ---
 
@@ -45,7 +45,7 @@ p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= ma
                                    tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   iter = 5000,
+                                   iter = 20000,
                                    warmup = 2000,
                                    cores = 1,
                                    chains=4)
@@ -100,10 +100,10 @@ death_spline <- stan_p_spline_phe(X = death$date,
                                    Y= death$all,
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   iter = 2500,
+                                   iter = 5000,
                                    warmup = 500,
                                    cores = 1,
-                                  chains=1)
+                                  chains=4)
 
 
 ```
@@ -196,38 +196,51 @@ dd
 ```{r Plot the IFR over time, echo=TRUE, results='hide'}
 
 
-
+# Get full posterior of death spline
 death_post <- rstan::extract(death_spline)
-death_post_Y <- death_post$Y_hat
+death_array <- death_post$Y_hat
 
 
+#Get full posterior of REACT spline
+X_REACT <- ensemble$day
+react_post <- rstan::extract(p_spline_mod_react)
+react_array <- get_response_posterior(react_post,
+                                      as.numeric(X_REACT))
+react_array_log <- log(boot::inv.logit(react_array))
 
 
-death_dif<-plot_spline_difference(X_REACT, react_array_log,
-                             death_data$date, death_array_log,
+#Get difference between splines first for time lag from model fit to rounds 1-7
+death_dif1<-plot_spline_difference(X_REACT, react_array_log,
+                             death$date, death_array,
                              time_delay = 26)
-death_dif$date <- as.Date(death_dif$date-18383, origin=as.Date("2020-05-01"))
-death_dif1 <- death_dif[death_dif$date<=as.Date("2020-12-03"),]
-death_dif2 <- death_dif[death_dif$date>=as.Date("2021-01-06"),]
+death_dif1 <- death_dif1[death_dif1$date<=max_date_r13,]
+
+#Get difference between splines first for time lag from model fit to rounds 14-19
+death_dif2<-plot_spline_difference(X_REACT, react_array_log,
+                             death$date, death_array,
+                             time_delay = 18)
+death_dif2 <- death_dif2[death_dif2$date>=min_date_r14,]
 
 
+# Convert difference to IFR
+death_dif1$mean <- 11.06*100/(pop*exp(death_dif1$mean))
+death_dif1$lb <- 11.06*100/(pop*exp(death_dif1$lb))
+death_dif1$ub <- 11.06*100/(pop*exp(death_dif1$ub))
 
-p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
-                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$England,
-                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
-                                   p_spline_fit = p_spline_mod_react, 
-                                    target_dist_between_knots = 5,
-                                    spline_degree = 3,
-                                   ylim = 10.0)
-
-
-death_plot1 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng1[[1]], X=death$date, dat = death)
-
-death_plot2 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng2[[1]], X=death$date, dat = death)
+death_dif2$mean <- 11.06*100/(pop*exp(death_dif2$mean))
+death_dif2$lb <- 11.06*100/(pop*exp(death_dif2$lb))
+death_dif2$ub <- 11.06*100/(pop*exp(death_dif2$ub))
 
 
-print(death_plot1[[1]])
-print(death_plot2[[1]])
+#Plot the IFR over time
+ggplot2::ggplot()+
+  ggplot2::geom_line(data = death_dif1, ggplot2::aes(x=date, y=mean))+
+  ggplot2::geom_ribbon(data = death_dif1, ggplot2::aes(x=date,y=mean, ymin=lb, ymax=ub))+
+  ggplot2::geom_line(data = death_dif2, ggplot2::aes(x=date, y=mean))+
+  ggplot2::geom_ribbon(data = death_dif2, ggplot2::aes(x=date,y=mean, ymin=lb, ymax=ub))+
+  ggplot2::theme_bw()+
+  ggplot2::coord_cartesian(ylim=c(0.001,10))+
+  ggplot2::scale_y_log10()
 
 
 ```
