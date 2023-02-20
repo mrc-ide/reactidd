@@ -30,7 +30,7 @@ min_date_r14 <- as.Date("2021-09-09")
 
 max_date_r7 <- as.Date("2020-12-03")
 max_date_r13 <- as.Date("2021-07-12")
-max_date_r19 <- as.Date("2022-03-31")
+max_date_r19 <- as.Date("2022-04-01")
 ```
 
 
@@ -46,8 +46,9 @@ p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= ma
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
                                    iter = 5000,
-                                   warmup = 1000,
-                                   cores = 1)
+                                   warmup = 2000,
+                                   cores = 1,
+                                   chains=4)
 
 
 ```
@@ -85,7 +86,7 @@ First we load the public data for deaths that was used in the analysis for the I
 ```{r loading the react data}
 death_dat <- read.csv(system.file("extdata", "public_data_age_deaths_2022-05-20.csv", package = "reactidd"))
 
-death <- clean_death_data(death_dat, max_date=as.Date("2022-05-16"))
+death <- clean_death_data(death_dat, max_date=as.Date("2022-05-15"))
 
 ```
 
@@ -99,8 +100,8 @@ death_spline <- stan_p_spline_phe(X = death$date,
                                    Y= death$all,
                                    target_dist_between_knots = 5,
                                    spline_degree = 3,
-                                   iter = 2000,
-                                   warmup = 1000,
+                                   iter = 2500,
+                                   warmup = 500,
                                    cores = 1,
                                   chains=1)
 
@@ -125,7 +126,7 @@ death_post_Y <- exp(death_post_Y)
 
 With these response posteriors we can then fit the time lag model to the REACT data. Note for analysis using age seperated data the REACT data is available using "read.csv(system.file("extdata", "ages_weighted.csv", package = "reactidd"))" which has the weighted positives and total tests for both those aged 64 and under and those aged 65 and over by date.
 
-```{r Fit the time lag models to death and hospitalizations, echo=TRUE, results='hide'}
+```{r Fit the time lag models to deaths, echo=TRUE, results='hide'}
 
 # Set initial parameters for time lag and log difference (scaling parameter)
 init_pars <- c(10, -10)
@@ -152,7 +153,7 @@ death_eng2 <- run_time_lag_model(N=N, init_pars = init_pars, ensemble=ensemble14
 death_eng1[[1]]
 death_eng2[[1]]
 
-## Can convert log difference into the scaling parameter 
+## Can convert log difference into the IFR using population estimates and a factor of 11.06
 # Population estimate of England
 pop <- 56286961
 
@@ -166,7 +167,49 @@ pop <- 56286961
 We can then plot the death and hospitalization P-spline fits translated by the best fitting time -lag parameter and scaled by the scaling parameter.
 We plot it against the previously fit REACT Bayesian P-spline model to compare the time-series.
 
-```{r plot the time lag models of death and hospitalizations against REACT data, echo=TRUE, results='hide'}
+```{r plot the time lag models of deaths against REACT data, echo=TRUE, results='hide'}
+
+
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
+                                   p_spline_fit = p_spline_mod_react, 
+                                    target_dist_between_knots = 5,
+                                    spline_degree = 3,
+                                   ylim = 10.0)
+
+
+death_plot1 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng1[[1]], X=death$date, dat = death)
+
+death_plot2 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng2[[1]], X=death$date, dat = death)
+
+
+print(death_plot1[[1]])
+print(death_plot2[[1]])
+
+
+```
+
+
+dd
+
+```{r Plot the IFR over time, echo=TRUE, results='hide'}
+
+
+
+death_post <- rstan::extract(death_spline)
+death_post_Y <- death_post$Y_hat
+
+
+
+
+death_dif<-plot_spline_difference(X_REACT, react_array_log,
+                             death_data$date, death_array_log,
+                             time_delay = 26)
+death_dif$date <- as.Date(death_dif$date-18383, origin=as.Date("2020-05-01"))
+death_dif1 <- death_dif[death_dif$date<=as.Date("2020-12-03"),]
+death_dif2 <- death_dif[death_dif$date>=as.Date("2021-01-06"),]
+
 
 
 p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
