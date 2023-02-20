@@ -55,24 +55,20 @@ p_spline_mod_react <- stan_p_spline_weighted(pos[pos$X>=min_date_r1 & pos$X<= ma
 
 
 
-
-
-
-
 The p-spline model can then be plotted with estimated 95% and 50% credible intervals
 ```{r Plotting the p-spline model}
-p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$X,
-                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r13,]$England,
-                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r13,]$England,
+p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$X,
+                                   pos[pos$X>=min_date_r1 & pos$X<= max_date_r19,]$England,
+                                   tot[tot$X>=min_date_r1 & tot$X<= max_date_r19,]$England,
                                    p_spline_fit = p_spline_mod_react, 
                                     target_dist_between_knots = 5,
                                     spline_degree = 3,
-                                   ylim = 3.0)
+                                   ylim = 12.0)
 
 print(p_spline_plot[[1]])
 
 p_spline_plot[[1]] <- p_spline_plot[[1]]+
-  ggplot2::coord_cartesian(xlim=c(min_date_r12-10, max_date_r13), ylim = c(0.01,3))+
+  ggplot2::coord_cartesian(xlim=c(min_date_r1, max_date_r19), ylim = c(0.01,10))+
   ggplot2::scale_y_log10()
 
 print(p_spline_plot[[1]])
@@ -80,19 +76,20 @@ print(p_spline_plot[[1]])
 
 ```
 
-# Comparing REACT data to deaths and hospitalizations
-We can also do comparisons of REACT data to the public data available on deaths and hospitalizations
+# Comparing REACT data to deaths 
+We can compare REACT-1 data to the public data available on deaths to estimate the IFR. 
+We demonstrate the code on publicly available death data (obtained from the COVID-19 UK dashboard) for deaths. All analysis could be perfomed using the other data sets available (new cases and hospitalizations).
 
-First we load the public data that was used in the analysis for the round 13 final paper and clean it
+First we load the public data for deaths that was used in the analysis for the IFR paper
 
 ```{r loading the react data}
-death_dat <- read.csv(system.file("extdata", "public_data_age_deaths_2021-07-19.csv", package = "reactidd"))
+death_dat <- read.csv(system.file("extdata", "public_data_age_deaths_2022-05-20.csv", package = "reactidd"))
 
-death <- clean_death_data(death_dat)
+death <- clean_death_data(death_dat, max_date=as.Date("2022-05-16"))
 
 ```
 
-The public datasets here have columns available for the date ("date"), the total number of daily outcomes ("all"), the total number of outcomes in those aged 64 and under ("age_64_under")  and the total number of outcomes in those aged 65 and over ("aged_65_over"). 
+The public dataset used here has data available for the date ("date"), the total number of daily outcomes ("all"), the total number of outcomes in those aged 64 and under ("age_64_under")  and the total number of outcomes in those aged 65 and over ("aged_65_over"). 
 We present here the results for models fit to all data but the code can easily be used for the two timeseries split by age.
 
 We first fit Bayesian P-spline models to the daily death data. (Note again more iterations are required for an accurate fit)
@@ -158,6 +155,12 @@ death_eng2[[1]]
 ## Can convert log difference into the scaling parameter 
 # Population estimate of England
 pop <- 56286961
+
+
+11.06*100/(pop*exp(death_eng1[[1]]$alpha))
+11.06*100/(pop*exp(death_eng2[[1]]$alpha))
+
+
 ```
 
 We can then plot the death and hospitalization P-spline fits translated by the best fitting time -lag parameter and scaled by the scaling parameter.
@@ -178,10 +181,10 @@ p_spline_plot <- plot_p_spline_prev(pos[pos$X>=min_date_r1 & pos$X<= max_date_r1
 
 death_plot1 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng1[[1]], X=death$date, dat = death)
 
-death_plot2 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng1[[1]], X=death$date, dat = death)
+death_plot2 <- add_public_data_to_plot(p_spline_plot = p_spline_plot[[1]], Y_array = death_post_Y, table_eng = death_eng2[[1]], X=death$date, dat = death)
 
-print(death_plot[[1]])
-print(hosp_plot[[1]])
+print(death_plot1[[1]])
+print(death_plot2[[1]])
 
 
 ```
