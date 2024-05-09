@@ -1,6 +1,6 @@
 # reactidd
 
-This repository supports epidemiological and disease-dynamic analyses of data from the REal Time Assessment of Community Transmission (REACT) study. It includes both code and data. For code-related enquiries please contact Oliver Eales: oliver (dot) eales (at) unimelb (dot) edu (dot) au
+This repository supports epidemiological and disease-dynamic analyses of data from the REal Time Assessment of Community Transmission (REACT) study. It includes both code and data. For code-related enquiries please contact Oliver Eales: oliver.eales@unimelb.edu.au
 
 REACT is a program of different studies with multiple rounds, organised into two groups: REACT-1 is a community sample of swab-positivity in which participants are asked to swab themselves, arange for a courier to pickup that swab and then fill out a questionnaire. The swabs are then tested in a lab using PCR. REACT-2 is a community sample of antibody-positivity in which participants are asked to tst themselves using  lateral flow test (LFT) and then report that result at the same time they fill out the questionnaire. Data from both are included here. 
 
@@ -14,7 +14,19 @@ The vignette `TemporalAnalysisREACT.rmd` demonstrates how the REACT data can be 
 
 ## Notes for individual publications
 
-### [Resurgence of SARS-CoV-2: Detection by Community Viral Surveillance](http://dx.doi.org/10.1126/science.abf0874)
+### [Dynamics of competing SARS-CoV-2 variants during the Omicron epidemic in England (Nature Communications)](https://www.nature.com/articles/s41467-022-32096-4)
+
+The vignette `REACT_rounds14-18_omicron_analysis.rmd` in the vigentte subfolder `TemporalOmicronPaper` demonstrate the temporal analysis used in this publicationt. The code allows the analysis of two competing variants when overall prevalence is known and the daily proportion of both competing variants is known.
+
+### [Trends in SARS-CoV-2 infection prevalence during England’s roadmap out of lockdown, January to July 2021 (PLoS Comp Bio)](https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1010724)
+
+The vignette `REACT_rounds_8_13_restrictions_paper.rmd` in the vigentte subfolder `RestrictionsPaper` demonstrate the temporal analysis used in this publication.
+
+### [Dynamics of SARS-CoV-2 infection hospitalisation and infection fatality ratios over 23 months in England (PLoS Biology)](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3002118)
+
+The vignette `TemporalAnalysisIFR_IHR_CaseAscertainment.rmd` in the vigentte subfolder `IFR_IHR_paper` demonstrate the code used for the temporal analysis in this publication.
+
+### [Resurgence of SARS-CoV-2: Detection by Community Viral Surveillance (Science)](http://dx.doi.org/10.1126/science.abf0874)
 
 The two vignettes `TemporalAnalysisREACT.rmd` and `TemporalAnalysisPHE.rmd` demonstrate the temporal analysis used in this publication
 
@@ -35,31 +47,17 @@ them for mapping. All outputs will be saved in `output/predictions/`.
 
 - `05_tables.R`: this creates a summary table with the estimated model parameters.
 
-The `R` folder contains the `functions.R` file that has a set of costum functions needed to run the scripts above.
+The `R` folder contains the `functions.R` file that has a set of custom functions needed to run the scripts above.
 
-### [REACT-1 round 13 final report: exponential growth, high prevalence of SARS-CoV-2 and vaccine effectiveness associated with Delta variant in England during May to July 2021](https://doi.org/10.1101/2021.09.02.21262979)
+### [Exponential growth, high prevalence of SARS-CoV-2, and vaccine effectiveness associated with the Delta variant (Science)](https://www.science.org/doi/full/10.1126/science.abl9551)
 
-The vignette `TemporalAnalysisREACT_rounds12and13.rmd` demonstrates the temporal analysis used in this publication
+The vignette `TemporalAnalysisREACT_rounds12and13.rmd` demonstrates the temporal analysis used in this publication.
+
+### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (Epidemics)](https://www.sciencedirect.com/science/article/pii/S1755436522000482?via%25)
+
+The vignettes `REACT_rounds1-7_analysis.rmd` and `PHE_rounds1-7_analysis.rmd` in the vigentte subfolder `TemporalMethodsPaper` demonstrate the temporal analysis used in this publication.
 
 ### [Characterising the persistence of RT-PCR positivity and incidence in a community survey of SARS-CoV-2 (Wellcome Open)](http://dx.doi.org/10.12688/wellcomeopenres.17723.1)
 
 The vignette `EstimatingDurationOfSwabPositivity.rmd` in the vignette subfolder `PCR_Positivity_Paper` contains the code used in the analysis for this preprint. The analysis perfomed on the data for repeat tests is demonstrated on simulated data as the indiviudal level data could not be shared due to ethical/security considerations. Also in the vignette subfolder named `PCR_Positivity_Paper` is the extended data to support the submission of the paper to Wellcome Open. The files included are 1) `COG_UK authorship.xlsx`, which contains the author deatils for the Covid-19 Genomics UK (COG-UK) consortium 2) `SupplementaryFigure1.pdf` which contains supplementary figure 1 3) `SupplementaryTable1.xlsx` which contains supplementary table 1 and 4) `Extended data descriptions.docx` which contains the legends for each supplementary materials.
 
-### [Appropriately smoothing prevalence data to inform estimates of growth rate and reproduction number (Epidemics)](https://www.sciencedirect.com/science/article/pii/S1755436522000482?via%25)
-
-The vignettes `REACT_rounds1-7_analysis.rmd` and `PHE_rounds1-7_analysis.rmd` in the vigentte subfolder `TemporalMethodsPaper` demonstrate the temporal analysis used in this preprint.
-
-
-### [Dynamics of competing SARS-CoV-2 variants during the Omicron epidemic in England (Nature Communications)](https://www.nature.com/articles/s41467-022-32096-4)
-
-The vignette `REACT_rounds14-18_omicron_analysis.rmd` in the vigentte subfolder `TemporalOmicronPaper` demonstrate the temporal analysis used in this preprint. The code allows the analysis of two competing variants when overall prevalence is known and the daily proportion of both competing variants is known.
-
-
-### [Trends in SARS-CoV-2 infection prevalence during England’s roadmap out of lockdown, January to July 2021 (PLoS Comp Bio)](https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1010724)
-
-The vignette `REACT_rounds_8_13_restrictions_paper.rmd` in the vigentte subfolder `RestrictionsPaper` demonstrate the temporal analysis used in this publication.
-
-
-### [Quantifying changes in the IFR and IHR over 23 months of the SARS-CoV-2 pandemic in England (preprint)](https://www.medrxiv.org/content/10.1101/2022.10.12.22281016v1)
-
-The vignette `TemporalAnalysisIFR_IHR_CaseAscertainment.rmd` in the vigentte subfolder `IFR_IHR_paper` demonstrate the code used for the temporal analysis in this preprint.
